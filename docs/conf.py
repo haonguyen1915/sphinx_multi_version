@@ -70,7 +70,8 @@ extensions = ['sphinx.ext.imgmath',
               'sphinx.ext.napoleon',
               'sphinx_autodoc_typehints',
               'nbsphinx',
-              'sphinx_rtd_theme']
+              'sphinx_rtd_theme',
+              'sphinx_multiversion']
 
 #'sphinx.ext.mathjax', ??
 
