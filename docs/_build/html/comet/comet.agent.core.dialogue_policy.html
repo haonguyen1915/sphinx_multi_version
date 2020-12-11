@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy package &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="comet.agent.core.dialogue_policy.reinforcement_learning package" href="comet.agent.core.dialogue_policy.reinforcement_learning.html" />
+    <link rel="prev" title="comet.agent.core.dialogue_manager package" href="comet.agent.core.dialogue_manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="comet.html">comet package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="comet.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="comet.abstract_module.html">comet.abstract_module package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="comet.agent.html">comet.agent package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="comet.agent.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.html#module-comet.agent">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.call_backs.html">comet.call_backs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.channel.html">comet.channel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.cli.html">comet.cli package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.controller.html">comet.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.domain.html">comet.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.environment.html">comet.environment package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.lib.html">comet.lib package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.utilities.html">comet.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#comet-run-module">comet.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.run_cli">comet.run_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.server">comet.server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="comet.html">comet package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.html">comet.agent package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.html">comet.agent.core package</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/comet/comet.agent.core.dialogue_policy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="comet-agent-core-dialogue-policy-package">
+<h1>comet.agent.core.dialogue_policy package<a class="headerlink" href="#comet-agent-core-dialogue-policy-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.html">comet.agent.core.dialogue_policy.reinforcement_learning package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.actor_critic">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.actor_critic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base_dqn">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base_dqn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.baseline_reinforce">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.baseline_reinforce module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.vanilla_dqn">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.vanilla_dqn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.vanilla_reinforce">comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.vanilla_reinforce module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.algorithms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.eval.html">comet.agent.core.dialogue_policy.reinforcement_learning.eval package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.eval.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.eval.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.eval.policy_evaluation">comet.agent.core.dialogue_policy.reinforcement_learning.eval.policy_evaluation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.eval.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.eval">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html">comet.agent.core.dialogue_policy.reinforcement_learning.memory package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory">comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay">comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay">comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay">comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html">comet.agent.core.dialogue_policy.reinforcement_learning.net package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.net.layers">comet.agent.core.dialogue_policy.reinforcement_learning.net.layers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.net.net">comet.agent.core.dialogue_policy.reinforcement_learning.net.net module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.net">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.utils.html">comet.agent.core.dialogue_policy.reinforcement_learning.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.utils.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.utils.utility">comet.agent.core.dialogue_policy.reinforcement_learning.utils.utility module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.utils.html#module-comet.agent.core.dialogue_policy.reinforcement_learning.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.reinforcement_learning.html#module-comet.agent.core.dialogue_policy.reinforcement_learning">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comet.agent.core.dialogue_policy.rule_based_learning.html">comet.agent.core.dialogue_policy.rule_based_learning package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.rule_based_learning.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.rule_based_learning.html#comet-agent-core-dialogue-policy-rule-based-learning-dummy-policy-module">comet.agent.core.dialogue_policy.rule_based_learning.dummy_policy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.rule_based_learning.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comet.agent.core.dialogue_policy.supervised_learning.html">comet.agent.core.dialogue_policy.supervised_learning package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.supervised_learning.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.supervised_learning.html#module-comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy">comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.supervised_learning.html#module-comet.agent.core.dialogue_policy.supervised_learning.svm_classifier_policy">comet.agent.core.dialogue_policy.supervised_learning.svm_classifier_policy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.supervised_learning.html#module-comet.agent.core.dialogue_policy.supervised_learning.vanilla_classifier_policy">comet.agent.core.dialogue_policy.supervised_learning.vanilla_classifier_policy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.agent.core.dialogue_policy.supervised_learning.html#module-comet.agent.core.dialogue_policy.supervised_learning">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.dialogue_policy">
+<span id="comet-agent-core-dialogue-policy-dialogue-policy-module"></span><h2>comet.agent.core.dialogue_policy.dialogue_policy module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.dialogue_policy" title="Permalink to this headline">¶</a></h2>
+<p>DialoguePolicy is the abstract parent class of all policies and defines the
+interface that each dialogue policy derived class should adhere to.</p>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.dialogue_policy.</code><code class="sig-name descname">DialoguePolicy</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comet.abstract_module.html#comet.abstract_module.conversational_module.ConversationalModule" title="comet.abstract_module.conversational_module.ConversationalModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.abstract_module.conversational_module.ConversationalModule</span></code></a></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.generate_output">
+<code class="sig-name descname">generate_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.generate_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.generate_output" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize internal structures at the beginning of each dialogue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.is_prediction_valid">
+<em class="property">static </em><code class="sig-name descname">is_prediction_valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pred_acts</span></em>, <em class="sig-param"><span class="n">target_acts</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.is_prediction_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.is_prediction_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if predicted next action from policy model is equal with target action
+it could change depend on our expectation about policy’s behaviour
+:param prediction: predicted next action
+:param target: expected next action</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the model from the path provided</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – the path to load the model from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.next_action">
+<em class="property">abstract </em><code class="sig-name descname">next_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tracker</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.next_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.next_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consult the internal model and produce the agent’s response, given
+the current state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tracker</strong> (<a class="reference internal" href="comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker" title="comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueStateTracker</span></code></a>) – the current dialogue state tracker</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List[DialogueState]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.prepare_dataset">
+<code class="sig-name descname">prepare_dataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialogues</span></em>, <em class="sig-param"><span class="n">one_hot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.prepare_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.prepare_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.restart">
+<code class="sig-name descname">restart</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.restart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-initialize relevant parameters / variables at the beginning of each
+dialogue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>save the policy to storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – Path to persist policy to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.split_mini_batch">
+<em class="property">static </em><code class="sig-name descname">split_mini_batch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em>, <em class="sig-param"><span class="n">mb_size</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.split_mini_batch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.split_mini_batch" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch</strong> – </p></li>
+<li><p><strong>mb_size</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialogues</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test model’s performance in test set
+:param dialogues: dialogues test set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>accuracy score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.train">
+<code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialogues</span></em>, <em class="sig-param"><span class="n">eval_dialogues</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/dialogue_policy.html#DialoguePolicy.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.dialogue_policy.DialoguePolicy.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the dialogue policy’s internal model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dialogues</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.dialogue.Dialogue" title="comet.agent.core.dialogue.Dialogue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialogue</span></code></a>]) – the dialogue experience</p></li>
+<li><p><strong>eval_dialogues</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.dialogue.Dialogue" title="comet.agent.core.dialogue.Dialogue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialogue</span></code></a>]]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comet.agent.core.dialogue_policy" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comet.agent.core.dialogue_policy.reinforcement_learning.html" class="btn btn-neutral float-right" title="comet.agent.core.dialogue_policy.reinforcement_learning package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="comet.agent.core.dialogue_manager.html" class="btn btn-neutral float-left" title="comet.agent.core.dialogue_manager package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

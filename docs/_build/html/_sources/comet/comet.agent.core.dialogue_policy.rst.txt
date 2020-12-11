@@ -1,0 +1,32 @@
+comet.agent.core.dialogue\_policy package
+=========================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.agent.core.dialogue_policy.reinforcement_learning
+   comet.agent.core.dialogue_policy.rule_based_learning
+   comet.agent.core.dialogue_policy.supervised_learning
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_policy.dialogue\_policy module
+---------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.dialogue_policy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_policy
+   :members:
+   :undoc-members:
+   :show-inheritance:

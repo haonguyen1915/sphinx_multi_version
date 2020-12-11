@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">from</span> <span class="nn">.memory</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">write_to_file</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.constants</span> <span class="kn">import</span> <span class="n">DEFAULT_LOGS_DIR</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="Replay"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay">[docs]</a><span class="k">class</span> <span class="nc">Replay</span><span class="p">(</span><span class="n">Memory</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stores agent experiences and samples from them for agent training</span>
+
+<span class="sd">    An experience consists of</span>
+<span class="sd">        - state: representation of a state</span>
+<span class="sd">        - action: action taken</span>
+<span class="sd">        - reward: scalar value</span>
+<span class="sd">        - next state: representation of next state (should be same as state)</span>
+<span class="sd">        - done: 0 / 1 representing if the current state is the last in an episode</span>
+
+<span class="sd">    The memory has a size of N. When capacity is reached, the oldest experience</span>
+<span class="sd">    is deleted to make space for the lastest experience.</span>
+<span class="sd">        - This is implemented as a circular buffer so that inserting experiences are O(1)</span>
+<span class="sd">        - Each element of an experience is stored as a separate array of size N * element dim</span>
+
+<span class="sd">    When a batch of experiences is requested, K experiences are sampled according to a random uniform distribution.</span>
+
+<span class="sd">    If &#39;use_cer&#39;, sampling will add the latest experience.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Replay</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_sample</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;write_sample&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DEFAULT_LOGS_DIR</span><span class="p">,</span> <span class="s2">&quot;SAMPLES.log&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_cer</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i_episode</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_last_episode</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur_elapsed</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur_is_exploration</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_sample</span><span class="p">:</span>
+            <span class="n">write_to_file</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Replay.add"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            action:</span>
+<span class="sd">            reward:</span>
+<span class="sd">            next_state:</span>
+<span class="sd">            done:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_experience</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Replay.add_experience"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.add_experience">[docs]</a>    <span class="k">def</span> <span class="nf">add_experience</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implementation for update() to add experience to memory,</span>
+<span class="sd">        expanding the memory size if necessary</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            action:</span>
+<span class="sd">            reward:</span>
+<span class="sd">            next_state:</span>
+<span class="sd">            done:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="n">reward</span>
+        <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scores_window</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">i_episode</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_last_episode</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_last_episode</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span>
+        <span class="n">most_recent</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_keys</span><span class="p">):</span>
+            <span class="c1"># getattr(self, k).append(most_recent[idx])</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">most_recent</span><span class="p">):</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">]</span> <span class="o">=</span> <span class="n">most_recent</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seen_size</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="Replay.sample"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.sample">[docs]</a>    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">type_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns: a batch of batch_size samples. Batch is stored as a dict.</span>
+<span class="sd">        Keys are the names of the different elements of an experience. Values are an array of the</span>
+<span class="sd">        corresponding sampled elements</span>
+<span class="sd">        e.g.</span>
+<span class="sd">        batch = {</span>
+<span class="sd">            &#39;states&#39;     : states,</span>
+<span class="sd">            &#39;actions&#39;    : actions,</span>
+<span class="sd">            &#39;rewards&#39;    : rewards,</span>
+<span class="sd">            &#39;next_states&#39;: next_states,</span>
+<span class="sd">            &#39;dones&#39;      : dones}</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            clear: Clear data once sampled</span>
+<span class="sd">            shuffle: Shuffle all data</span>
+<span class="sd">            type_data: should be [np, tensor]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">batch_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">batch_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-</span> <span class="n">bs</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_keys</span><span class="p">:</span>
+            <span class="n">batch</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_get</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_indices</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">convert_data_type</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">type_data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_sample</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Sample: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_counter</span><span class="si">}</span><span class="s2">, Batch size: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visualize_sample</span><span class="p">()</span>
+            <span class="n">write_to_file</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_path</span><span class="p">,</span> <span class="n">is_append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sample_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">clear</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">batch</span></div>
+
+<div class="viewcode-block" id="Replay.sample_indices"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.sample_indices">[docs]</a>    <span class="k">def</span> <span class="nf">sample_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Batch indices a sampled random uniformly</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            batch_size:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_cer</span><span class="p">:</span>
+            <span class="n">batch_indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+
+        <span class="k">return</span> <span class="n">batch_indices</span></div>
+
+<div class="viewcode-block" id="Replay.batch_get"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.batch_get">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">batch_get</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get multi-idxs from an array depending if it&#39;s a python list or np.array</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            arr:</span>
+<span class="sd">            indices:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">deque</span><span class="p">)):</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="o">*</span><span class="n">indices</span><span class="p">)(</span><span class="n">arr</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">batch</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">batch</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Replay.visualize_sample"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.html#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.visualize_sample">[docs]</a>    <span class="k">def</span> <span class="nf">visualize_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">episode_indices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        visualize sample by episode indices or turn indices.</span>
+<span class="sd">        Only turn or episode provided</span>
+<span class="sd">        raw_turn is a tuple of:</span>
+
+<span class="sd">            raw_turn[0]: raw_state</span>
+<span class="sd">            raw_turn[1]: raw_action</span>
+<span class="sd">            raw_turn[2]: reward</span>
+<span class="sd">            raw_turn[3]: raw_next_state</span>
+<span class="sd">            raw_turn[4]: done</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            episode_indices:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">episode_indices</span> <span class="k">if</span> <span class="n">episode_indices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_indices</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Sample by turn indices</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">indices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+                <span class="n">turn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_turns</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                <span class="n">user_acts</span> <span class="o">=</span> <span class="n">turn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">usr_acts</span>
+                <span class="n">sys_acts</span> <span class="o">=</span> <span class="n">turn</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sys_acts</span>
+                <span class="n">user_act</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">usr_act</span><span class="p">)</span> <span class="k">for</span> <span class="n">usr_act</span> <span class="ow">in</span> <span class="n">user_acts</span><span class="p">]</span>
+                <span class="n">sys_act</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">sys_act</span><span class="p">)</span> <span class="k">for</span> <span class="n">sys_act</span> <span class="ow">in</span> <span class="n">sys_acts</span><span class="p">]</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Turn </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">: usr: </span><span class="si">{</span><span class="n">user_act</span><span class="si">}</span><span class="s2">, sys: </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">, &quot;</span> \
+                           <span class="sa">f</span><span class="s2">&quot;reward: </span><span class="si">{</span><span class="n">turn</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">, done: </span><span class="si">{</span><span class="n">turn</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">message</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+comet.utilities.parser package
+==============================
+
+Submodules
+----------
+
+comet.utilities.parser.config\_parser module
+--------------------------------------------
+
+.. automodule:: comet.utilities.parser.config_parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.utilities.parser.data\_parser module
+------------------------------------------
+
+.. automodule:: comet.utilities.parser.data_parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.utilities.parser.dialogue\_format\_parser module
+------------------------------------------------------
+
+.. automodule:: comet.utilities.parser.dialogue_format_parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.utilities.parser.raw\_dialogues\_parser module
+----------------------------------------------------
+
+.. automodule:: comet.utilities.parser.raw_dialogues_parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.utilities.parser
+   :members:
+   :undoc-members:
+   :show-inheritance:

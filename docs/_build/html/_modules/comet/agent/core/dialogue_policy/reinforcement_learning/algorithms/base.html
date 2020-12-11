@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">fastprogress.fastprogress</span> <span class="kn">import</span> <span class="n">master_bar</span><span class="p">,</span> <span class="n">progress_bar</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialog_state_tracker.dialogue_state_tracker</span> <span class="kn">import</span> <span class="n">DialogueStateTracker</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialogue_policy.dialogue_policy</span> <span class="kn">import</span> <span class="n">DialoguePolicy</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">load_module</span><span class="p">,</span> <span class="n">decorator</span><span class="p">,</span> <span class="n">print_table</span><span class="p">,</span> <span class="n">print_title</span><span class="p">,</span> <span class="n">set_attr</span>
+<span class="kn">from</span> <span class="nn">comet.utilities</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">comet.agent.training.metrices.torch_metric</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">accuracy</span><span class="p">,</span>
+    <span class="n">AverageMeter</span><span class="p">,</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">plot_confusion_matrix</span><span class="p">,</span>
+    <span class="n">most_confused</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.action</span> <span class="kn">import</span> <span class="n">DialogueAct</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.state</span> <span class="kn">import</span> <span class="n">DialogueState</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Algorithm"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm">[docs]</a><span class="k">class</span> <span class="nc">Algorithm</span><span class="p">(</span><span class="n">DialoguePolicy</span><span class="p">):</span>
+    <span class="n">LEAVE_PRINT_EVERY_N_SECS</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">VALIDATE_EVERY_N_SECS</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">MAX_MINUTES</span> <span class="o">=</span> <span class="mi">180</span>
+    <span class="n">MAX_EPISODES</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">GOAL_MEAN_REWARD</span> <span class="o">=</span> <span class="mi">25</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initial policy model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args: a dictionary containing:</span>
+<span class="sd">                ontology:</span>
+<span class="sd">                database:</span>
+<span class="sd">                domain:</span>
+<span class="sd">                SF: The state featurizer. (required)</span>
+<span class="sd">                WP: The warn-up policy</span>
+<span class="sd">                WUS: The warn-up user simulator.</span>
+<span class="sd">                train: train the policy model (Optional)</span>
+<span class="sd">                epoch: number of iterator for training. (Optional)</span>
+<span class="sd">                agent_id:</span>
+<span class="sd">                agent_role:</span>
+<span class="sd">                learning_rate:</span>
+<span class="sd">                discount_factor:</span>
+<span class="sd">                epsilon:</span>
+<span class="sd">                learning_decay_rate:</span>
+<span class="sd">                exploration_decay_rate:</span>
+<span class="sd">                training_iter:</span>
+<span class="sd">                training_batch_iter:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Algorithm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">_device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps_start</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps_end</span> <span class="o">=</span> <span class="mf">0.01</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps_decay_step</span> <span class="o">=</span> <span class="mi">20000</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.99</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">SYSTEM</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_sample</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_args_sanity</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">warm_up_policy</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warm_up_simulator</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Some attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_greedy_policy</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mb</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scores_window</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+        <span class="n">algorithm_spec</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;algorithm&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;ontology&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;domain&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;DS&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;WUS&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;WP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;model_path&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;write_sample&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;online_training&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;training&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;testing&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;resume&#39;</span><span class="p">,</span>
+        <span class="p">])</span>
+
+        <span class="n">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm_spec</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;is_greedy_policy&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;eps_start&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;eps_end&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;eps_decay_step&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;training_epoch&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;buffer_size&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;LEAVE_PRINT_EVERY_N_SECS&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;VALIDATE_EVERY_N_SECS&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;GOAL_MEAN_REWARD&#39;</span>
+        <span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">policy_evaluation</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valid_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Time control</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">START_TIME</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_debug_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_valid_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_everything_done</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reached_max_episodes</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Algorithm.initialize"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize internal structures at the beginning of each dialogue</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Algorithm.restart"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.restart">[docs]</a>    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Re-initialize relevant parameters / variables at the beginning of each</span>
+<span class="sd">        dialogue.</span>
+
+<span class="sd">        :return: nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Algorithm.next_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.next_action">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">next_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">:</span> <span class="n">DialogueStateTracker</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">],</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Consults the policy to produce the agent&#39;s response</span>
+
+<span class="sd">        :param tracker: the current dialogue state tracker</span>
+<span class="sd">        :return: a list of dialogue acts, representing the agent&#39;s response</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="Algorithm.train"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">eval_dialogues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dialogues:</span>
+<span class="sd">            eval_dialogues:</span>
+<span class="sd">            **kwargs:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_title_only_one_time</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STARTING TRAINING </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> model&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_evaluation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="n">reached_debug_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_debug_time</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">LEAVE_PRINT_EVERY_N_SECS</span>
+        <span class="n">reached_validate_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_valid_time</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">VALIDATE_EVERY_N_SECS</span>
+        <span class="n">reached_max_minutes</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">START_TIME</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_MINUTES</span> <span class="o">*</span> <span class="mi">60</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">i_episode</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_EPISODES</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reached_max_episodes</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reached_max_episodes</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">scores_window</span><span class="p">:</span>
+            <span class="n">reached_goal_mean_reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">scores_window</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GOAL_MEAN_REWARD</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">reached_goal_mean_reward</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">training_is_over</span> <span class="o">=</span> <span class="n">reached_max_minutes</span> <span class="ow">or</span> <span class="n">reached_goal_mean_reward</span> <span class="ow">or</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">reached_max_episodes</span> <span class="o">&gt;=</span> <span class="mi">10</span>
+        <span class="k">if</span> <span class="n">reached_debug_time</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policy_evaluation</span><span class="o">.</span><span class="n">print_debug_message</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last_debug_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="c1"># if hasattr(self, &#39;value_plot&#39;) and hasattr(self, &#39;policy_plot&#39;):</span>
+                <span class="c1"># self.value_plot.plot()</span>
+                <span class="c1"># self.policy_plot.plot()</span>
+        <span class="k">if</span> <span class="n">training_is_over</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_everything_done</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policy_evaluation</span><span class="o">.</span><span class="n">print_debug_message</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policy_evaluation</span><span class="o">.</span><span class="n">cached_evaluation_results</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">training_everything_done</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">training_is_over</span><span class="p">:</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">)</span>
+            <span class="c1"># Validate</span>
+            <span class="k">if</span> <span class="n">reached_validate_time</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">last_valid_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_data</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">eval_dialogues</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">valid_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_dataset</span><span class="p">(</span><span class="n">eval_dialogues</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">acc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_data</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">training_is_over</span></div>
+
+<div class="viewcode-block" id="Algorithm.calculate_policy_probs"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.calculate_policy_probs">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">calculate_policy_probs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate pd for states</span>
+<span class="sd">        Args:</span>
+<span class="sd">            states:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Algorithm.train_step"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.train_step">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update value parameters using given batch of experience tuples.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            experiences: (Tuple[torch.Tensor]): tuple of (s, a, r, s&#39;, done) tuples</span>
+<span class="sd">            gamma: discount factor</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="Algorithm.validate"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">],</span> <span class="n">cm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">valid_data</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">valid_data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="n">running_acc</span> <span class="o">=</span> <span class="n">AverageMeter</span><span class="p">()</span>
+        <span class="n">cfm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">full_preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">full_labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">valid_data</span><span class="p">:</span>
+                <span class="c1"># for inputs, labels in valid_loader:</span>
+                <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span>
+
+                <span class="n">probs_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_policy_probs</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">labels</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">probs_t</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+                <span class="n">running_acc</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">cm</span><span class="p">:</span>
+                    <span class="n">full_preds</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">probs_t</span><span class="p">)</span>
+                    <span class="n">full_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cm</span><span class="p">:</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">full_preds</span><span class="p">]</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">full_labels</span><span class="p">]</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+                <span class="n">cfm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_actions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">running_acc</span><span class="o">.</span><span class="n">avg</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">cfm</span></div>
+
+<div class="viewcode-block" id="Algorithm.test"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_dialogues</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Evaluation the policy model</span>
+
+<span class="sd">                Args:</span>
+<span class="sd">                    test_dialogues:</span>
+
+<span class="sd">                Returns:</span>
+
+<span class="sd">                &quot;&quot;&quot;</span>
+        <span class="n">print_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STARTING EVALUATION </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> model&quot;</span><span class="p">)</span>
+        <span class="n">valid_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">test_dialogues</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">valid_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_dataset</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">test_dialogues</span><span class="p">),</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test dialogues is None, so can not evaluation &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">valid_data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Can not evaluation. valid_data is None&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eval with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_dialogues</span><span class="p">)</span><span class="si">}</span><span class="s2"> dialogues&quot;</span><span class="p">)</span>
+
+        <span class="n">status</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;test_loss&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mb</span> <span class="o">=</span> <span class="n">master_bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">eval_progress</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># with torch.no_grad():</span>
+        <span class="n">cfm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="p">:</span>
+            <span class="n">avg_acc</span><span class="p">,</span> <span class="n">cfm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">valid_data</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">status</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+            <span class="n">status</span><span class="p">[</span><span class="s1">&#39;test_loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NAN&quot;</span>
+            <span class="n">status</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">avg_acc</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">eval_progress</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">print_table</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">eval_progress</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">cfm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">final_res_str</span><span class="p">,</span> <span class="n">final_res</span> <span class="o">=</span> <span class="n">most_confused</span><span class="p">(</span><span class="n">cfm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">actions_name</span><span class="p">)</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Confusion matrix&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">final_res_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">has_prefix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">cfm_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">DEFAULT_BASE_EVAL_PATH</span><span class="p">,</span>
+                                         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">_cfm.jpg&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">DEFAULT_BASE_EVAL_PATH</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">DEFAULT_BASE_EVAL_PATH</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cfm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">actions_name</span><span class="p">,</span>
+                                  <span class="n">save_path</span><span class="o">=</span><span class="n">cfm_file_path</span><span class="p">,</span>
+                                  <span class="n">plt_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">status</span></div>
+
+<div class="viewcode-block" id="Algorithm.save"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save net models for algorithm given the required property self.net_names</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If training mode and resume is False, skipped load model</span>
+
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Algorithm.load"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.html#comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base.Algorithm.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load net models for algorithm given the required property self.net_names</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+    <span class="k">def</span> <span class="nf">_check_args_sanity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

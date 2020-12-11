@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.environment package &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="comet.environment.user_simulator package" href="comet.environment.user_simulator.html" />
+    <link rel="prev" title="comet.domain package" href="comet.domain.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="comet.html">comet package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="comet.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="comet.abstract_module.html">comet.abstract_module package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.html">comet.agent package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.call_backs.html">comet.call_backs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.channel.html">comet.channel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.cli.html">comet.cli package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.controller.html">comet.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.domain.html">comet.domain package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">comet.environment package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.environment.reward_function">comet.environment.reward_function module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.environment">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.lib.html">comet.lib package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.utilities.html">comet.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#comet-run-module">comet.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.run_cli">comet.run_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.server">comet.server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="comet.html">comet package</a> &raquo;</li>
+        
+      <li>comet.environment package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/comet/comet.environment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="comet-environment-package">
+<h1>comet.environment package<a class="headerlink" href="#comet-environment-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comet.environment.user_simulator.html">comet.environment.user_simulator package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comet.environment.user_simulator.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comet.environment.user_simulator.agenda_base_us.html">comet.environment.user_simulator.agenda_base_us package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.user_simulator.agenda_base_us.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.user_simulator.agenda_base_us.html#module-comet.environment.user_simulator.agenda_base_us.agenda">comet.environment.user_simulator.agenda_base_us.agenda module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.user_simulator.agenda_base_us.html#module-comet.environment.user_simulator.agenda_base_us.agenda_based_us">comet.environment.user_simulator.agenda_base_us.agenda_based_us module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.user_simulator.agenda_base_us.html#module-comet.environment.user_simulator.agenda_base_us.error_model">comet.environment.user_simulator.agenda_base_us.error_model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.user_simulator.agenda_base_us.html#module-comet.environment.user_simulator.agenda_base_us">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.environment.user_simulator.model_base_us.html">comet.environment.user_simulator.model_base_us package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.user_simulator.model_base_us.html#module-comet.environment.user_simulator.model_base_us">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.environment.user_simulator.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.environment.user_simulator.html#module-comet.environment.user_simulator.goal">comet.environment.user_simulator.goal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.environment.user_simulator.html#module-comet.environment.user_simulator.user_simulator">comet.environment.user_simulator.user_simulator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.environment.user_simulator.html#module-comet.environment.user_simulator">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.environment.reward_function">
+<span id="comet-environment-reward-function-module"></span><h2>comet.environment.reward_function module<a class="headerlink" href="#module-comet.environment.reward_function" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.environment.reward_function.BasicReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">BasicReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#BasicReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.BasicReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.Reward" title="comet.environment.reward_function.Reward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.Reward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.BasicReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#BasicReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.BasicReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.BasicReward.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#BasicReward.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.BasicReward.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize internal parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.BasicReward.on_super_hack">
+<code class="sig-name descname">on_super_hack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#BasicReward.on_super_hack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.BasicReward.on_super_hack" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>action</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.BasicReward.on_task">
+<em class="property">static </em><code class="sig-name descname">on_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">goal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#BasicReward.on_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.BasicReward.on_task" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>goal</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.BasicReward.on_terminated">
+<code class="sig-name descname">on_terminated</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">goal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#BasicReward.on_terminated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.BasicReward.on_terminated" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>goal</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.CustomDelayReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">CustomDelayReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#CustomDelayReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.CustomDelayReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.CustomReward" title="comet.environment.reward_function.CustomReward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.CustomReward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.CustomDelayReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#CustomDelayReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.CustomDelayReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.CustomReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">CustomReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#CustomReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.CustomReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.BasicReward" title="comet.environment.reward_function.BasicReward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.BasicReward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.CustomReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#CustomReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.CustomReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.CustomReward.on_super_hack">
+<code class="sig-name descname">on_super_hack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#CustomReward.on_super_hack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.CustomReward.on_super_hack" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>action</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.CustomReward.on_terminated">
+<code class="sig-name descname">on_terminated</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">goal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#CustomReward.on_terminated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.CustomReward.on_terminated" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>goal</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.Reward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">Reward</code><a class="reference internal" href="../_modules/comet/environment/reward_function.html#Reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.Reward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.Reward.calculate">
+<em class="property">abstract </em><code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#Reward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.Reward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.Reward.initialize">
+<em class="property">abstract </em><code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#Reward.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.Reward.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize internal parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.SubGoalReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">SubGoalReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#SubGoalReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.SubGoalReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.BasicReward" title="comet.environment.reward_function.BasicReward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.BasicReward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.SubGoalReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#SubGoalReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.SubGoalReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.SubGoalReward.sub_goal_reward">
+<em class="property">static </em><code class="sig-name descname">sub_goal_reward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span></em>, <em class="sig-param"><span class="n">actions</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#SubGoalReward.sub_goal_reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.SubGoalReward.sub_goal_reward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.TestDelayReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">TestDelayReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestDelayReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestDelayReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.BasicReward" title="comet.environment.reward_function.BasicReward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.BasicReward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.TestDelayReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestDelayReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestDelayReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.TestDelayReward.on_terminated">
+<code class="sig-name descname">on_terminated</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">goal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestDelayReward.on_terminated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestDelayReward.on_terminated" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>goal</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.TestDirectReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">TestDirectReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestDirectReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestDirectReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.BasicReward" title="comet.environment.reward_function.BasicReward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.BasicReward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.TestDirectReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestDirectReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestDirectReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.reward_function.TestDirectReward.on_super_hack">
+<code class="sig-name descname">on_super_hack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestDirectReward.on_super_hack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestDirectReward.on_super_hack" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – </p></li>
+<li><p><strong>action</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.environment.reward_function.TestReward">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.reward_function.</code><code class="sig-name descname">TestReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.environment.reward_function.BasicReward" title="comet.environment.reward_function.BasicReward"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.reward_function.BasicReward</span></code></a></p>
+<dl class="py method">
+<dt id="comet.environment.reward_function.TestReward.calculate">
+<code class="sig-name descname">calculate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">raw_action</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/reward_function.html#TestReward.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.reward_function.TestReward.calculate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the reward to be assigned for taking action from state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.state.DialogueState" title="comet.agent.core.state.DialogueState"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueState</span></code></a>) – the current state</p></li>
+<li><p><strong>action</strong> – the action taken from the current state</p></li>
+<li><p><strong>raw_action</strong> – </p></li>
+<li><p><strong>goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.environment">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comet.environment" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comet.environment.user_simulator.html" class="btn btn-neutral float-right" title="comet.environment.user_simulator package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="comet.domain.html" class="btn btn-neutral float-left" title="comet.domain package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

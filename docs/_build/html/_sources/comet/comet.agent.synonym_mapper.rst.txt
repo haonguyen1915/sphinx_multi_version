@@ -1,0 +1,22 @@
+comet.agent.synonym\_mapper package
+===================================
+
+Submodules
+----------
+
+comet.agent.synonym\_mapper.synonym\_mapper module
+--------------------------------------------------
+
+.. automodule:: comet.agent.synonym_mapper.synonym_mapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.synonym_mapper
+   :members:
+   :undoc-members:
+   :show-inheritance:

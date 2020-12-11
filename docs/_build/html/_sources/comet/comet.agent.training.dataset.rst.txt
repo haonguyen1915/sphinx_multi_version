@@ -1,0 +1,30 @@
+comet.agent.training.dataset package
+====================================
+
+Submodules
+----------
+
+comet.agent.training.dataset.dataset module
+-------------------------------------------
+
+.. automodule:: comet.agent.training.dataset.dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.training.dataset.torch\_dataset module
+--------------------------------------------------
+
+.. automodule:: comet.agent.training.dataset.torch_dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.training.dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,46 @@
+comet.domain package
+====================
+
+Submodules
+----------
+
+comet.domain.database module
+----------------------------
+
+.. automodule:: comet.domain.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.domain.domain module
+--------------------------
+
+.. automodule:: comet.domain.domain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.domain.ontology module
+----------------------------
+
+.. automodule:: comet.domain.ontology
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.domain.synonym\_mapping module
+------------------------------------
+
+.. automodule:: comet.domain.synonym_mapping
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.domain
+   :members:
+   :undoc-members:
+   :show-inheritance:

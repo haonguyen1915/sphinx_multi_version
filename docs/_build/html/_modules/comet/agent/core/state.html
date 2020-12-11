@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.state &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.state</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.state</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">State models the internal state of a Conversational Agent. It is the abstract</span>
+<span class="sd">parent class of any State and it defines the interface that should be adhered</span>
+<span class="sd">to. States may be accessed by any stateful module but should only be updated</span>
+<span class="sd">by the dialogue_state_tracker.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.action</span> <span class="kn">import</span> <span class="n">DialogueAct</span>
+<span class="kn">from</span> <span class="nn">comet.lib.meta_class</span> <span class="kn">import</span> <span class="n">MetaClass</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">reformat_dict</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">MyOrderedDict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">texttable</span> <span class="kn">import</span> <span class="n">Texttable</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="State"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.State">[docs]</a><span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MetaClass</span><span class="p">):</span>
+
+<div class="viewcode-block" id="State.initialize"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.State.initialize">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the state (e.g. at the start of a dialogue)</span>
+
+<span class="sd">        :return: nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="State.is_terminal"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.State.is_terminal">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">is_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if this state is terminal</span>
+
+<span class="sd">        :return: True or False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div></div>
+
+
+<div class="viewcode-block" id="DialogueState"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState">[docs]</a><span class="k">class</span> <span class="nc">DialogueState</span><span class="p">(</span><span class="n">State</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the dialogue State</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args: A dictionary containing:</span>
+<span class="sd">                ontology: The ontology of the domain</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DialogueState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># A signal of ending a dialogue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sender_id</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_terminal_state</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># inform/request slots from user/system in this turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_inform_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_request_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_asked_confirm</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_inform_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_request_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_asked_confirm</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_deny_is_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_need_confirm_is_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_is_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">availability_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+
+        <span class="c1"># action of user/system in this turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># tracking accumulated slot-value pairs from the start of conversation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">belief_state</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_in_focus</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_made_offer</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># The user goal. This should ONLY be used if an agent plays the role of a user</span>
+        <span class="c1"># self.user_goal = {}</span>
+        <span class="c1"># additional information</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># All possible slot that system can request user about the products</span>
+        <span class="c1"># got from database. This use for semantic purpose. Format a dictionary: {slot: num_val}</span>
+        <span class="c1"># slot: the name of attribute, num_val: Number of value got from db.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_requestable_semantic</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># All bellow use for processing dialogue state tracker</span>
+        <span class="c1"># Tracking all slots while processing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Evaluation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_exploration</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_utterance</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_utterance</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_success</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="DialogueState.initialize"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the dialogue State (e.g. at the start of a</span>
+<span class="sd">        dialogue). Reset filled slots and other</span>
+<span class="sd">        structures.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args: A dict contain the needs parameters for init.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">belief_state</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_in_focus</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_inform_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_request_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_asked_confirm</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_inform_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_request_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_asked_confirm</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">availability_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="p">:</span> <span class="n">MyOrderedDict</span> <span class="o">=</span> <span class="n">MyOrderedDict</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_deny_is_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_is_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_need_confirm_is_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_terminal_state</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># TODO: Have a list of past items in focus - e.g. current and 2 past</span>
+        <span class="c1"># items</span>
+        <span class="c1"># If the agent is a user, then this structure will store information</span>
+        <span class="c1"># that the system has provided.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_requestable_semantic</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_made_offer</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># All bellow use for processing dialogue state tracker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="DialogueState.get_slot"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.get_slot">[docs]</a>    <span class="k">def</span> <span class="nf">get_slot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Retrieves the value of a slot.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueState.set_slot"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.set_slot">[docs]</a>    <span class="k">def</span> <span class="nf">set_slot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">Text</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set slot value pair for slots</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            slot:</span>
+<span class="sd">            value:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">[</span><span class="n">slot</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="DialogueState.reset"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_requestable_semantic</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_is_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_need_confirm_is_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sys_deny_is_set</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="DialogueState.is_terminal"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.is_terminal">[docs]</a>    <span class="k">def</span> <span class="nf">is_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if this state is terminal</span>
+
+<span class="sd">        :return: True or False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_terminal_state</span></div>
+
+<div class="viewcode-block" id="DialogueState.to_dict"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert object to dictionary for json serializable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;sender_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sender_id</span><span class="p">,</span>
+            <span class="s2">&quot;turn&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">,</span>
+            <span class="s2">&quot;user_utter&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr_utterance</span><span class="p">,</span>
+            <span class="s2">&quot;sys_utter&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_utterance</span><span class="p">,</span>
+            <span class="s2">&quot;usr_acts&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">act</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr_acts</span><span class="p">],</span>
+            <span class="s2">&quot;sys_acts&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">act</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_acts</span><span class="p">],</span>
+            <span class="s2">&quot;raw_sys_acts&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">act</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_sys_acts</span><span class="p">],</span>
+            <span class="s2">&quot;belief_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">belief_state</span><span class="p">,</span>
+            <span class="s2">&quot;db_result&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_result</span><span class="p">,</span>
+            <span class="s2">&quot;db_ids&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_ids</span><span class="p">,</span>
+            <span class="s2">&quot;system_made_offer&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_made_offer</span><span class="p">,</span>
+            <span class="s2">&quot;sys_uncertain_is_set&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_is_set</span><span class="p">,</span>
+            <span class="s2">&quot;sys_uncertain_slots&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="p">,</span>
+            <span class="s2">&quot;sys_deny_is_set&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_deny_is_set</span><span class="p">,</span>
+            <span class="s2">&quot;sys_denied_slots&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="p">,</span>
+            <span class="s2">&quot;usr_denied_slots&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="p">,</span>
+            <span class="s2">&quot;is_terminal_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_terminal_state</span>
+        <span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print the Slot Filling dialogue State</span>
+<span class="sd">        :return: a string representation of the Slot Filling dialogue State</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tee</span> <span class="o">=</span> <span class="n">Texttable</span><span class="p">(</span><span class="n">max_width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_rows</span><span class="p">([[</span><span class="s2">&quot;Atrribute&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">]])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;Sender id&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sender_id</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;Turn&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">)])</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_acts</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_acts</span> <span class="k">else</span> <span class="s2">&quot;None&quot;</span>
+        <span class="n">usr_acts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr_acts</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr_acts</span> <span class="k">else</span> <span class="s2">&quot;None&quot;</span>
+        <span class="n">raw_sys_acts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_sys_acts</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_sys_acts</span> <span class="k">else</span> <span class="s2">&quot;None&quot;</span>
+
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;sys_acts&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys_acts</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;user_acts&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">usr_acts</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;raw_sys_acts&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">raw_sys_acts</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;belief_state&quot;</span><span class="p">,</span> <span class="n">reformat_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">belief_state</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;db_result&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_result</span><span class="p">))])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;db_ids&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_ids</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;system_made_offer&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system_made_offer</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;uncertain_is_set&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_is_set</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;uncertain_slots&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;deny_is_set&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sys_deny_is_set</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;sys_denied_slots&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;usr_denied_slots&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;availability_slots&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">availability_slots</span><span class="p">)])</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s2">&quot;is_terminal_state&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">is_terminal_state</span><span class="p">)])</span>
+
+        <span class="k">return</span> <span class="n">tee</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DialogueState.from_dict"><a class="viewcode-back" href="../../../../comet/comet.agent.core.html#comet.agent.core.state.DialogueState.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;DialogueState&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a dialogue state from dict. Just use for quickly testing the others components</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: A dictionary data need to init DS</span>
+
+<span class="sd">        Returns: a DialogueState</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d_state</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">belief_state</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;belief_state&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">usr_inform_slots</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;usr_inform_slots&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">usr_request_slots</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;usr_request_slots&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">sys_inform_slots</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sys_inform_slots&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">sys_request_slots</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sys_request_slots&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">usr_acts</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;usr_acts&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">sys_acts</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sys_acts&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;turn&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_result&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">d_state</span><span class="o">.</span><span class="n">is_terminal_state</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_terminal_state&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">d_state</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

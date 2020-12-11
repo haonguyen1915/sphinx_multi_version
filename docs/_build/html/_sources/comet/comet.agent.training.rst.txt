@@ -1,0 +1,47 @@
+comet.agent.training package
+============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.agent.training.dataset
+   comet.agent.training.metrices
+
+Submodules
+----------
+
+comet.agent.training.lr\_scheduler module
+-----------------------------------------
+
+.. automodule:: comet.agent.training.lr_scheduler
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.training.net\_utils module
+--------------------------------------
+
+.. automodule:: comet.agent.training.net_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.training.policy\_utils module
+-----------------------------------------
+
+.. automodule:: comet.agent.training.policy_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.training
+   :members:
+   :undoc-members:
+   :show-inheritance:

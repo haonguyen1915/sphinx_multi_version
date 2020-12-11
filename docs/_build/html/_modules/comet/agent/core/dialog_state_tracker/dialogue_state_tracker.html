@@ -1,0 +1,910 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialog_state_tracker.dialogue_state_tracker &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialog_state_tracker.dialogue_state_tracker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.dialog_state_tracker.dialogue_state_tracker</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The DialogueStateTracker is the abstract parent class of all state trackers.</span>
+<span class="sd">It defines the interface that should be followed and owns all dialogue State</span>
+<span class="sd">updates. The Dialogue State Tracker should be the source of truth for the</span>
+<span class="sd">current dialogue State.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Text</span>
+<span class="kn">import</span> <span class="nn">numbers</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.action</span> <span class="kn">import</span> <span class="n">Operator</span><span class="p">,</span> <span class="n">DialogueActItem</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">set_attr</span>
+<span class="kn">from</span> <span class="nn">comet.domain.ontology</span> <span class="kn">import</span> <span class="n">Ontology</span>
+<span class="kn">from</span> <span class="nn">comet.domain.domain</span> <span class="kn">import</span> <span class="n">Domain</span>
+<span class="kn">from</span> <span class="nn">comet.domain.database.database</span> <span class="kn">import</span> <span class="n">Database</span>
+<span class="kn">from</span> <span class="nn">comet.abstract_module.conversational_module</span> <span class="kn">import</span> <span class="n">ConversationalModule</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.state</span> <span class="kn">import</span> <span class="n">DialogueState</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.action</span> <span class="kn">import</span> <span class="n">DialogueAct</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">comet.call_backs.call_back</span> <span class="kn">import</span> <span class="n">CallbackHandler</span>
+<span class="kn">from</span> <span class="nn">comet.plugins</span> <span class="kn">import</span> <span class="n">dst_plugins</span>
+<span class="kn">from</span> <span class="nn">comet.domain.constants</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">SLOT_OBJECT_ID</span><span class="p">,</span>
+    <span class="n">SLOT_OBJECT_TYPE</span><span class="p">,</span>
+    <span class="n">ACT_AGREE</span><span class="p">,</span>
+    <span class="n">ACT_INFORM</span><span class="p">,</span>
+    <span class="n">ACT_DENY</span><span class="p">,</span>
+    <span class="n">ACT_BYE</span><span class="p">,</span>
+    <span class="n">ACT_OFFER</span><span class="p">,</span>
+    <span class="n">ACT_REQUEST</span><span class="p">,</span>
+    <span class="n">ACT_NOT_SURE</span><span class="p">,</span>
+    <span class="n">ACT_ASK_CONFIRM</span><span class="p">,</span>
+    <span class="n">ACT_CONFIRM_ANSWER</span><span class="p">,</span>
+    <span class="n">ACT_TAG_QUESTION</span><span class="p">,</span>
+    <span class="n">ACT_CANT_HELP</span><span class="p">,</span>
+    <span class="n">VALUE_NOT_CARE</span><span class="p">,</span>
+    <span class="n">VALUE_UNK</span>
+<span class="p">)</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DialogueStateTracker"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker">[docs]</a><span class="k">class</span> <span class="nc">DialogueStateTracker</span><span class="p">(</span><span class="n">ConversationalModule</span><span class="p">):</span>
+    <span class="n">callbacks_handler</span><span class="p">:</span> <span class="n">CallbackHandler</span> <span class="o">=</span> <span class="n">dst_plugins</span><span class="o">.</span><span class="n">get_callbacks</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the internal structures of the dialogue state tracker</span>
+<span class="sd">        :param kwargs:</span>
+<span class="sd">            cbs: The callbacks</span>
+<span class="sd">            ontology: ontology json</span>
+<span class="sd">            database: the database (file path or Database)</span>
+<span class="sd">            domain: domain file</span>
+<span class="sd">            DS: specify the dialogue state module</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_init_tracker_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># The id of a conversation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sender_id</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_id&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="c1"># keep the latest state of dialogue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">:</span> <span class="n">DialogueState</span> <span class="o">=</span> <span class="n">DialogueState</span><span class="p">()</span>
+        <span class="c1"># This will save all state of the conversation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="p">:</span>
+            <span class="n">prev_d_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">prev_d_state</span><span class="o">.</span><span class="n">is_terminal_state</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">:</span> <span class="n">DialogueState</span> <span class="o">=</span> <span class="n">DialogueState</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">:</span> <span class="n">DialogueState</span> <span class="o">=</span> <span class="n">DialogueState</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sender_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sender_id</span>
+        <span class="c1"># Get the required parameters from kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Ontology</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Database</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Domain</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MAX_NUM_TO_SET_OFFER</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NUM_QUERY_LOOP</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_parameters</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_init_tracker_end</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DialogueStateTracker.init_parameters"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.init_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">init_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            kwargs:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;ontology&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;domain&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;MAX_NUM_TO_SET_OFFER&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;NUM_QUERY_LOOP&#39;</span><span class="p">,</span>
+        <span class="p">])</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.initialize"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize structures at the beginning of each dialogue</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.reset"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reset some internal dialogue state</span>
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_reset_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_reset_end</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_state"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_state">[docs]</a>    <span class="k">def</span> <span class="nf">update_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usr_acts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This update the internal state when receive the input from user.</span>
+<span class="sd">        In this call back with deal with some default action such as: Agree, Deny, Thanks, Bye,</span>
+<span class="sd">        Request</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            usr_acts: DialogueAct</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># self.reset()</span>
+
+        <span class="c1"># self.update_ontology(usr_acts)</span>
+
+        <span class="c1"># Execute call back in the beginning of update state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_user_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usr_acts</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">dia_act</span> <span class="ow">in</span> <span class="n">usr_acts</span><span class="p">:</span>
+            <span class="c1"># usr_params = utils.validate_params(dia_act.params)</span>
+            <span class="k">if</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_AGREE</span><span class="p">:</span>
+                <span class="c1"># User agree some confirm from system. We just get system confirm constraint</span>
+                <span class="c1"># from previous turn and update belief state</span>
+
+                <span class="n">last_item_sys_asked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_asked_confirm</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">last_item_sys_asked</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">last_item_sys_asked</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">List</span><span class="p">):</span>
+                    <span class="n">last_item_sys_asked</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_item_sys_asked</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="n">last_item_sys_asked</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">last_item_sys_asked</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_inform_slots</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">last_item_sys_asked</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">db_lookup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">last_item_sys_asked</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_INFORM</span><span class="p">:</span>
+                <span class="c1"># Just update the usr_inform_slots. This may need for state featurizer</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_inform_slots</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">}</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_inform_slots</span><span class="p">:</span>
+                    <span class="n">constraint</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_inform_slots</span>
+                    <span class="n">slot</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">constraint</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">db_result</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">is_value_existed</span><span class="p">(</span><span class="n">constraint</span><span class="p">[</span><span class="n">slot</span><span class="p">],</span> <span class="n">slot</span><span class="p">,</span>
+                                                                   <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">db_result</span><span class="o">.</span><span class="n">values</span><span class="p">())):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">slot</span><span class="p">:</span> <span class="n">constraint</span><span class="p">[</span><span class="n">slot</span><span class="p">]})</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_DENY</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="n">utils</span><span class="o">.</span><span class="n">validate_params</span><span class="p">(</span><span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">):</span>
+                    <span class="c1"># If params is not None, update denied slots</span>
+                    <span class="n">denied_item</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">params_to_dict</span><span class="p">(</span><span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">denied_item</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># If the user deny the request from system, we will get previous ask_confirm</span>
+                    <span class="c1"># of user and update that values to belief_state</span>
+                    <span class="n">last_usr_asked_confirm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_asked_confirm</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">last_usr_asked_confirm</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">last_usr_asked_confirm</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_REQUEST</span><span class="p">:</span>
+                <span class="c1"># Just update the usr_request_slots. This may need for state featurizer or</span>
+                <span class="c1"># other task</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_request_slots</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">params_to_dict</span><span class="p">(</span><span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_BYE</span><span class="p">:</span>
+                <span class="c1"># Set terminate state</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">is_terminal_state</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ACT_ASK_CONFIRM</span><span class="p">]:</span>
+                <span class="c1"># self.DState.latest_usr_ask_confirmed = {item.slot: item.value[0] for item in</span>
+                <span class="c1">#                                         dia_act.params}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_asked_confirm</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">params_to_dict</span><span class="p">(</span><span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
+
+        <span class="c1"># Execute call back in the end of update state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_user_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usr_acts</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_acts</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">usr_acts</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;usr_utterance&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_utterance</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;usr_utterance&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_turn_index</span><span class="p">()</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User acts after update_state change to &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">usr_acts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_cv"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_cv">[docs]</a>    <span class="k">def</span> <span class="nf">update_cv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cv_output</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the result got from CV. There are 4 case from cv result</span>
+<span class="sd">        case 1: Exactly id and object item</span>
+<span class="sd">            SLOT_OBJECT_TYPE: [&quot;Coc&quot;]</span>
+<span class="sd">            SLOT_OBJECT_ID: [&quot;1123&quot;]</span>
+<span class="sd">        case 2: Multi possible object ids</span>
+<span class="sd">            SLOT_OBJECT_TYPE: None</span>
+<span class="sd">            SLOT_OBJECT_ID: [&quot;112&quot;, &quot;113&quot;, &quot;114&quot;]</span>
+<span class="sd">        case 3: No id found, Give list of similarity of Object types</span>
+<span class="sd">            SLOT_OBJECT_TYPE: [&quot;Coc&quot;, &quot;Ghe&quot;]</span>
+<span class="sd">            SLOT_OBJECT_ID: None</span>
+<span class="sd">        case 4: No any result</span>
+<span class="sd">            SLOT_OBJECT_TYPE: None</span>
+<span class="sd">            SLOT_OBJECT_ID: None</span>
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            cv_output:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cv_output</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">obj_type</span> <span class="o">=</span> <span class="n">cv_output</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">SLOT_OBJECT_TYPE</span><span class="p">)</span>
+        <span class="n">obj_id</span> <span class="o">=</span> <span class="n">cv_output</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">SLOT_OBJECT_ID</span><span class="p">)</span>
+
+        <span class="c1"># Case 1: Exactly id and object item. Add id into belief state</span>
+        <span class="k">if</span> <span class="n">obj_type</span> <span class="ow">and</span> <span class="n">obj_id</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj_id</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj_type</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="n">SLOT_OBJECT_ID</span><span class="p">:</span> <span class="n">obj_id</span>
+            <span class="p">})</span>
+
+        <span class="c1"># Case 2: Multi possible object ids. Add object ids into availability slots</span>
+        <span class="c1"># and set uncertain flag</span>
+        <span class="k">elif</span> <span class="n">obj_type</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">obj_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_need_confirm_is_set</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="n">SLOT_OBJECT_ID</span><span class="p">:</span> <span class="n">obj_id</span>
+            <span class="p">})</span>
+        <span class="c1"># Case 3: No id found, Give list of similarity of Object types. Add object types into</span>
+        <span class="c1"># availability slots and set uncertain flag</span>
+        <span class="k">elif</span> <span class="n">obj_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">obj_type</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_need_confirm_is_set</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="n">SLOT_OBJECT_TYPE</span><span class="p">:</span> <span class="n">obj_type</span>
+            <span class="p">})</span></div>
+        <span class="c1"># Case 4: No object found. do nothing</span>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_state_db"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_state_db">[docs]</a>    <span class="k">def</span> <span class="nf">update_state_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">sys_requestable_semantic</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        just update current state to list states</span>
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Callback in the beginning of update_state_db</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_database_begin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">db_result</span><span class="p">,</span>
+            <span class="n">sys_requestable_semantic</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Default process for # Callback in the beginning of update_state_db</span>
+        <span class="k">if</span> <span class="n">db_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;update_state_db need database results is provided&quot;</span><span class="p">)</span>
+
+        <span class="c1"># if 0 &lt; len(db_result) &lt; self.MAX_NUM_TO_SET_OFFER:</span>
+        <span class="c1">#     self.DState.offer_is_set = True</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">db_result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_deny_is_set</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">usr_inform_slots</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_inform_slots</span><span class="p">)</span>
+            <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NUM_QUERY_LOOP</span> <span class="ow">and</span> <span class="n">usr_inform_slots</span><span class="p">:</span>
+                <span class="n">slot</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">usr_inform_slots</span><span class="o">.</span><span class="n">popitem</span><span class="p">()))</span>
+                <span class="n">temp_db_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">db_lookup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="p">,</span>
+                                                         <span class="n">ignore_attrs</span><span class="o">=</span><span class="p">[</span><span class="n">slot</span><span class="p">])</span>
+                <span class="n">available_values</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_list_attribute_values_from_db</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">temp_db_result</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">available_values</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">slot</span><span class="p">:</span> <span class="n">available_values</span><span class="p">})</span>
+                    <span class="k">break</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">item_in_focus</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">db_result</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">db_result</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">db_result</span> <span class="o">=</span> <span class="n">db_result</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_requestable_semantic</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sys_requestable_semantic</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">db</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sys_requestable_semantic: </span><span class="si">{</span><span class="n">sys_requestable_semantic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Callback in the end of update_state_db</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_database_end</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">db_result</span><span class="p">,</span>
+            <span class="n">sys_requestable_semantic</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Save dialogue state</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span> <span class="o">=</span> <span class="p">[</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_state_sys_acts"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_state_sys_acts">[docs]</a>    <span class="k">def</span> <span class="nf">update_state_sys_acts</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">],</span>
+            <span class="n">raw_sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        update current dialogue state given sys_acts taken from system&#39;s response</span>
+<span class="sd">        Args:</span>
+<span class="sd">            sys_acts: DialogueAct</span>
+<span class="sd">            raw_sys_acts:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post_processing_sys_acts</span><span class="p">(</span><span class="n">sys_acts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sys_acts after post process: &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">d_act</span><span class="p">)</span> <span class="k">for</span> <span class="n">d_act</span> <span class="ow">in</span> <span class="n">sys_acts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_system_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sys_acts</span><span class="p">,</span> <span class="n">raw_sys_acts</span><span class="p">)</span>
+
+        <span class="c1"># The default system update internal state</span>
+        <span class="k">for</span> <span class="n">dia_act</span> <span class="ow">in</span> <span class="n">sys_acts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ACT_TAG_QUESTION</span><span class="p">,</span> <span class="n">ACT_ASK_CONFIRM</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">latest_sys_ask_confirmed</span> <span class="o">=</span> \
+                    <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">}</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_OFFER</span><span class="p">:</span>
+                <span class="c1"># Mark system offered</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">system_made_offer</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_INFORM</span><span class="p">:</span>
+                <span class="c1"># Update sys_inform_slots, may use for dialogue featurizer</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_inform_slots</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">}</span>
+            <span class="k">elif</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_REQUEST</span><span class="p">:</span>
+                <span class="c1"># Just update sys_request_slots. May need for state featurizer</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_request_slots</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dia_act</span><span class="o">.</span><span class="n">params</span><span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_system_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sys_acts</span><span class="p">,</span> <span class="n">raw_sys_acts</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_acts</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sys_acts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">raw_sys_acts</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">raw_sys_acts</span><span class="p">)</span>
+        <span class="c1"># Update DS storage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Callbacks on the end of system updated</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_system_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sys_acts</span><span class="p">,</span> <span class="n">raw_sys_acts</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">sys_acts</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_rewards"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_rewards">[docs]</a>    <span class="k">def</span> <span class="nf">update_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">task_success</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            reward:</span>
+<span class="sd">            success:</span>
+<span class="sd">            task_success:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Callback on the beginning of update_rewards</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_reward_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">task_success</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">reward</span> <span class="o">=</span> <span class="n">reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="n">success</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">task_success</span> <span class="o">=</span> <span class="n">task_success</span>
+
+        <span class="k">if</span> <span class="s2">&quot;sys_utterance&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_utterance</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sys_utterance&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;is_exploration&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">is_exploration</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_exploration&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Callback on the end of update_rewards</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_update_reward_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">task_success</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Update DS storage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_ontology"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_ontology">[docs]</a>    <span class="k">def</span> <span class="nf">update_ontology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usr_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            usr_acts</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">usr_act</span> <span class="ow">in</span> <span class="n">usr_acts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">usr_act</span><span class="o">.</span><span class="n">intent</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ACT_INFORM</span><span class="p">,</span> <span class="n">ACT_ASK_CONFIRM</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">usr_act</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
+                    <span class="c1"># print(f&quot;item: {item}&quot;)</span>
+
+                    <span class="c1"># Extract value from user input such as price, guarantee, age of user ... etc</span>
+                    <span class="n">informable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="o">.</span><span class="n">informable</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span>
+                            <span class="c1"># The value is not uncertain if its value is not care</span>
+                            <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">VALUE_NOT_CARE</span>
+
+                            <span class="c1"># Skipped if value is list</span>
+                            <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">Text</span><span class="p">)</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">())</span>
+
+                            <span class="c1"># The value is not uncertain if type is int, float, double</span>
+                            <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">List</span><span class="p">))</span>
+
+                            <span class="c1"># The value is not uncertain if the value exist in database</span>
+                            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">is_value_existed</span><span class="p">(</span>
+                                <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">db_result</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+                            <span class="c1"># Skipped find uncertain if the value is validate in ontology</span>
+                            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="o">.</span><span class="n">is_valid_value</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_uncertain_is_set</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">})</span>
+
+                        <span class="c1"># Find similar items</span>
+                        <span class="n">similar_values</span><span class="p">,</span> <span class="n">has_done</span> <span class="o">=</span> <span class="n">dst_plugins</span><span class="o">.</span><span class="n">run_find_similar</span><span class="p">(</span>
+                            <span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">informable</span>
+                        <span class="p">)</span>
+                        <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uncertain is set, and similar values found for *</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">*&quot;</span>
+                                    <span class="sa">f</span><span class="s2">&quot; is *</span><span class="si">{</span><span class="n">similar_values</span><span class="si">}</span><span class="s2">*. Search in </span><span class="si">{</span><span class="n">informable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">has_done</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">similar_values</span><span class="p">})</span>
+
+                    <span class="k">elif</span> <span class="n">usr_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_INFORM</span><span class="p">:</span>
+                        <span class="c1"># If the value is certain, just update belief state</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">item</span><span class="o">.</span><span class="n">slot</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">})</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.is_available_in_db"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.is_available_in_db">[docs]</a>    <span class="k">def</span> <span class="nf">is_available_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            slot:</span>
+<span class="sd">            value:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.update_turn_index"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.update_turn_index">[docs]</a>    <span class="k">def</span> <span class="nf">update_turn_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">turn</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.get_state"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.get_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the current dialogue state.</span>
+
+<span class="sd">        :return: the current dialogue state</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.post_processing_sys_acts"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.post_processing_sys_acts">[docs]</a>    <span class="k">def</span> <span class="nf">post_processing_sys_acts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sys_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">],</span> <span class="n">d_state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">)</span> \
+            <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;DialogueAct&quot;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Post processing the sys acts from polices</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sys_acts: sys dialogue acts</span>
+<span class="sd">            d_state: current dialogue state</span>
+
+<span class="sd">        Returns: new sys acts</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Calling callback at the beginning of post-processing function</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_post_process_system_acts_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sys_acts</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">sys_act</span> <span class="ow">in</span> <span class="n">sys_acts</span><span class="p">:</span>
+
+            <span class="n">old_sys_act</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sys_act</span><span class="p">)</span>
+            <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">validate_params</span><span class="p">(</span><span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_INFORM</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="ow">not</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span>
+                        <span class="ow">or</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_unk_params</span><span class="p">(</span><span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+                        <span class="p">):</span>
+                    <span class="c1"># if sys_act is inform and params is empty or value is None. Need to fill slot-</span>
+                    <span class="c1"># value pair into inform act</span>
+                    <span class="n">slot</span> <span class="o">=</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">slot</span> <span class="k">if</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="k">else</span> \
+                        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_request_slots</span><span class="o">.</span><span class="n">get_last_key_item</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">slot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_attribute_values_from_db</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span><span class="p">)</span>
+                        <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">validate_params</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+                <span class="c1"># If the value is still UNK or empty params -&gt; convert to deny action</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="ow">or</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_unk_params</span><span class="p">(</span><span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">):</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_DENY</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="c1"># continue</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;post processing from  </span><span class="si">{</span><span class="n">old_sys_act</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># If sys act is request and no slot provided. We need to add slot from context</span>
+            <span class="k">elif</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_REQUEST</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="c1"># Get slot from usr denied slot</span>
+                <span class="n">sys_denied_act</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">find_act_by_intent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_acts</span><span class="p">,</span> <span class="n">ACT_DENY</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="p">:</span>
+                    <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="o">.</span><span class="n">get_last_key_item</span><span class="p">()</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueActItem</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">Operator</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">VALUE_UNK</span><span class="p">)]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">usr_denied_slots</span><span class="o">.</span><span class="n">remove_item_by_key</span><span class="p">(</span><span class="n">slot</span><span class="p">)</span>
+                    <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">elif</span> <span class="n">sys_denied_act</span><span class="p">:</span>
+                    <span class="n">slot_value</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">params_to_dict</span><span class="p">(</span><span class="n">sys_denied_act</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+                    <span class="n">slot</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">slot_value</span><span class="p">))</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueActItem</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">Operator</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">VALUE_UNK</span><span class="p">)]</span>
+                    <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Select unfilled slot from ontology</span>
+                    <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="o">.</span><span class="n">usr_informable</span><span class="p">:</span>
+                        <span class="c1"># TODO The slot should choice by priority ranking, do it later ...</span>
+                        <span class="k">if</span> <span class="n">d_state</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">slot</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueActItem</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">Operator</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">VALUE_UNK</span><span class="p">)]</span>
+                            <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;post processing from  </span><span class="si">{</span><span class="n">old_sys_act</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                            <span class="k">break</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+                    <span class="c1"># If all slot are filled. We will make offer</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_OFFER</span>
+                    <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;post processing from  </span><span class="si">{</span><span class="n">old_sys_act</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># if sys act intent is confirm_answer, this mean sys will be answer for confirm</span>
+            <span class="c1"># question of user. We will filled slot-value if it&#39;s not provided from policy</span>
+            <span class="k">elif</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_CONFIRM_ANSWER</span><span class="p">:</span>
+                <span class="c1"># TODO in fact, currently params are always empty</span>
+                <span class="c1"># Get slot need to fill from params or user_requested from previous turn</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">params_values</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">d_act</span> <span class="ow">in</span> <span class="n">d_state</span><span class="o">.</span><span class="n">usr_acts</span><span class="p">:</span>
+                    <span class="c1"># Get slot-value from previous usr act if intent is confirm_question</span>
+                    <span class="k">if</span> <span class="n">d_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_ASK_CONFIRM</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">d_act</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
+                            <span class="n">slot</span> <span class="o">=</span> <span class="n">d_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">slot</span>
+                            <span class="n">confirm_value</span> <span class="o">=</span> <span class="n">d_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">d_state</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">slot</span><span class="p">:</span> <span class="n">confirm_value</span><span class="p">})</span>
+                                <span class="n">db_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">db_lookup</span><span class="p">(</span><span class="n">d_state</span><span class="o">.</span><span class="n">belief_state</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">db_result</span> <span class="o">=</span> <span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span>
+                            <span class="n">params_values</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_attribute_values_from_db</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">db_result</span><span class="p">)</span>
+                            <span class="c1"># values = flatten_lists([d.value for d in params_values])</span>
+                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">is_value_existed</span><span class="p">(</span><span class="n">confirm_value</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span>
+                                                              <span class="n">db_result</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+                                <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_AGREE</span>
+                                <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueActItem</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">Operator</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">confirm_value</span><span class="p">)]</span>
+                                <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;post processing from  </span><span class="si">{</span><span class="n">old_sys_act</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueActItem</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">Operator</span><span class="o">.</span><span class="n">NE</span><span class="p">,</span> <span class="n">confirm_value</span><span class="p">)]</span>
+                                <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_DENY</span>
+                                <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;post processing from  </span><span class="si">{</span><span class="n">old_sys_act</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># TODO in this case d_act not has slot-value, implement later</span>
+                            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Did not implement case confirm answer &quot;</span>
+                                                      <span class="sa">f</span><span class="s2">&quot;with not slot-value pair&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_acts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">params_values</span><span class="p">:</span>
+                    <span class="c1"># If user constraint not available. System deny and then</span>
+                    <span class="c1"># make ask_confirm if len(params_values &gt; 1 else ask as tag_question</span>
+                    <span class="n">num_value</span> <span class="o">=</span> <span class="n">params_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">num_value</span><span class="p">()</span> <span class="k">if</span> <span class="n">params_values</span> <span class="k">else</span> <span class="mi">0</span>
+                    <span class="c1"># sys_acts = []</span>
+                    <span class="k">if</span> <span class="n">num_value</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">sys_acts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DialogueAct</span><span class="p">(</span><span class="n">ACT_ASK_CONFIRM</span><span class="p">,</span> <span class="n">params_values</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="n">num_value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">sys_acts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DialogueAct</span><span class="p">(</span><span class="n">ACT_TAG_QUESTION</span><span class="p">,</span> <span class="n">params_values</span><span class="p">))</span>
+                    <span class="n">_logger</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;post processing from  </span><span class="si">{</span><span class="n">old_sys_act</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">sys_act</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="k">if</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_CONFIRM_ANSWER</span><span class="p">:</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_CANT_HELP</span>
+            <span class="k">elif</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_ASK_CONFIRM</span><span class="p">:</span>
+                <span class="c1"># If system act is ask_confirm but no available slots. it&#39;s should be we want to</span>
+                <span class="c1"># confirm some constraint to small down number of items.</span>
+                <span class="n">actual_slot</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="ow">not</span> <span class="n">d_state</span><span class="o">.</span><span class="n">availability_slots</span>
+                        <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_NUM_TO_SET_OFFER</span><span class="p">):</span>
+                    <span class="n">has_done</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="o">.</span><span class="n">system_informable</span><span class="p">:</span>
+
+                        <span class="c1"># If we asked confirm before, dont ask with that slot again</span>
+                        <span class="k">if</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_asked_confirm</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                            <span class="k">continue</span>
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_list_attribute_values_from_db</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+                            <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueActItem</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">Operator</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">values</span><span class="p">)]</span>
+                            <span class="n">has_done</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="c1"># self.DState.sys_asked_confirm.update({slot: values})</span>
+                            <span class="k">break</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_done</span> <span class="ow">and</span> <span class="n">d_state</span><span class="o">.</span><span class="n">db_result</span><span class="p">:</span>
+                        <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_OFFER</span>
+                    <span class="k">elif</span> <span class="ow">not</span> <span class="n">has_done</span><span class="p">:</span>
+                        <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;System replied with </span><span class="si">{</span><span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span><span class="si">}</span><span class="s2">, &quot;</span>
+                                        <span class="sa">f</span><span class="s2">&quot;but no availability slots found&quot;</span><span class="p">)</span>
+
+                <span class="k">elif</span> <span class="n">d_state</span><span class="o">.</span><span class="n">availability_slots</span><span class="p">:</span>
+                    <span class="n">ask_confirm_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">ask_confirm_item</span><span class="p">:</span>
+                        <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">dict_to_params</span><span class="p">(</span><span class="n">ask_confirm_item</span><span class="p">)</span>
+                        <span class="n">actual_slot</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">ask_confirm_item</span><span class="p">))</span>
+
+                <span class="c1"># If number of values equal 1, convert ask_confirm to tag_question as well</span>
+                <span class="k">if</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="ow">and</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">num_value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">List</span><span class="p">):</span>
+                        <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">=</span> <span class="n">ACT_TAG_QUESTION</span>
+
+                <span class="c1"># Clear availability_slots</span>
+                <span class="k">if</span> <span class="n">actual_slot</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">remove_item_by_key</span><span class="p">(</span><span class="n">actual_slot</span><span class="p">)</span>
+                <span class="c1"># Update system asked for confirm</span>
+                <span class="k">if</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_asked_confirm</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">params_to_dict</span><span class="p">(</span><span class="n">sys_act</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_DENY</span><span class="p">:</span>
+                <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">get_last_key_item</span><span class="p">()</span>
+                <span class="n">actual_slot</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="p">:</span>
+                    <span class="n">deny_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="o">.</span><span class="n">get_item_by_key</span><span class="p">(</span><span class="n">slot</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">deny_item</span><span class="p">:</span>
+                        <span class="c1"># deny_item = [utils.dict_to_params(d_state.sys_denied_slots)[0]]</span>
+                        <span class="n">deny_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">deny_item</span><span class="p">:</span>
+                        <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">dict_to_params</span><span class="p">(</span><span class="n">deny_item</span><span class="p">)</span>
+                        <span class="n">actual_slot</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">deny_item</span><span class="p">))</span>
+                <span class="c1"># Clear deny slots</span>
+                <span class="k">if</span> <span class="n">actual_slot</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_denied_slots</span><span class="o">.</span><span class="n">remove_item_by_key</span><span class="p">(</span><span class="n">actual_slot</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">sys_act</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">ACT_NOT_SURE</span><span class="p">:</span>
+                <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">availability_slots</span><span class="o">.</span><span class="n">get_last_key_item</span><span class="p">()</span>
+                <span class="n">actual_slot</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="p">:</span>
+                    <span class="n">uncertain_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="o">.</span><span class="n">get_item_by_key</span><span class="p">(</span><span class="n">slot</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">uncertain_item</span><span class="p">:</span>
+                        <span class="n">uncertain_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">uncertain_item</span><span class="p">:</span>
+                        <span class="n">sys_act</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">dict_to_params</span><span class="p">(</span><span class="n">uncertain_item</span><span class="p">)</span>
+                        <span class="n">actual_slot</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">uncertain_item</span><span class="p">))</span>
+                <span class="c1"># clear uncertain_slots which is response by system</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_uncertain_slots</span><span class="o">.</span><span class="n">remove_item_by_key</span><span class="p">(</span><span class="n">actual_slot</span><span class="p">)</span>
+
+        <span class="c1"># Callback at the end of this postprocess function</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">callbacks_handler</span><span class="o">.</span><span class="n">on_post_process_system_acts_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sys_acts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sys_acts</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.save"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save data</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.load"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_states</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;dialogue_states&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.train"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogue_episodes</span><span class="p">,</span> <span class="n">eval_dialogues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DialogueStateTracker.test"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialog_state_tracker.html#comet.agent.core.dialog_state_tracker.dialogue_state_tracker.DialogueStateTracker.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogue_episodes</span><span class="p">):</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,666 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Text</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">fastprogress</span> <span class="kn">import</span> <span class="n">master_bar</span>
+<span class="kn">from</span> <span class="nn">fastprogress</span> <span class="kn">import</span> <span class="n">progress_bar</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">TensorDataset</span>
+<span class="kn">from</span> <span class="nn">comet</span> <span class="kn">import</span> <span class="n">Dialogue</span><span class="p">,</span> <span class="n">DialogueState</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialog_state_tracker.dialogue_state_tracker</span> <span class="kn">import</span> <span class="n">DialogueStateTracker</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialogue_featurizers.state_featurizer</span> <span class="kn">import</span> <span class="n">StateFeaturizer</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialogue_policy.dialogue_policy</span> <span class="kn">import</span> <span class="n">DialoguePolicy</span>
+<span class="kn">from</span> <span class="nn">comet.agent.training.lr_scheduler</span> <span class="kn">import</span> <span class="n">OneCycleScheduler</span>
+<span class="kn">from</span> <span class="nn">comet.agent.training.metrices.torch_metric</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AverageMeter</span><span class="p">,</span>
+    <span class="n">accuracy</span><span class="p">,</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">plot_confusion_matrix</span><span class="p">,</span>
+    <span class="n">most_confused</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">load_module</span><span class="p">,</span>
+    <span class="n">print_title</span><span class="p">,</span>
+    <span class="n">set_attr</span><span class="p">,</span>
+    <span class="n">logger</span><span class="p">,</span>
+    <span class="n">decorator</span><span class="p">,</span>
+    <span class="n">print_table</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">comet.utilities</span> <span class="kn">import</span> <span class="n">constants</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LSTMNet"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMNet">[docs]</a><span class="k">class</span> <span class="nc">LSTMNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LSTMNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LSTMNet.forward"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMNet.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="c1"># lstm_out, _ = self.lstm(states.view(len(states), 1, -1))</span>
+        <span class="n">lstm_out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">lstm_out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="k">return</span> <span class="n">out</span></div></div>
+
+
+<div class="viewcode-block" id="LSTMPolicy"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy">[docs]</a><span class="k">class</span> <span class="nc">LSTMPolicy</span><span class="p">(</span><span class="n">DialoguePolicy</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LSTMPolicy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Init defaults parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">StateFeaturizer</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warm_up_policy</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">DialoguePolicy</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">confidence_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_epoch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.005</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_states</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+
+        <span class="c1"># Get optional params from args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_parameters</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">early_stopping_best_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_loaded_success</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_class</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Text</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">actions_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_history_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_states</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="c1"># init model, loss, optim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">LSTMNet</span><span class="p">(</span>
+            <span class="n">input_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_state_features</span><span class="p">,</span>
+            <span class="n">output_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span>
+            <span class="n">hidden_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+            <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+            <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mb</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tracing_logger</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LSTMPolicy.init_parameters"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.init_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">init_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">algorithm_spec</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;algorithm&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;SF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;WP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;training&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;testing&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;resume&#39;</span><span class="p">,</span>
+        <span class="p">])</span>
+        <span class="n">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm_spec</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;priority&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hidden_dim&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;training_epoch&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;num_states&#39;</span><span class="p">,</span>
+
+        <span class="p">])</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.initialize"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.restart"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.restart">[docs]</a>    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.next_action"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.next_action">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">next_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">:</span> <span class="n">DialogueStateTracker</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Consults the dialogue policy to produce the agent&#39;s response</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker: the current dialogue state tracker</span>
+
+<span class="sd">        Returns: a list of dialogue acts, representing the agent&#39;s response</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">state</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_loaded_success</span><span class="p">:</span>
+            <span class="c1"># If the policy need to train and no weight for it,</span>
+            <span class="c1"># we will use dummy or handcraft policy instead</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">warm_up_policy</span><span class="o">.</span><span class="n">next_action</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">enc_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">encode_history_states</span><span class="p">([</span><span class="n">state</span><span class="p">])</span>
+            <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span>
+                <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_padding</span><span class="p">(</span><span class="n">enc_state</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_history_state</span><span class="p">,</span>
+                                                                    <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_state_features</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="n">propa</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">confidence</span> <span class="o">=</span> <span class="n">propa</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">act_idx</span> <span class="o">=</span> <span class="n">preds</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+            <span class="n">decode_act</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">decode_action</span><span class="p">(</span><span class="n">act_idx</span><span class="p">)</span>
+
+            <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;next action: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">decode_act</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">confidence</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">policy</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;prediction: </span><span class="si">{</span><span class="n">propa</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">policy</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;next action: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">decode_act</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">confidence</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">decode_act</span><span class="p">,</span> <span class="n">confidence</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.train"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.train">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dialogue</span><span class="p">],</span> <span class="n">eval_dialogues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dialogue</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">only_save_best</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">epoch_step</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Training the policy model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dialogues: The dialogues use for training</span>
+<span class="sd">            eval_dialogues: The dialogues data use for validate</span>
+<span class="sd">            only_save_best: Only save the model where the valid loss decrease</span>
+<span class="sd">            epoch_step:</span>
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">print_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STARTING TRAINING </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> model&quot;</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Preparing training dataset from </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dialogues</span><span class="p">)</span><span class="si">}</span><span class="s2"> dialogues...&quot;</span><span class="p">)</span>
+        <span class="n">train_ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_dataset</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">dialogues</span><span class="p">))</span>
+        <span class="n">val_ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_dataset</span><span class="p">(</span>
+            <span class="n">eval_dialogues</span> <span class="k">if</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">eval_dialogues</span><span class="p">)</span> <span class="k">else</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">dialogues</span><span class="p">))</span>
+
+        <span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_ds</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">val_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_ds</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TRAIN SAMPLES: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_ds</span><span class="p">)</span><span class="si">}</span><span class="s1"> VALIDATION SAMPLES: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">val_ds</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">lr_scheduler</span> <span class="o">=</span> <span class="n">OneCycleScheduler</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">lr_max</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                                         <span class="n">tot_iters</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_epoch</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training progress:&quot;</span><span class="p">)</span>
+        <span class="n">training_progress</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;train_loss&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;train_accuracy&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;valid_loss&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;valid_accuracy&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">epoch_step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">epoch_step</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">training_epoch</span> <span class="o">/</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mb</span> <span class="o">=</span> <span class="n">master_bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_epoch</span><span class="p">,</span> <span class="n">epoch_step</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="p">:</span>
+            <span class="n">training_loss</span> <span class="o">=</span> <span class="n">AverageMeter</span><span class="p">()</span>
+            <span class="n">training_acc</span> <span class="o">=</span> <span class="n">AverageMeter</span><span class="p">()</span>
+            <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">progress_bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span> <span class="o">*</span> <span class="n">epoch_step</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                    <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+                    <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+                <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_history_state</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_state_features</span><span class="p">)</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+                <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+                <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+                <span class="n">lr_scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+                <span class="n">training_acc</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+                <span class="n">training_loss</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+            <span class="n">val_acc</span><span class="p">,</span> <span class="n">val_loss</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">val_loader</span><span class="p">:</span>
+                <span class="n">val_acc</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">val_loader</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">only_save_best</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">update_best_model</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>
+
+            <span class="n">status</span><span class="p">[</span><span class="s2">&quot;epoch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+            <span class="n">status</span><span class="p">[</span><span class="s2">&quot;train_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">training_loss</span><span class="o">.</span><span class="n">avg</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">status</span><span class="p">[</span><span class="s2">&quot;train_accuracy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">training_acc</span><span class="o">.</span><span class="n">avg</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">status</span><span class="p">[</span><span class="s2">&quot;valid_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val_loss</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">status</span><span class="p">[</span><span class="s2">&quot;valid_accuracy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val_acc</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">training_progress</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">print_table</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">training_progress</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># If only save best enable, get the model weight where the valid loss decrease</span>
+        <span class="k">if</span> <span class="n">only_save_best</span><span class="p">:</span>
+            <span class="n">model_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">WORKING_DIR</span><span class="p">,</span> <span class="s2">&quot;tmp.ckpt&quot;</span><span class="p">)</span>
+            <span class="c1"># self.save(constants.WORKING_DIR)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">model_file</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;rm -rf </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_file</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">early_stopping_best_val</span> <span class="o">=</span> <span class="mf">1e8</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.validate"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_loader</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            valid_loader:</span>
+<span class="sd">            cm:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">running_loss</span> <span class="o">=</span> <span class="n">AverageMeter</span><span class="p">()</span>
+        <span class="n">running_acc</span> <span class="o">=</span> <span class="n">AverageMeter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">cfm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">full_preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">full_labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">progress_bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">)),</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mb</span><span class="p">):</span>
+                <span class="c1"># for inputs, labels in valid_loader:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                    <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">)</span>
+                    <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+                <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">cm</span><span class="p">:</span>
+                    <span class="n">full_preds</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+                    <span class="n">full_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+                <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+                <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+                <span class="n">running_loss</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+                <span class="n">running_acc</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cm</span><span class="p">:</span>
+            <span class="n">preds</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">full_preds</span><span class="p">]</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">full_labels</span><span class="p">]</span>
+            <span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+            <span class="n">cfm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_class</span><span class="p">)</span>
+            <span class="c1"># _logger.info(f&quot;\n{cfm}&quot;)</span>
+            <span class="c1"># plot_confusion_matrix(cfm, self.action_names)</span>
+
+        <span class="k">return</span> <span class="n">running_acc</span><span class="o">.</span><span class="n">avg</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">running_loss</span><span class="o">.</span><span class="n">avg</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">cfm</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.test"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.test">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Evaluation the policy model</span>
+
+<span class="sd">                Args:</span>
+<span class="sd">                    dialogues:</span>
+
+<span class="sd">                Returns:</span>
+
+<span class="sd">                &quot;&quot;&quot;</span>
+        <span class="n">print_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EVALUATION </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> model&quot;</span><span class="p">)</span>
+        <span class="c1"># if not isinstance(dialogues, DataLoader):</span>
+        <span class="c1">#     test_ds = self.prepare_dataset(deepcopy(dialogues))</span>
+        <span class="c1">#     data_loader = DataLoader(test_ds, batch_size=self.batch_size)</span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     data_loader = deepcopy(dialogues)</span>
+        <span class="c1"># if data_loader is None:</span>
+        <span class="c1">#     _logger.trace(&quot;Can not evaluation. Dataloader is None&quot;, level=logger.LEVEL.WARNING)</span>
+        <span class="c1">#</span>
+        <span class="c1"># status = {</span>
+        <span class="c1">#     &quot;epoch&quot;: 1,</span>
+        <span class="c1">#     &quot;test_loss&quot;: None,</span>
+        <span class="c1">#     &quot;accuracy&quot;: None,</span>
+        <span class="c1"># }</span>
+        <span class="c1"># eval_progress = []</span>
+        <span class="c1"># self.mb = master_bar(range(1))</span>
+        <span class="c1"># self.mb.write(list(status.keys()), table=True)</span>
+        <span class="c1">#</span>
+        <span class="c1"># for epoch in self.mb:</span>
+        <span class="c1">#     avg_acc, avg_loss, cfm = self.validate(data_loader, cm=True)</span>
+        <span class="c1">#     status[&#39;epoch&#39;] = str(epoch)</span>
+        <span class="c1">#     status[&#39;test_loss&#39;] = str(round(avg_loss, 4))</span>
+        <span class="c1">#     status[&#39;accuracy&#39;] = str(round(avg_acc, 4))</span>
+        <span class="c1">#     self.mb.write(list(status.values()), table=True)</span>
+        <span class="c1">#     eval_progress.append(list(status.values()))</span>
+        <span class="c1">#</span>
+        <span class="c1"># print_table(list(status.keys()), eval_progress, trace=True, show=False)</span>
+        <span class="c1">#</span>
+        <span class="c1"># final_res_str, final_res = most_confused(cfm, self.action_names)</span>
+        <span class="c1"># _logger.trace(&quot;Confusion matrix&quot;, show=True)</span>
+        <span class="c1"># _logger.trace(f&quot;{final_res_str}&quot;, show=True, has_prefix=False)</span>
+        <span class="c1"># cfm_file_path = os.path.join(constants.DEFAULT_BASE_EVAL_PATH,</span>
+        <span class="c1">#                              f&quot;{self.__class__.__name__}_cfm.jpg&quot;)</span>
+        <span class="c1"># plot_confusion_matrix(cfm, self.action_names, save_path=cfm_file_path)</span>
+        <span class="c1"># return status</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.prepare_dataset"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.prepare_dataset">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">prepare_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dialogue</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">TensorDataset</span><span class="p">:</span>
+        <span class="n">x_train</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">y_train</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">dialogue</span> <span class="ow">in</span> <span class="n">dialogues</span><span class="p">:</span>
+            <span class="n">history_states</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">turn</span> <span class="ow">in</span> <span class="n">dialogue</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">turn</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">history_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">turn</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">])</span>
+                <span class="n">states</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">encode_history_states</span><span class="p">(</span>
+                    <span class="n">history_states</span><span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">num_states</span><span class="p">:])</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_history_state</span><span class="p">:</span>
+                    <span class="n">states</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_padding</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+
+                <span class="n">act</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">encode_action</span><span class="p">(</span><span class="n">turn</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">x_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+                <span class="n">y_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span>
+                             <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">_padding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">history_states</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        padding zeros state vector</span>
+<span class="sd">        Args:</span>
+<span class="sd">            history_states:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_history_state</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">history_states</span><span class="p">)):</span>
+            <span class="n">history_states</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">num_state_features</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">history_states</span>
+
+<div class="viewcode-block" id="LSTMPolicy.update_best_model"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.update_best_model">[docs]</a>    <span class="k">def</span> <span class="nf">update_best_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update model if valid loss decrease after time</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            val_loss: Current valid loss</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">val_loss</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">early_stopping_best_val</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">early_stopping_best_val</span> <span class="o">=</span> <span class="n">val_loss</span>
+            <span class="n">model_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">WORKING_DIR</span><span class="p">,</span> <span class="s2">&quot;tmp.ckpt&quot;</span><span class="p">)</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">model_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.save"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Don&#39;t save if not training</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">model_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;lstm_policy_model.ckpt&quot;</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">model_file</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> model into: </span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                      <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LSTMPolicy.load"><a class="viewcode-back" href="../../../../../../comet/comet.agent.core.dialogue_policy.supervised_learning.html#comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy.LSTMPolicy.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">model_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;lstm_policy_model.ckpt&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_file</span> <span class="o">=</span> <span class="n">path</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">model_file</span><span class="p">):</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model path: </span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">,</span>
+                          <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_file</span><span class="p">))</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Load </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> model successfully&quot;</span><span class="p">,</span>
+                              <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot load model: </span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2">: error: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model_loaded_success</span> <span class="o">=</span> <span class="kc">False</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,989 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.cli.template_generator_nlg.sys_sample_template_backup &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../cli.html">comet.cli</a> &raquo;</li>
+        
+      <li>comet.cli.template_generator_nlg.sys_sample_template_backup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.cli.template_generator_nlg.sys_sample_template_backup</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+
+<span class="n">multi_intent_template</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ask_confirm;deny&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xin lỗi, bên mình không còn hàng ạ&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_origin;deny_origin;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rât tiếc, hàng xuất xứ </span><span class="si">{deny_origin}</span><span class="s2"> đã hết hàng rồi ạ, bên mình còn sp xuất xứ từ: </span><span class="si">{ask_confirm_origin}</span><span class="s2"> bạn thích cái nào ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_price;deny_price;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, sp này ko có mức giá </span><span class="si">{deny_price}</span><span class="s2"> bạn ạ. Hiện bên mình đang bán với các mức giá: </span><span class="si">{ask_confirm_price}</span><span class="s2"> mời bạn mức mong muốn ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_size;deny_size;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, bên mình hết size </span><span class="si">{deny_size}</span><span class="s2"> rồi. Hiện bên mình đang có các size: </span><span class="si">{ask_confirm_size}</span><span class="s2"> bạn chọn cái thích hợp nhé&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_weight;deny_weight;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Vâng, sp nặng </span><span class="si">{deny_weight}</span><span class="s2"> bên mình không còn hàng ạ. Hiện bên mình đang có 1 số lựa chọn khác: </span><span class="si">{ask_confirm_weight}</span><span class="s2"> bạn chọn cái thích hợp nhé&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_age_of_use;deny_age_of_use;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, sp dành cho lứa tuổi </span><span class="si">{deny_age_of_use}</span><span class="s2"> bên mình không có ạ. Hiện bên mình đang có 1 số lựa chọn khác: </span><span class="si">{ask_confirm_age_of_use}</span><span class="s2"> bạn chọn cái thích hợp nhé&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_brand;deny_brand;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, bên mình hết nhãn hàng </span><span class="si">{deny_brand}</span><span class="s2"> rồi ạ. Hiện bên mình đang có 1 số nhãn hiệu: </span><span class="si">{ask_confirm_brand}</span><span class="s2"> bạn chọn cái thích hợp nhé&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_color;deny_color;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, màu </span><span class="si">{deny_color}</span><span class="s2"> bên mình tạm hết hàng. Hiện bên mình đang những màu: </span><span class="si">{ask_confirm_color}</span><span class="s2"> bạn chọn cái thích hợp nhé&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_guarantee;deny_guarantee;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Dạ, sp bên mình ko có bảo hành </span><span class="si">{deny_guarantee}</span><span class="s2"> ạ. Bên mình có các thời hạn bảo hành: </span><span class="si">{ask_confirm_guarantee}</span><span class="s2"> bạn chọn loại nào ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_material;deny_material;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, sp vs chất liệu </span><span class="si">{deny_material}</span><span class="s2"> ko còn hàng ạ. Hiện bên mình chỉ có các chất liệu: </span><span class="si">{ask_confirm_material}</span><span class="s2"> bạn muốn cái nào ko ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_promotion;deny_promotion;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;sp này hiện ko có chương trình khuyên mãi </span><span class="si">{deny_promotion}</span><span class="s2"> nhé b. Bên mình có 1 số chương trình khác: </span><span class="si">{ask_confirm_promotion}</span><span class="s2"> b muốn loại nào ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_object_type;deny_object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, bên mình ko có </span><span class="si">{deny_object_type}</span><span class="s2"> b ạ. Mời b xem 1 số sp khác bên shop mình nhé ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_color;deny_color;deny_object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, </span><span class="si">{deny_object_type}</span><span class="s2"> ben mình ko có màu </span><span class="si">{deny_color}</span><span class="s2"> b ạ. Mời b xem 1 số sp khác bên shop mình nhé ạ: </span><span class="si">{ask_confirm_color}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_image&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;ask_confirm_link&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;ask_confirm;not_sure&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xin lỗi, bên mình không còn hàng ạ&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_origin;not_sure_origin;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, xuất xứ sp bạn cung cấp không có trong dữ liệu của shop. Có phải đang hỏi 1 trong những xuất xứ sau ko ạ: </span><span class="si">{ask_confirm_origin}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_price;not_sure_price;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, mình chưa rõ mức giá b hỏi, có phải bạm đang quan tâm 1 trong nhưng mức giá dưới đây ko ạ: </span><span class="si">{ask_confirm_price}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_size;not_sure_size;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;xin lỗi, có phải bạn đang hỏi 1 trong những kích thước sau đây ko ạ: </span><span class="si">{ask_confirm_size}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_weight;not_sure_weight;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Dạ, có phải b đang cần sp vs cân nặng nào dưới đây ạ: </span><span class="si">{ask_confirm_weight}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_age_of_use;not_sure_age_of_use;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Dạ, có phải hỏi sp giành cho 1 trong những lứa tuổi dưới đây ko ạ: </span><span class="si">{ask_confirm_age_of_use}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_brand;not_sure_brand;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, Có phải b đang muốn sp với 1 trong nhưng nhãn hiệu sau đây phải ko ạ: </span><span class="si">{ask_confirm_brand}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_color;not_sure_color;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, Có phải b đang muốn sp với 1 trong những màu sau đây phải ko ạ: </span><span class="si">{ask_confirm_color}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_guarantee;not_sure_guarantee;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, Có phải b đang muốn sp với 1 trong nhưng thời gian bảo hành sau đây ko ạ: </span><span class="si">{ask_confirm_guarantee}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_material;not_sure_material;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, Có phải b đang muốn sp với 1 trong nhưng chất liệu sau đây phải ko ạ: </span><span class="si">{ask_confirm_material}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_promotion;not_sure_promotion;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, Có phải b đang muốn sp với 1 trong những mức khuyến mãi sau đây phải ko ạ: </span><span class="si">{ask_confirm_brand}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_object_type;not_sure_object_type;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, Có phải b đang muốn mua 1 trong những sản phẩm sau đây ko ạ: </span><span class="si">{ask_confirm_object_type}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ask_confirm_image;not_sure_image;&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;ask_confirm_link;not_sure_link;&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;deny;tag_question&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xin lỗi, bên mình không còn hàng ạ&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;deny_origin;tag_question_origin;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rât tiếc, sp hàng </span><span class="si">{deny_origin}</span><span class="s2"> bên mình ko còn hàng ạ, bên mình chỉ còn xuất xứ </span><span class="si">{tag_question_origin}</span><span class="s2"> b có lấy ko ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_price;tag_question_price;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, sp này ko có mức giá </span><span class="si">{deny_price}</span><span class="s2">, chỉ còn mức giá </span><span class="si">{tag_question_price}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_size;tag_question_size;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;xin lỗi, sp kích thước </span><span class="si">{deny_size}</span><span class="s2"> bên mình đã hết hàng, mình chỉ còn loại </span><span class="si">{tag_question_size}</span><span class="s2"> b có muốn lấy ko ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_weight;tag_question_weight;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;xin lỗi, sp với cân nặng </span><span class="si">{deny_weight}</span><span class="s2"> bên mình ko có ạ, loại </span><span class="si">{tag_question_weight}</span><span class="s2"> được không ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_age_of_use;tag_question_age_of_use;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Rất tiếc, sp giành cho trẻ </span><span class="si">{deny_age_of_use}</span><span class="s2"> bên mình ko có hàng, loại dành cho </span><span class="si">{tag_question_age_of_use}</span><span class="s2"> được không b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Rất tiếc, sp giành cho trẻ </span><span class="si">{deny_age_of_use}</span><span class="s2"> bên mình ko có hàng, bên mình chỉ còn loại </span><span class="si">{tag_question_age_of_use}</span><span class="s2">, bạn lấy ko ạ&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_brand;tag_question_brand;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, hàng </span><span class="si">{deny_brand}</span><span class="s2"> bên mình ko có ạ, bên mình chỉ còn nhãn hiệu </span><span class="si">{tag_question_brand}</span><span class="s2"> b lấy k ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_color;tag_question_color;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Màu </span><span class="si">{deny_color}</span><span class="s2"> bên mình đang hết hàng ạ, mình chỉ còn màu </span><span class="si">{tag_question_color}</span><span class="s2">, dc ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_guarantee;tag_question_guarantee;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Bên mình ko bảo hành </span><span class="si">{deny_guarantee}</span><span class="s2"> nhé b. Bên mình chỉ có thời hạn bảo hành là </span><span class="si">{tag_question_guarantee}</span><span class="s2">&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_material;tag_question_material;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;chất liệu </span><span class="si">{deny_material}</span><span class="s2"> bên mình không còn hàng, chất liệu </span><span class="si">{tag_question_material}</span><span class="s2"> được không ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_promotion;tag_question_promotion;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;sp này hiện ko có chương trình khuyên mãi </span><span class="si">{deny_promotion}</span><span class="s2">, bên mình chỉ còn mức km </span><span class="si">{tag_question_promotion}</span><span class="s2"> b lấy k ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_object_type;tag_question_object_type;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Bên mình ko có </span><span class="si">{deny_object_type}</span><span class="s2"> b ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;deny_image;tag_question_image;&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;deny_link;tag_question_link;&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;not_sure;tag_question&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xin lỗi, bên mình không còn hàng ạ&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;not_sure_origin;tag_question_origin;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi mình ko hiểu xuất xứ </span><span class="si">{not_sure_origin}</span><span class="s2">, có phải ý b là </span><span class="si">{tag_question_origin}</span><span class="s2"> ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_price;tag_question_price;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, có phải mức giá bạn quan tâm là </span><span class="si">{tag_question_price}</span><span class="s2"> phải k ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_size;tag_question_size;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;xin lỗi, mình chưa rõ kích thước </span><span class="si">{not_sure_size}</span><span class="s2">, có phải ý b là </span><span class="si">{tag_question_size}</span><span class="s2"> ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_weight;tag_question_weight;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;xin lỗi, có phải y b là loại cân nặng </span><span class="si">{tag_question_weight}</span><span class="s2"> ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_age_of_use;tag_question_age_of_use;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, có phải ý bạn là sp phẩm cho lứa tuổi </span><span class="si">{tag_question_age_of_use}</span><span class="s2"> ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_brand;tag_question_brand;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, m ko rõ nhãn hiệu </span><span class="si">{not_sure_brand}</span><span class="s2">, có phải ý b là </span><span class="si">{tag_question_brand}</span><span class="s2"> ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_color;tag_question_color;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Có phải ý b là màu </span><span class="si">{tag_question_color}</span><span class="s2"> ko ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_guarantee;tag_question_guarantee;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Dạ, có phải ý b la mức bảo hành </span><span class="si">{tag_question_guarantee}</span><span class="s2"> k ạ? &quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_material;tag_question_material;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xl, mình k rõ chất liệu </span><span class="si">{not_sure_material}</span><span class="s2">, có phải ý b là </span><span class="si">{tag_question_material}</span><span class="s2"> pk ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_promotion;tag_question_promotion;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Có phải ý b là đang cần mức khuyến mại </span><span class="si">{tag_question_promotion}</span><span class="s2"> ko ạ&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_object_type;tag_question_object_type;&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Xin lỗi, mình ko rõ </span><span class="si">{not_sure_object_type}</span><span class="s2">, có phải ý b là </span><span class="si">{tag_question_object_type}</span><span class="s2"> pk ạ?&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;not_sure_image;tag_question_image;&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;not_sure_link;tag_question_link;&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">inform_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;xuất xứ </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được làm từ </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được làm từ </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được sản xuất tại </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được sx tại </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sx tại </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sx tại </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nơi sx tại </span><span class="si">{origin}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;giá là </span><span class="si">{price}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;có giá </span><span class="si">{price}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;có giá </span><span class="si">{price}</span><span class="s2"> đồng&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hiện shop đang bán với giá </span><span class="si">{price}</span><span class="s2"> đồng&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bên mình đang bán với giá </span><span class="si">{price}</span><span class="s2"> đồng&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;có kích thước </span><span class="si">{size}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;có kích thước là </span><span class="si">{size}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kích thước là </span><span class="si">{size}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size là </span><span class="si">{size}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;nặng </span><span class="si">{weight}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cân nặng là </span><span class="si">{weight}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;giành cho bé </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bé </span><span class="si">{age_of_use}</span><span class="s2"> có thể sử dụng&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;trẻ </span><span class="si">{age_of_use}</span><span class="s2"> có thể sử dụng&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lứa tuổi sử dụng là </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cho bé </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cho trẻ </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;có thể dùng cho trẻ </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;độ tuổi sử dụng là tầm </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;độ tuổi sử dụng là cho trẻ </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;có nhãn hiệu </span><span class="si">{brand}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;có hiệu </span><span class="si">{brand}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;của hãng </span><span class="si">{brand}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;của hiệu </span><span class="si">{brand}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;của nhãn hàng </span><span class="si">{brand}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;có màu </span><span class="si">{color}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;màu </span><span class="si">{color}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;có thời hạn bảo hành là </span><span class="si">{guarantee}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được bảo hành </span><span class="si">{guarantee}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được bảo hành với thời gian </span><span class="si">{guarantee}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;có thời gian bảo hành là </span><span class="si">{guarantee}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được bảo hành trong </span><span class="si">{guarantee}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sẽ được bảo hành trong </span><span class="si">{guarantee}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;có chất liệu </span><span class="si">{material}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được làm từ </span><span class="si">{material}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;được làm bằng </span><span class="si">{material}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;chất liệu </span><span class="si">{material}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;chất liệu là </span><span class="si">{material}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;km la </span><span class="si">{promotion}</span><span class="s2">%&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bên m đang km </span><span class="si">{promotion}</span><span class="s2">%&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;km </span><span class="si">{promotion}</span><span class="s2">%&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;mời bạn xem hình ảnh sp tại đây b nhé: </span><span class="si">{image}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ảnh sản phẩm tại đây, bạn tham khảo nhé: </span><span class="si">{image}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ảnh sp đây nhé: </span><span class="si">{image}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;mời bạn xem link sp tại day b nhe: </span><span class="si">{link}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;link sản phẩm tại đây, bạn tham khảo nhé: </span><span class="si">{link}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;link sp đây nhé: </span><span class="si">{link}</span><span class="s2">&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">inform_single_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ, xuất sứ bên mình đang có là: </span><span class="si">{origin}</span><span class="s2"> ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ, với sp này bên mình đang có mức giá: </span><span class="si">{price}</span><span class="s2"> ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Vâng, kích thước bên mình đang bán là: </span><span class="si">{size}</span><span class="s2"> b nhé&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Vâng ạ, với sp này bên mình có loại: </span><span class="si">{weight}</span><span class="s2"> ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ, Độ tuổi có thể sử dụng cho sp nay là: </span><span class="si">{age_of_use}</span><span class="s2"> b ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ, sp này bên mình có nhãn hiệu: </span><span class="si">{brand}</span><span class="s2"> b ạ&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bên mình có màu: </span><span class="si">{color}</span><span class="s2"> bạn nhé&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Thời hạn bảo hành cho sp này bên mình đang có là: </span><span class="si">{guarantee}</span><span class="s2">?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ, sp bên được làm từ </span><span class="si">{material}</span><span class="s2"> ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Với sp này, bên mình đang có khuyến mãi: </span><span class="si">{promotion}</span><span class="s2"> b nhé&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hình ảnh sp đây ạ, mời bãn em nhé&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Link sp đây ạ, mời bạn tham khảo ạ&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">request_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bạn muốn sp xuất xứ ở đâu ạ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bạn cần sp sx ở nước nào ạ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Dạ, bên mình có nhiều loai, bạn muốn sp sản xuất ở đâu ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;bạn cần mua sp trong khoảng giá nào ạ?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bạn muốn sản phẩm với giá như thế nào ạ?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;kích thước sp bạn cần là bao nhiêu ạ?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kích thước b muốn ntn ạ?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;B muốn sp có size như thế nào ạ?&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B muốn sản phẩm nặng bn ạ?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;B cần sp với cân năng ntn ạ?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;b cần sp giành cho bé bao nhiêu tuổi ạ?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bạn cần sp của nhãn hiệu nào ạ?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Nhãn hiệu sp bạn đang tìm kiếm là gì ạ?&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B đang kiếm sp màu gì ạ?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;B muốn sp màu gì ạ?&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B cần sản phẩm có thời gian bảo hành ntn ạ?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B đang kiếm sp với chất liệu gì ạ?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B muốn sp với chương trình khuyến mãi ntn a?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B đang kiếm sản phẩm nảo ạ?&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">deny_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xin lỗi, bên mình không còn hàng ạ&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Rât tiếc, sp hàng </span><span class="si">{origin}</span><span class="s2"> bên mình ko còn hàng ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, sp này ko có mức giá </span><span class="si">{price}</span><span class="s2"> bạn ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;xin lỗi, sp kích thước </span><span class="si">{size}</span><span class="s2"> bên mình đã hết hàng ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;xin lỗi, sp với cân nặng </span><span class="si">{weight}</span><span class="s2"> bên mình đang hết hàng ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Rất tiếc, sp giành cho trẻ </span><span class="si">{age_of_use}</span><span class="s2"> bên mình ko có hàng ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, hàng </span><span class="si">{brand}</span><span class="s2"> bên mình ko có ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Màu </span><span class="si">{color}</span><span class="s2"> bên mình đang hết hàng ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bên mình ko bảo hành </span><span class="si">{guarantee}</span><span class="s2"> nhé b&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;chất liệu </span><span class="si">{material}</span><span class="s2"> bên mình không còn hàng ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;sp này hiện ko có chương trình khuyên mãi </span><span class="si">{promotion}</span><span class="s2"> nhé b&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bên mình ko có </span><span class="si">{object_type}</span><span class="s2"> b ạ&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;color;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> bên mình ko có màu </span><span class="si">{color}</span><span class="s2"> bạn ạ&quot;</span>
+    <span class="p">]</span>
+
+<span class="p">}</span>
+<span class="n">not_sure_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xin lỗi, minh ko rõ bạn cần sản phẩm gì ạ&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, xuất xứ sp bạn cung cấp không có trong dữ liệu của shop. &quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, mức giá sp bạn cung cấp không có trong dữ liệu của shop. &quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, kíh thước sản phẩm bạn cung cấp không có trong dữ liệu của shop. &quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi,sp với cân nặng bạn cung cấp không có trong dữ liệu của shop. &quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, lứa tuổi sử dụng sản phẩm bạn cung cấp không có trong dữ liệu của shop. &quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, nhãn hiệu bạn cung cấp không có trong dữ liệu của shop.&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, màu sản phẩm bạn cung cấp không có trong dữ liệu của shop.&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, chất liệu sản phẩm bạn cung cấp không có trong dữ liệu của shop.&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, mức khuyến mãi sản phẩm bạn cung cấp không có trong dữ liệu của shop.&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Xin lỗi, mình chưa rõ sản phẩm bạn đang tìm kiếm là gì.&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+<span class="n">ask_confirm_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bên mình đang có nhiều sản phẩm xuất xứ từ nhiều nước khác nhau, b muốn loại nào dưới đây ạ: </span><span class="si">{origin}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Với sp này bên mình có nhiều mức giá, mời bạn chọn mức giá mong muốn: </span><span class="si">{price}</span><span class="s2">?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B muốn sp với kích thước nào sao đây ạ: </span><span class="si">{size}</span><span class="s2">?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bạn muốn sp với cân nặng ntn dưới đây ạ: </span><span class="si">{weight}</span><span class="s2">?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;SP này bên mình có cho những lứa tuổi sau, bạn muốn loại nào ạ: </span><span class="si">{age_of_use}</span><span class="s2">?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Bạn muốn sp của nhãn hiệu nào dưới đây ạ: </span><span class="si">{brand}</span><span class="s2">?&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B muốn sp màu nào dưới đây ạ: </span><span class="si">{color}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B muốn sp có thời gian bảo hành ntn dưới đây a: </span><span class="si">{guarantee}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Ban cần sp với chất liệu nào ạ, bên mình đang có: </span><span class="si">{material}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;B muốn sp với chương trình khuyến mãi ntn a?, Bên mình đang có 1 số chương trinh km: </span><span class="si">{promotion}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Có phải bạn đang kiếm 1 trong những sản phẩm dưới đây k ạ: </span><span class="si">{object_type}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+<span class="n">agree_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="s2">&quot;dạ có ạ&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp bên mình sx từ: </span><span class="si">{origin}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp bên mình có giá: </span><span class="si">{price}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp có kích thươc: </span><span class="si">{size}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp bên mình có loại: </span><span class="si">{weight}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp bên mình có thể dùng cho lứa tuổi: </span><span class="si">{age_of_use}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp bên mình còn nhãn hàng: </span><span class="si">{brand}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, Bên mình còn màu: </span><span class="si">{color}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, bên mình bảo hành: </span><span class="si">{guarantee}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, sp bên mình có chất liệu: </span><span class="si">{material}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, các chương trinh khuyến mãi bên mình cho sp này là: </span><span class="si">{promotion}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Dạ có ạ, 1 số sp bên mình: </span><span class="si">{object_type}</span><span class="s2">&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+<span class="n">INFORM_BEGINS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;xuất&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm &quot;</span><span class="p">,</span> <span class="s2">&quot;sp được &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng ạ, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;sx&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm &quot;</span><span class="p">,</span> <span class="s2">&quot;sp được &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng ạ, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;bé&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm này &quot;</span><span class="p">,</span> <span class="s2">&quot;với sp này thì &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;trẻ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm này &quot;</span><span class="p">,</span> <span class="s2">&quot;với sp này thì &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;cho&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm này &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp giành &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;nơi&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm có &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng ạ, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;giá&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sản phẩm có &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;sp có &quot;</span><span class="p">,</span> <span class="s2">&quot;Shop đang bán với &quot;</span><span class="p">,</span> <span class="s2">&quot;Bên mình đang bán với &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;bên&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;lứa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;hiện&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;màu&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp có &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;có&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;hiện sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">,</span> <span class="s2">&quot;sản phẩm &quot;</span><span class="p">,</span> <span class="s2">&quot;Sản phẩm &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;kích&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;sp có &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này có &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;sp có &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này có &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;độ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp có &quot;</span><span class="p">,</span> <span class="s2">&quot;sp dành cho bé ở &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;giành&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;của&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;nặng&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;cân&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;được&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;sẽ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này &quot;</span><span class="p">,</span> <span class="s2">&quot;cái này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;chất&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này có &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp được làm từ &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, sp này đang có &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, sp có &quot;</span><span class="p">,</span> <span class="s2">&quot;sp này đang có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dạ, &quot;</span><span class="p">,</span> <span class="s2">&quot;vâng, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;mời&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;vâng, &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;ảnh&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;vâng, &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;vâng, &quot;</span><span class="p">,</span> <span class="s2">&quot;dạ, &quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">OBJECT_TYPE_INFORM</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;xuất&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> được &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;sx&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> được &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;bé&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> cho &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;trẻ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> dành cho &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> cho &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;cho&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> giành &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;nơi&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;giá&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;bên&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;lứa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> giành cho &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;hiện&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;màu&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;có&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;kích&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;độ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> dành cho &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> cho &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;giành&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;của&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;nặng&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;cân&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;được&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;sẽ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> này &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;chất&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> đang có &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> có &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2"> đang &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;mời&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;đây là </span><span class="si">{object_type}</span><span class="s2"> bên mình &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;ảnh&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;đây là </span><span class="si">{object_type}</span><span class="s2"> bên mình, mời bạn xem &quot;</span><span class="p">],</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;đây là </span><span class="si">{object_type}</span><span class="s2"> bên mình, mời bạn xem &quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">CONNECTOR</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="s2">&quot; và &quot;</span><span class="p">]</span>
+<span class="n">ENDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot; nhé bạn!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; bạn ạ!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; bạn nhé!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; ạ&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; khách nhé&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; b nhé&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; nhé&quot;</span><span class="p">,</span>
+    <span class="s2">&quot; nhé ạ&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ENDS_WITH_LINK</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;&quot;</span>
+<span class="p">]</span>
+<span class="n">attrs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;age_of_use&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;guarantee&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;material&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;promotion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;object_type&quot;</span><span class="p">]</span>
+
+
+<span class="c1"># @click.command()</span>
+<span class="c1"># @click.option(&#39;-i&#39;, type=int, default=0)</span>
+<span class="c1"># def gen_template(slots, template_data):</span>
+<span class="c1">#     sentence = []</span>
+<span class="c1">#     for s in slots:</span>
+<span class="c1">#         sentence += template_data[s]</span>
+<span class="c1">#     return sentence</span>
+
+
+<div class="viewcode-block" id="gen_template_request_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_request_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_request_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">sentence</span> <span class="o">+=</span> <span class="n">request_data</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="gen_template_ask_confirm_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_ask_confirm_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_ask_confirm_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">sentence</span> <span class="o">+=</span> <span class="n">ask_confirm_data</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="gen_template_deny_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_deny_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_deny_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">sentence</span> <span class="o">+=</span> <span class="n">deny_data</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="gen_template_not_sure_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_not_sure_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_not_sure_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">sentence</span> <span class="o">+=</span> <span class="n">not_sure_data</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="gen_template_inform_single_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_inform_single_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_inform_single_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">sentence</span> <span class="o">+=</span> <span class="n">inform_single_data</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="gen_template_not_sure_confirm_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_not_sure_confirm_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_not_sure_confirm_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">sentence</span> <span class="o">+=</span> <span class="n">not_sure_confirm_data</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="gen_template_inform_sentence"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.gen_template_inform_sentence">[docs]</a><span class="k">def</span> <span class="nf">gen_template_inform_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">slots_permutations</span> <span class="o">=</span> <span class="n">permutation</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gen_template_inform_single_sentence</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">slots</span> <span class="ow">in</span> <span class="n">slots_permutations</span><span class="p">:</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">pre_slot</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="s2">&quot;object_type&quot;</span> <span class="ow">in</span> <span class="n">slots</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">sentence</span> <span class="o">=</span> <span class="n">begin_handler</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="s2">&quot;link&quot;</span> <span class="ow">in</span> <span class="n">slots</span> <span class="ow">and</span> <span class="s2">&quot;image&quot;</span> <span class="ow">in</span> <span class="n">slots</span> <span class="ow">and</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;link&#39;</span><span class="p">:</span>
+                                <span class="n">sentence</span> <span class="o">+=</span> <span class="s2">&quot;, còn đây là link: </span><span class="si">{link}</span><span class="s2">&quot;</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">sentence</span> <span class="o">+=</span> <span class="s2">&quot;, còn đây là hình ảnh sp: </span><span class="si">{image}</span><span class="s2">&quot;</span>
+                        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                            <span class="n">sentence</span> <span class="o">+=</span> <span class="s2">&quot;. Đây là link và hình ảnh của sp mời bạn tham khảo: </span><span class="si">{link}</span><span class="s2">, </span><span class="si">{image}</span><span class="s2">&quot;</span>
+                        <span class="k">break</span>
+                    <span class="k">elif</span> <span class="n">idx</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">sentence</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">CONNECTOR</span><span class="p">)</span><span class="si">}{</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">inform_data</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">pre_slot</span> <span class="o">==</span> <span class="s2">&quot;object_type&quot;</span><span class="p">:</span>
+                            <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{object_type}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                            <span class="n">sentence</span> <span class="o">+=</span> <span class="n">object_type_handler</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                            <span class="c1"># sentence += f&quot; {random.choice(inform_data[s])}&quot;</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">sentence</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;, </span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">inform_data</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="k">pass</span>
+                    <span class="n">pre_slot</span> <span class="o">=</span> <span class="n">s</span>
+                <span class="k">if</span> <span class="s2">&quot;link&quot;</span> <span class="ow">in</span> <span class="n">slots</span> <span class="ow">or</span> <span class="s2">&quot;image&quot;</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+                    <span class="n">sentence</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ENDS_WITH_LINK</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">sentence</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ENDS</span><span class="p">)</span>
+                <span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sentences</span></div>
+
+
+<div class="viewcode-block" id="begin_handler"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.begin_handler">[docs]</a><span class="k">def</span> <span class="nf">begin_handler</span><span class="p">(</span><span class="n">slot</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle begin</span>
+<span class="sd">    Args:</span>
+<span class="sd">        slot:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">next_sentence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">inform_data</span><span class="p">[</span><span class="n">slot</span><span class="p">])</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">next_sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">first_token</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">first_token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">INFORM_BEGINS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">SyntaxError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Begin not found: </span><span class="si">{</span><span class="n">first_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">begins_text</span> <span class="o">=</span> <span class="n">INFORM_BEGINS</span><span class="p">[</span><span class="n">first_token</span><span class="p">]</span>
+    <span class="n">begin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">begins_text</span><span class="p">)</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">next_sentence</span>
+
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="object_type_handler"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.object_type_handler">[docs]</a><span class="k">def</span> <span class="nf">object_type_handler</span><span class="p">(</span><span class="n">slot</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle begin</span>
+<span class="sd">    Args:</span>
+<span class="sd">        slot:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">next_sentence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">inform_data</span><span class="p">[</span><span class="n">slot</span><span class="p">])</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">next_sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">first_token</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">first_token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">OBJECT_TYPE_INFORM</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">SyntaxError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Begin not found: </span><span class="si">{</span><span class="n">first_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">begins_text</span> <span class="o">=</span> <span class="n">OBJECT_TYPE_INFORM</span><span class="p">[</span><span class="n">first_token</span><span class="p">]</span>
+    <span class="n">begin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">begins_text</span><span class="p">)</span>
+
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">next_sentence</span>
+    <span class="k">return</span> <span class="n">sentence</span></div>
+
+
+<div class="viewcode-block" id="remove_duplicate"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.remove_duplicate">[docs]</a><span class="k">def</span> <span class="nf">remove_duplicate</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">new_slots</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">)</span>
+    <span class="n">new_slots</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">new_slots</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">new_slots</span></div>
+
+
+<div class="viewcode-block" id="move_front"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.move_front">[docs]</a><span class="k">def</span> <span class="nf">move_front</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">slot_move</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">slot_move</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">slots</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">slots</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">slots</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">slot_move</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="move_back"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.move_back">[docs]</a><span class="k">def</span> <span class="nf">move_back</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">slot_move</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">slot_move</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+        <span class="n">slots</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">),</span> <span class="n">slots</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">slots</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">slot_move</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="permutation"><a class="viewcode-back" href="../../../../comet/comet.cli.template_generator_nlg.html#comet.cli.template_generator_nlg.sys_sample_template_backup.permutation">[docs]</a><span class="k">def</span> <span class="nf">permutation</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+    <span class="n">new_slots</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">slots_permutation</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">permutations</span><span class="p">(</span><span class="n">slots</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">slots</span> <span class="ow">in</span> <span class="n">slots_permutation</span><span class="p">:</span>
+        <span class="n">slots</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;object_type&quot;</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+            <span class="n">move_front</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s2">&quot;object_type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;price&quot;</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+            <span class="n">move_back</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;link&quot;</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+            <span class="n">move_back</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s2">&quot;link&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;image&quot;</span> <span class="ow">in</span> <span class="n">slots</span><span class="p">:</span>
+            <span class="n">move_back</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">)</span>
+        <span class="n">new_slots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">remove_duplicate</span><span class="p">(</span><span class="n">new_slots</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># print(gen_template_inform_sentence([&quot;color&quot;, &quot;object_type&quot;, &quot;brand&quot;]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">permutation</span><span class="p">([</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;object_type&quot;</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">]))</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

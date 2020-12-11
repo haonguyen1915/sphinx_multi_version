@@ -1,0 +1,46 @@
+comet.cli.template\_generator\_nlg package
+==========================================
+
+Submodules
+----------
+
+comet.cli.template\_generator\_nlg.nlg\_generator module
+--------------------------------------------------------
+
+.. automodule:: comet.cli.template_generator_nlg.nlg_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.template\_generator\_nlg.sys\_sample\_template module
+---------------------------------------------------------------
+
+.. automodule:: comet.cli.template_generator_nlg.sys_sample_template
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.template\_generator\_nlg.sys\_sample\_template\_backup module
+-----------------------------------------------------------------------
+
+.. automodule:: comet.cli.template_generator_nlg.sys_sample_template_backup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.template\_generator\_nlg.usr\_sample\_template module
+---------------------------------------------------------------
+
+.. automodule:: comet.cli.template_generator_nlg.usr_sample_template
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.cli.template_generator_nlg
+   :members:
+   :undoc-members:
+   :show-inheritance:

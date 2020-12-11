@@ -1,0 +1,919 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.controller.conversational_agent.conversational_single_agent &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.controller.conversational_agent.conversational_single_agent</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.controller.conversational_agent.conversational_single_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">sanic</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">response</span>
+<span class="kn">from</span> <span class="nn">sanic.request</span> <span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">sanic.response</span> <span class="kn">import</span> <span class="n">HTTPResponse</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">JSONDecodeError</span>
+<span class="kn">from</span> <span class="nn">comet.controller.conversational_agent.conversational_agent</span> <span class="kn">import</span> <span class="n">ConversationalAgent</span>
+<span class="kn">from</span> <span class="nn">comet.environment.user_simulator.user_simulator</span> <span class="kn">import</span> <span class="n">UserSimulator</span>
+<span class="kn">from</span> <span class="nn">comet.environment.reward_function</span> <span class="kn">import</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">BasicReward</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.dialogue_recoder</span> <span class="kn">import</span> <span class="n">DialogueRecorder</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.action</span> <span class="kn">import</span> <span class="n">DialogueAct</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.lock_store</span> <span class="kn">import</span> <span class="n">LockStore</span>
+<span class="kn">from</span> <span class="nn">comet.utilities</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.constants</span> <span class="kn">import</span> <span class="n">DF_SYS_ACT</span>
+<span class="kn">from</span> <span class="nn">comet.agent.nlu.nlu</span> <span class="kn">import</span> <span class="n">NLU</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.nlg.nlg</span> <span class="kn">import</span> <span class="n">NLG</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialogue_featurizers.state_featurizer</span> <span class="kn">import</span> <span class="n">StateFeaturizer</span>
+<span class="kn">from</span> <span class="nn">comet.domain.ontology</span> <span class="kn">import</span> <span class="n">Ontology</span>
+<span class="kn">from</span> <span class="nn">comet.domain.domain</span> <span class="kn">import</span> <span class="n">Domain</span>
+<span class="kn">from</span> <span class="nn">comet.domain.database.database</span> <span class="kn">import</span> <span class="n">Database</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialogue_manager.dialogue_manager</span> <span class="kn">import</span> <span class="n">DialogueManager</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">helpers</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">decorator</span><span class="p">,</span> <span class="n">load_class</span><span class="p">,</span> <span class="n">load_module</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.cv.cv_extractor</span> <span class="kn">import</span> <span class="n">CVExtractor</span>
+<span class="kn">from</span> <span class="nn">comet.domain.constants</span> <span class="kn">import</span> <span class="n">ACT_INFORM</span>
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ConversationalSingleAgent"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent">[docs]</a><span class="k">class</span> <span class="nc">ConversationalSingleAgent</span><span class="p">(</span><span class="n">ConversationalAgent</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Essentially the dialogue system. Will be able to interact with:</span>
+
+<span class="sd">    - Simulated Users via:</span>
+<span class="sd">        - dialogue Acts</span>
+<span class="sd">        - Text</span>
+
+<span class="sd">    - Human Users via:</span>
+<span class="sd">        - Text</span>
+<span class="sd">    - parser</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the internal structures of this agent.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            configuration: a dictionary representing the configuration file</span>
+<span class="sd">            **kwargs:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">ConversationalSingleAgent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="n">configuration</span>
+
+        <span class="c1"># dialogue statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_exit_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_episode</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">any_sender_terminated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># self.dialogue_turn = 0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_successful_dialogues</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_task_success</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_rewards</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_dialogue_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># True values here would imply some default modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">USE_USR_SIMULATOR</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">USER_HAS_INITIATIVE</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">SAVE_LOG</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SHOW_ACT</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># self.SAVE_INTERVAL = 10000</span>
+
+        <span class="c1"># The dialogue will terminate after MAX_TURNS (this agent will issue</span>
+        <span class="c1"># a bye() dialogue act.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">DEFAULT_BASE_MODELS_PATH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Ontology</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Database</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Domain</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DialogueManager</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">UserSimulator</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NLU</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NLG</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv_extractor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CVExtractor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">StateFeaturizer</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reward_func</span><span class="p">:</span> <span class="n">Reward</span> <span class="o">=</span> <span class="n">BasicReward</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Text</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_store</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">LockStore</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bhttps?://\S+\b&#39;</span><span class="p">)</span>
+        <span class="n">str_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;STORAGE&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span> <span class="o">=</span> <span class="n">DialogueRecorder</span><span class="p">(</span><span class="n">storage_config</span><span class="o">=</span><span class="n">str_config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_config_sanity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_from_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">)</span>
+            <span class="c1"># True if at least one module is training</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">us_has_initiative</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">USER_HAS_INITIATIVE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IS_TRAINING</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">training</span> <span class="ow">or</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">training</span> <span class="ow">or</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">training</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IS_TESTING</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">testing</span> <span class="ow">or</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">testing</span> <span class="ow">or</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">testing</span>
+        <span class="c1"># TODO: Handle this properly - get reward function type from config</span>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.initialize"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the conversational agent based on settings in the</span>
+<span class="sd">        configuration file.</span>
+
+<span class="sd">        :return: Nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_episode</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_successful_dialogues</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_task_success</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_rewards</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Initialize NLU and NLG</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;initialize </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;initialize </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;initialize </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.load"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Load all components</span>
+        <span class="n">version_model</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span> <span class="s2">&quot;v0.3.0&quot;</span><span class="p">)</span>
+        <span class="n">base_models_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models_path</span><span class="p">,</span> <span class="n">version_model</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> Load all model from base </span><span class="si">{</span><span class="n">base_models_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">base_models_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_models_dir</span><span class="p">,</span> <span class="s2">&quot;nlu&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_models_dir</span><span class="p">,</span> <span class="s2">&quot;nlg&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_models_dir</span><span class="p">,</span> <span class="s2">&quot;nlg&quot;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.start_dialogue"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.start_dialogue">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">start_dialogue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usr_message</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Start a dialogue, Perform initial dialogue turn</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sender_id:</span>
+<span class="sd">            usr_message (): optional args</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Init DST</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Get DST by </span><span class="si">{</span><span class="n">sender_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">tracker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dialogue_state_tracker</span><span class="p">(</span><span class="n">sender_id</span><span class="p">)</span>
+        <span class="c1"># If use user simulator, initialize it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">any_sender_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">USE_USR_SIMULATOR</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">nl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">agenda</span><span class="p">)</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">nl</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Goal:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">goal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
+
+        <span class="c1"># If the user not say first. The system will send welcome message to the user</span>
+        <span class="c1"># If has US then US will receive sys Act and update internal state,</span>
+        <span class="c1"># agenda. And return reward</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">USER_HAS_INITIATIVE</span><span class="p">:</span>
+            <span class="c1"># Init the first system response is welcome</span>
+            <span class="n">sys_response</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueAct</span><span class="p">(</span><span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">,</span> <span class="p">[])]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generate_nature_language</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">sys_response</span><span class="p">)</span>
+
+            <span class="c1"># Update dialogue state with welcome diact</span>
+            <span class="n">tracker</span><span class="o">.</span><span class="n">update_state_sys_acts</span><span class="p">(</span><span class="n">sys_response</span><span class="p">,</span> <span class="n">sys_response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.continue_dialogue"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.continue_dialogue">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">continue_dialogue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform next dialogue turn.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            user_message (): The message from user, if it&#39;s None, will get from cmd</span>
+<span class="sd">            sender_id: ()</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># user_messages = self._reformat_user_message(user_messages)</span>
+        <span class="c1"># Init DST</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock_store</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="n">sender_id</span><span class="p">):</span>
+            <span class="c1"># user_utter = user_messages[&#39;text&#39;] if user_messages else None</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Get dialogue state tracker from sender id </span><span class="si">{</span><span class="n">sender_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">tracker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dialogue_state_tracker</span><span class="p">(</span><span class="n">sender_id</span><span class="p">)</span>
+
+            <span class="c1"># Nature language handler</span>
+            <span class="n">usr_response</span><span class="p">,</span> <span class="n">user_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_message</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">user_message</span><span class="p">)</span>
+
+            <span class="c1"># Extract information from</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_extractor</span><span class="p">:</span>
+                <span class="n">cv_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_extractor</span><span class="o">.</span><span class="n">generate_output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_url</span><span class="p">(</span><span class="n">user_message</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">cv_result</span><span class="p">:</span>
+                    <span class="n">usr_response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DialogueAct</span><span class="p">(</span><span class="n">ACT_INFORM</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cv_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Receive and update dst from user response</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">receive_input</span><span class="p">(</span>
+                <span class="n">tracker</span><span class="p">,</span>
+                <span class="n">usr_response</span><span class="p">,</span>
+                <span class="n">user_message</span><span class="p">,</span>
+                <span class="n">cv_result</span><span class="p">)</span>
+
+            <span class="c1"># System response and update with user</span>
+            <span class="n">sys_response</span><span class="p">,</span> <span class="n">raw_sys_response</span><span class="p">,</span> <span class="n">is_exploration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">generate_output</span><span class="p">(</span>
+                <span class="n">tracker</span><span class="p">)</span>
+
+            <span class="c1"># Convert system response to nature language</span>
+            <span class="n">sys_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_nature_language</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">sys_response</span><span class="p">)</span>
+
+            <span class="c1"># User simulator receive response from system. Update internal state, agenda</span>
+            <span class="c1"># And return a feedback for agent</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_sys_response</span><span class="p">(</span>
+                <span class="n">tracker</span><span class="p">,</span>
+                <span class="n">sys_response</span><span class="p">,</span>
+                <span class="n">sys_utterance</span><span class="o">=</span><span class="n">sys_messages</span><span class="p">,</span>
+                <span class="n">raw_sys_response</span><span class="o">=</span><span class="n">raw_sys_response</span><span class="p">,</span>
+                <span class="n">is_exploration</span><span class="o">=</span><span class="n">is_exploration</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span><span class="p">(</span><span class="n">tracker</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">parser_from_tracker</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">dialogues</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_convert_dialogues_to_memory</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">dialogues</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+                <span class="n">tracker</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+                <span class="n">tracker</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">any_sender_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">sys_messages</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_reformat_user_message</span><span class="p">(</span><span class="n">usr_message</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            usr_message:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">usr_message</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">usr_message</span><span class="p">,</span> <span class="n">Text</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">usr_message</span><span class="p">}</span>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.generate_nature_language"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.generate_nature_language">[docs]</a>    <span class="k">def</span> <span class="nf">generate_nature_language</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">dialogue_act</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Receive a dialogue act and convert to nature language</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker:</span>
+<span class="sd">            dialogue_act:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">generate_output</span><span class="p">(</span>
+                <span class="n">dialogue_act</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">tracker</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Module self.nlg is None, please check it again&quot;</span><span class="p">)</span>
+
+        <span class="n">_logger</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">dialogue_act</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">SHOW_ACT</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">nl</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">helpers</span><span class="o">.</span><span class="n">reformat_dict</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
+                       <span class="sa">f</span><span class="s2">&quot;--&gt; </span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">dialogue_act</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">nl</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">helpers</span><span class="o">.</span><span class="n">reformat_dict</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.supervised_train"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.supervised_train">[docs]</a>    <span class="k">def</span> <span class="nf">supervised_train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">is_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_episode</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_interval</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">training</span> <span class="ow">and</span> <span class="n">is_train</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">testing</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+
+        <span class="c1"># Dialogue manager will handle DST and POLICY training</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">training</span> <span class="ow">and</span> <span class="n">is_train</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">train_dialogues</span><span class="p">,</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">eval_dialogues</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">testing</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">test_dialogues</span><span class="p">)</span>
+
+        <span class="c1"># Handle nlg training</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">training</span> <span class="ow">and</span> <span class="n">is_train</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">train_dialogues</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">eval_dialogues</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">testing</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">test_dialogues</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.handle_message"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.handle_message">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;DialogueAct&quot;</span><span class="p">],</span> <span class="n">Dict</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle message from user. If the user_message is string. Return user_message.</span>
+<span class="sd">        If the user_message is payload: /intent{slot:value} -&gt; return DialogueAct</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker:</span>
+<span class="sd">            user_message (Dict): The user_message from user</span>
+
+<span class="sd">        Returns: user_message or [DialogueAct]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># tracker = self._get_dialogue_state_tracker(sender_id)</span>
+
+        <span class="c1"># Get user semantic directly from user simulator</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">USE_USR_SIMULATOR</span><span class="p">:</span>
+            <span class="n">usr_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">respond</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span>
+                <span class="n">usr_utterance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">generate_output</span><span class="p">(</span><span class="n">usr_response</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">usr_utterance</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">usr_response</span><span class="p">])</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">SHOW_ACT</span><span class="p">:</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">nl</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;USER: </span><span class="si">{</span><span class="n">usr_utterance</span><span class="si">}</span><span class="s2"> --&gt; </span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">usr_response</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">nl</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;USER: </span><span class="si">{</span><span class="n">usr_utterance</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Get the user message, if user_message is not provided, will get from commandline.</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">user_message</span><span class="p">:</span>
+                <span class="n">usr_utterance</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;USER: &#39;</span><span class="p">)</span>
+                <span class="n">user_message</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">usr_utterance</span><span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">user_message</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;/quit&quot;</span><span class="p">,</span> <span class="s2">&quot;/q&quot;</span><span class="p">,</span> <span class="s2">&quot;/exit&quot;</span><span class="p">,</span> <span class="s2">&quot;/stop&quot;</span><span class="p">]:</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Terminated the conversation&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">force_exit_all</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="c1"># Then convert raw message into semantic</span>
+            <span class="n">usr_response</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">user_message</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+                <span class="n">usr_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_payload_from_message</span><span class="p">(</span><span class="n">user_message</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">usr_response</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">usr_response</span><span class="p">,</span> <span class="n">Text</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="p">:</span>
+                    <span class="n">usr_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">process_input</span><span class="p">(</span>
+                        <span class="n">user_message</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">EnvironmentError</span><span class="p">(</span>
+                        <span class="s1">&#39;agent: No nlu defined for &#39;</span>
+                        <span class="s1">&#39;text-based interaction!&#39;</span>
+                    <span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;USER: </span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">usr_response</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">usr_response</span> <span class="ow">and</span> <span class="n">usr_response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">usr_act_set</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intent -</span><span class="si">{</span><span class="n">usr_response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span><span class="si">}</span><span class="s2">- is not defined in domain&#39;s &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;usr_act_set: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">usr_act_set</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">usr_response</span><span class="p">,</span> <span class="n">user_message</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.find_all"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.find_all">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">find_all</span><span class="p">(</span><span class="n">a_str</span><span class="p">,</span> <span class="n">sub</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">a_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">yield</span> <span class="n">start</span>
+            <span class="n">start</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>  <span class="c1"># use start += 1 to find overlapping matches</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.extract_payload_from_message"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.extract_payload_from_message">[docs]</a>    <span class="k">def</span> <span class="nf">extract_payload_from_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meg</span><span class="p">:</span> <span class="n">Text</span><span class="p">):</span>
+        <span class="n">meg</span> <span class="o">=</span> <span class="n">meg</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">dialogue_acts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">meg</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">all_indices</span><span class="p">:</span>
+            <span class="n">max_idx</span> <span class="o">=</span> <span class="n">meg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+            <span class="n">max_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">meg</span><span class="p">)</span> <span class="k">if</span> <span class="n">max_idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">max_idx</span>
+            <span class="n">active_idx</span> <span class="o">=</span> <span class="n">meg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">max_idx</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">active_idx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">intent</span> <span class="o">=</span> <span class="n">meg</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">active_idx</span><span class="p">]</span>
+
+                <span class="n">slot_value_pairs</span> <span class="o">=</span> <span class="n">meg</span><span class="p">[</span><span class="n">active_idx</span><span class="p">:</span> <span class="n">meg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">intent</span> <span class="o">=</span> <span class="n">meg</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">max_idx</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">)</span>
+                <span class="n">slot_value_pairs</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">parsed_entities</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">slot_value_pairs</span><span class="p">)</span>
+                <span class="n">dialogue_acts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DialogueAct</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">parsed_entities</span><span class="p">))</span>
+            <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;can&#39;t parse payload message: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dialogue_acts</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.blueprint"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.blueprint">[docs]</a>    <span class="k">def</span> <span class="nf">blueprint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sanic blueprint for conv api</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">conv_api</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">&quot;api&quot;</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;api&quot;</span><span class="p">)</span>
+
+        <span class="nd">@conv_api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/dst/&lt;conv_id&gt;&quot;</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">get_dst</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">conv_id</span><span class="p">:</span> <span class="n">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPResponse</span><span class="p">:</span>
+            <span class="n">tracker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dialogue_state_tracker</span><span class="p">(</span><span class="n">conv_id</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">tracker</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+
+        <span class="nd">@conv_api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/dst&quot;</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">get_dst_list</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HTTPResponse</span><span class="p">:</span>
+            <span class="n">tracker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dialogue_state_tracker</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">tracker</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+        <span class="k">return</span> <span class="n">conv_api</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.terminated"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.terminated">[docs]</a>    <span class="k">def</span> <span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if this agent is at a terminal state.</span>
+
+<span class="sd">        :return: True or False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">tracker</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">()</span> <span class="ow">or</span> <span class="n">tracker</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">turn</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_turns</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_dialogue_state_tracker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender_id</span><span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;sender_id&#39;</span><span class="p">:</span> <span class="n">sender_id</span><span class="p">,</span>
+            <span class="s1">&#39;ontology&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="p">,</span>
+            <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="s1">&#39;DST&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+            <span class="n">DST</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;DST&#39;</span><span class="p">]</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">DST</span><span class="p">[</span><span class="s2">&quot;arguments&quot;</span><span class="p">])</span>
+            <span class="bp">cls</span> <span class="o">=</span> <span class="n">load_class</span><span class="p">(</span><span class="n">DST</span><span class="p">[</span><span class="s1">&#39;package&#39;</span><span class="p">],</span> <span class="n">DST</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="c1"># patch dst&#39;s internal data</span>
+            <span class="k">if</span> <span class="s1">&#39;STORAGE&#39;</span> <span class="ow">in</span> <span class="n">DST</span><span class="p">:</span>
+                <span class="n">STORAGE</span> <span class="o">=</span> <span class="n">DST</span><span class="p">[</span><span class="s1">&#39;STORAGE&#39;</span><span class="p">]</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">load_class</span><span class="p">(</span><span class="n">STORAGE</span><span class="p">[</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                                      <span class="n">STORAGE</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])(</span><span class="o">**</span><span class="n">STORAGE</span><span class="p">[</span><span class="s1">&#39;arguments&#39;</span><span class="p">])</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">use_in_memory</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># dst = load_module(DST[&#39;package&#39;], DST[&#39;class&#39;], args)</span>
+            <span class="c1"># dst.init_parameters(args)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Missing DST configuration&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span>
+
+    <span class="k">def</span> <span class="nf">_extract_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract url from text</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_regex</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">url</span> <span class="ow">and</span> <span class="n">url</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+                <span class="n">urls</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">url</span><span class="p">])</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.evaluate_sys_response"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.evaluate_sys_response">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate_sys_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                              <span class="n">tracker</span><span class="p">,</span>
+                              <span class="n">sys_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">],</span>
+                              <span class="n">sys_utterance</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">raw_sys_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">is_exploration</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        User simulator update when receive the response from system</span>
+<span class="sd">            + Update the simulator&#39;s internal state.</span>
+<span class="sd">                - curr_patience</span>
+<span class="sd">                - prev_system_acts</span>
+<span class="sd">                - Push agenda with what we have from system response</span>
+<span class="sd">            + Environment give a reward for agent</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker</span>
+<span class="sd">            sys_response (List[DialogueAct]):</span>
+<span class="sd">            sys_utterance</span>
+<span class="sd">            raw_sys_response:</span>
+<span class="sd">            is_exploration:</span>
+
+<span class="sd">        Returns (tuple): a tuple of rew, success, task_success</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">USE_USR_SIMULATOR</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">receive_input</span><span class="p">(</span><span class="n">sys_response</span><span class="p">)</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward_func</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">tracker</span><span class="p">),</span>
+                <span class="n">sys_response</span><span class="p">,</span>
+                <span class="n">raw_sys_response</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span><span class="o">.</span><span class="n">goal</span>
+            <span class="p">)</span>
+            <span class="n">tracker</span><span class="o">.</span><span class="n">update_rewards</span><span class="p">(</span>
+                <span class="n">rew</span><span class="p">,</span>
+                <span class="n">success</span><span class="p">,</span>
+                <span class="n">task_success</span><span class="p">,</span>
+                <span class="n">sys_utterance</span><span class="o">=</span><span class="n">sys_utterance</span><span class="p">,</span>
+                <span class="n">is_exploration</span><span class="o">=</span><span class="n">is_exploration</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">task_success</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="n">tracker</span><span class="o">.</span><span class="n">update_rewards</span><span class="p">(</span>
+                <span class="n">rew</span><span class="p">,</span>
+                <span class="n">success</span><span class="p">,</span>
+                <span class="n">task_success</span><span class="p">,</span>
+                <span class="n">sys_utterance</span><span class="o">=</span><span class="n">sys_utterance</span><span class="p">,</span>
+                <span class="n">is_exploration</span><span class="o">=</span><span class="n">is_exploration</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rew</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">task_success</span></div>
+
+    <span class="k">def</span> <span class="nf">_convert_dialogues_to_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">dialogue</span> <span class="ow">in</span> <span class="n">dialogues</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">turn</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dialogue</span><span class="p">):</span>
+                <span class="c1"># if idx == len(dialogue) - 1:</span>
+                <span class="c1">#     break</span>
+                <span class="n">infos</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;eval_dialogues&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">eval_dialogues</span><span class="p">,</span>
+                    <span class="s2">&quot;is_exploratory&quot;</span><span class="p">:</span> <span class="n">turn</span><span class="o">.</span><span class="n">custom</span><span class="p">[</span><span class="s1">&#39;is_exploratory&#39;</span><span class="p">],</span>
+                    <span class="s2">&quot;time_elapsed&quot;</span><span class="p">:</span> <span class="n">turn</span><span class="o">.</span><span class="n">custom</span><span class="p">[</span><span class="s1">&#39;time_elapsed&#39;</span><span class="p">],</span>
+                    <span class="s2">&quot;raw_state&quot;</span><span class="p">:</span> <span class="n">turn</span><span class="o">.</span><span class="n">state</span><span class="p">,</span>
+                    <span class="s2">&quot;raw_action&quot;</span><span class="p">:</span> <span class="n">turn</span><span class="o">.</span><span class="n">action</span><span class="p">,</span>
+                    <span class="s2">&quot;raw_next_state&quot;</span><span class="p">:</span> <span class="n">turn</span><span class="o">.</span><span class="n">new_state</span><span class="p">,</span>
+                <span class="p">}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">update_replay_memory</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">encode_state</span><span class="p">(</span><span class="n">turn</span><span class="o">.</span><span class="n">state</span><span class="p">),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">encode_action</span><span class="p">(</span><span class="n">turn</span><span class="o">.</span><span class="n">action</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                    <span class="n">turn</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span><span class="o">.</span><span class="n">encode_state</span><span class="p">(</span><span class="n">turn</span><span class="o">.</span><span class="n">new_state</span><span class="p">),</span>
+                    <span class="n">turn</span><span class="o">.</span><span class="n">custom</span><span class="p">[</span><span class="s1">&#39;done&#39;</span><span class="p">],</span>
+                    <span class="o">**</span><span class="n">infos</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_config_sanity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot run cais without GENERAL settings!&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;interaction_mode&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot run cais without an &#39;</span>
+                             <span class="s1">&#39;interaction mode!&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot run cais without DIALOGUE settings!&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot run cais without at least &#39;</span>
+                             <span class="s1">&#39;one agent!&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.update_from_config"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.update_from_config">[docs]</a>    <span class="k">def</span> <span class="nf">update_from_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;GENERAL&#39;</span> <span class="ow">in</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="s2">&quot;models_path&quot;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;models_path&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ontology&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;domain&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s1">&#39;experience_logs&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]:</span>
+
+                <span class="n">dialogues_path</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;experience_logs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+                <span class="n">logs_args</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;experience_logs&#39;</span><span class="p">]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">logs_args</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">logs_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">set_path</span><span class="p">(</span><span class="n">dialogues_path</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">SAVE_LOG</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="s1">&#39;max_record&#39;</span> <span class="ow">in</span> <span class="n">logs_args</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">max_record</span> <span class="o">=</span> <span class="n">logs_args</span><span class="p">[</span><span class="s1">&#39;max_record&#39;</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">USE_USR_SIMULATOR</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;interaction_mode&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;simulation&#39;</span>
+
+        <span class="k">if</span> <span class="s1">&#39;DIALOGUE&#39;</span> <span class="ow">in</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="s1">&#39;initiative&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">USER_HAS_INITIATIVE</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">][</span><span class="s1">&#39;initiative&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s1">&#39;show_act&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">SHOW_ACT</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;DIALOGUE&#39;</span><span class="p">][</span><span class="s1">&#39;show_act&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="s1">&#39;AGENT&#39;</span> <span class="ow">in</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_turns</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_turns&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_turns</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">train_interval</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;train_interval&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_interval</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_interval</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;save_interval&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_interval</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_interval</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_interval</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_interval</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s1">&#39;RF&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reward_func</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;RF&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;RF&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;RF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;arguments&#39;</span><span class="p">,</span> <span class="p">{})</span>
+                <span class="p">)</span>
+            <span class="c1"># Dialogue manager settings</span>
+            <span class="k">if</span> <span class="s1">&#39;DM&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;DM&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;DM&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;DM&#39;</span><span class="p">][</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="c1"># NLU settings</span>
+            <span class="k">if</span> <span class="s1">&#39;NLU&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;NLU&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;NLU&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;NLU&#39;</span><span class="p">][</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="c1"># NLU settings</span>
+            <span class="k">if</span> <span class="s1">&#39;CV&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cv_extractor</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;CV&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;CV&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;CV&#39;</span><span class="p">][</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="c1"># NLG settings</span>
+            <span class="k">if</span> <span class="s1">&#39;NLG&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;NLG&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;NLG&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;NLG&#39;</span><span class="p">][</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;SF&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state_featurizer</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;SF&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;SF&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;SF&#39;</span><span class="p">][</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;LOCKSTORE&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lock_store</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;LOCKSTORE&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;LOCKSTORE&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;LOCKSTORE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;arguments&#39;</span><span class="p">,</span> <span class="p">{})</span>
+                <span class="p">)</span>
+                <span class="c1"># print(self.lock_store.red)</span>
+
+        <span class="c1"># User simulator settings</span>
+        <span class="k">if</span> <span class="s1">&#39;USER_SIMULATOR&#39;</span> <span class="ow">in</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;USER_SIMULATOR&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_simulator</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;USER_SIMULATOR&#39;</span><span class="p">][</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;USER_SIMULATOR&#39;</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;USER_SIMULATOR&#39;</span><span class="p">][</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.save"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender_id</span><span class="p">):</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2"> Save everything:&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">SAVE_LOG</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlu</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_manager</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlg</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ConversationalSingleAgent.save_record"><a class="viewcode-back" href="../../../../comet/comet.controller.conversational_agent.html#comet.controller.conversational_agent.conversational_single_agent.ConversationalSingleAgent.save_record">[docs]</a>    <span class="k">def</span> <span class="nf">save_record</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2"> Save record:&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">SAVE_LOG</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

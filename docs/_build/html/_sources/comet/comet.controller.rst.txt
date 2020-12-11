@@ -1,0 +1,38 @@
+comet.controller package
+========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.controller.conversational_agent
+
+Submodules
+----------
+
+comet.controller.controller module
+----------------------------------
+
+.. automodule:: comet.controller.controller
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.controller.generic\_controller module
+-------------------------------------------
+
+.. automodule:: comet.controller.generic_controller
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.controller
+   :members:
+   :undoc-members:
+   :show-inheritance:

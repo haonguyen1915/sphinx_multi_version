@@ -1,0 +1,39 @@
+comet.environment.user\_simulator package
+=========================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.environment.user_simulator.agenda_base_us
+   comet.environment.user_simulator.model_base_us
+
+Submodules
+----------
+
+comet.environment.user\_simulator.goal module
+---------------------------------------------
+
+.. automodule:: comet.environment.user_simulator.goal
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.environment.user\_simulator.user\_simulator module
+--------------------------------------------------------
+
+.. automodule:: comet.environment.user_simulator.user_simulator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.environment.user_simulator
+   :members:
+   :undoc-members:
+   :show-inheritance:

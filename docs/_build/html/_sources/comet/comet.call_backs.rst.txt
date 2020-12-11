@@ -1,0 +1,22 @@
+comet.call\_backs package
+=========================
+
+Submodules
+----------
+
+comet.call\_backs.call\_back module
+-----------------------------------
+
+.. automodule:: comet.call_backs.call_back
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.call_backs
+   :members:
+   :undoc-members:
+   :show-inheritance:

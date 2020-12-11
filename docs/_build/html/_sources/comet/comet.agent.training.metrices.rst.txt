@@ -1,0 +1,22 @@
+comet.agent.training.metrices package
+=====================================
+
+Submodules
+----------
+
+comet.agent.training.metrices.torch\_metric module
+--------------------------------------------------
+
+.. automodule:: comet.agent.training.metrices.torch_metric
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.training.metrices
+   :members:
+   :undoc-members:
+   :show-inheritance:

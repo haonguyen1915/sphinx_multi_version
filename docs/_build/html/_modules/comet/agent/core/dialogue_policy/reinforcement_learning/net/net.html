@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy.reinforcement_learning.net.net &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy.reinforcement_learning.net.net</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.dialogue_policy.reinforcement_learning.net.net</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">from</span> <span class="nn">.layers</span> <span class="kn">import</span> <span class="n">NoisyLinear</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">torch.distributions</span> <span class="kn">import</span> <span class="n">Categorical</span>
+
+<span class="n">USE_CUDA</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+
+<span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DQNNetwork"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQNNetwork">[docs]</a><span class="k">class</span> <span class="nc">DQNNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">fc1_units</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">fc2_units</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">_device</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize parameters and build model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state_size (int): Dimension of each state</span>
+<span class="sd">            action_size (int): Dimension of each action</span>
+<span class="sd">            fc1_units (int): Number of nodes in first hidden layer</span>
+<span class="sd">            fc2_units (int): Number of nodes in second hidden layer</span>
+<span class="sd">            device:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DQNNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span> <span class="n">fc1_units</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">fc1_units</span><span class="p">,</span> <span class="n">fc2_units</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">fc2_units</span><span class="p">,</span> <span class="n">action_size</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DQNNetwork.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQNNetwork.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build a network that maps state -&gt; action values.&quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+    <span class="k">def</span> <span class="nf">_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+
+<div class="viewcode-block" id="DQN_LSTM"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM">[docs]</a><span class="k">class</span> <span class="nc">DQN_LSTM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="c1">#        self.fc2 = nn.Linear(hidden_size,hidden_size)</span>
+        <span class="c1">#        self.lstm = nn.LSTMCell(hidden_size, hidden_size)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DQN_LSTM.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="n">cx</span><span class="p">):</span>
+        <span class="c1">#        x = x.view(1,1,-1)</span>
+        <span class="c1">#        hx = hx.view(1,1,-1)</span>
+        <span class="c1">#        cx = cx.view(1,1,-1)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">leaky_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="c1">#        x = F.leaky_relu(self.fc2(x))</span>
+        <span class="c1">#        hx, cx = self.lstm(x, (hx, cx))</span>
+        <span class="n">out</span><span class="p">,</span> <span class="p">(</span><span class="n">hx</span><span class="p">,</span> <span class="n">cx</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">hx</span><span class="p">,</span> <span class="n">cx</span><span class="p">))</span>
+        <span class="c1">#        hx = hx.view(hx.size(0),1,-1)</span>
+        <span class="c1">#        cx = cx.view(cx.size(0),1,-1)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">leaky_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="n">cx</span></div>
+
+<div class="viewcode-block" id="DQN_LSTM.parameter_update"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM.parameter_update">[docs]</a>    <span class="k">def</span> <span class="nf">parameter_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="CnnDQN"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN">[docs]</a><span class="k">class</span> <span class="nc">CnnDQN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs_shape</span><span class="p">,</span> <span class="n">num_actions</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CnnDQN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">inut_shape</span> <span class="o">=</span> <span class="n">inputs_shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">=</span> <span class="n">num_actions</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">inputs_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features_size</span><span class="p">(),</span> <span class="mi">512</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="CnnDQN.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="CnnDQN.features_size"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN.features_size">[docs]</a>    <span class="k">def</span> <span class="nf">features_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">inut_shape</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DuelingDQN"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DuelingDQN">[docs]</a><span class="k">class</span> <span class="nc">DuelingDQN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span> <span class="o">=</span> <span class="n">state_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">action_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_h</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_z_v</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_z_a</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DuelingDQN.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DuelingDQN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">leaky_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">leaky_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc_h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_z_v</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_z_a</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Calculate value and advantage streams</span>
+        <span class="n">a_mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span> <span class="o">-</span> <span class="n">a_mean</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
+
+
+<div class="viewcode-block" id="NoisyDQN"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN">[docs]</a><span class="k">class</span> <span class="nc">NoisyDQN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NoisyDQN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy1</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy2</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">action_size</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NoisyDQN.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noisy1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">noisy2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="NoisyDQN.act"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.act">[docs]</a>    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">volatile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">q_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">q_value</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="NoisyDQN.reset_noise"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.reset_noise">[docs]</a>    <span class="k">def</span> <span class="nf">reset_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy1</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy2</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="CategoricalDQN"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN">[docs]</a><span class="k">class</span> <span class="nc">CategoricalDQN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">num_actions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CategoricalDQN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_inputs</span> <span class="o">=</span> <span class="n">num_inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">=</span> <span class="n">num_actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_atoms&#39;</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v_min</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;v_min&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v_max</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;v_max&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy1</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy2</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CategoricalDQN.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noisy1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">noisy2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="CategoricalDQN.reset_noise"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.reset_noise">[docs]</a>    <span class="k">def</span> <span class="nf">reset_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy1</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy2</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CategoricalDQN.act"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.act">[docs]</a>    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">volatile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">action</span></div></div>
+
+
+<div class="viewcode-block" id="RainbowDQN"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN">[docs]</a><span class="k">class</span> <span class="nc">RainbowDQN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">num_actions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RainbowDQN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_inputs</span> <span class="o">=</span> <span class="n">num_inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">=</span> <span class="n">num_actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_atoms&#39;</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v_min</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;v_min&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v_max</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;v_max&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_value1</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="n">USE_CUDA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_value2</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="n">USE_CUDA</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_advantage1</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="n">USE_CUDA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_advantage2</span> <span class="o">=</span> <span class="n">NoisyLinear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span>
+                                            <span class="n">use_cuda</span><span class="o">=</span><span class="n">USE_CUDA</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RainbowDQN.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noisy_value1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">noisy_value2</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="n">advantage</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noisy_advantage1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">advantage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">noisy_advantage2</span><span class="p">(</span><span class="n">advantage</span><span class="p">)</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+        <span class="n">advantage</span> <span class="o">=</span> <span class="n">advantage</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">advantage</span> <span class="o">-</span> <span class="n">advantage</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="RainbowDQN.reset_noise"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.reset_noise">[docs]</a>    <span class="k">def</span> <span class="nf">reset_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_value1</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_value2</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_advantage1</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noisy_advantage2</span><span class="o">.</span><span class="n">reset_noise</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RainbowDQN.act"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.act">[docs]</a>    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">volatile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">action</span></div></div>
+
+
+<div class="viewcode-block" id="ReinforceNetwork"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork">[docs]</a><span class="k">class</span> <span class="nc">ReinforceNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">action_space</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ReinforceNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">action_space</span>
+        <span class="n">num_outputs</span> <span class="o">=</span> <span class="n">action_space</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ReinforceNetwork.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">logits</span></div>
+
+<div class="viewcode-block" id="ReinforceNetwork.full_pass"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.full_pass">[docs]</a>    <span class="k">def</span> <span class="nf">full_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="n">logpa</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">entropy</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">entropy</span><span class="p">()</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">is_exploratory</span> <span class="o">=</span> <span class="n">action</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">action</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">is_exploratory</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">logpa</span><span class="p">,</span> <span class="n">entropy</span></div>
+
+<div class="viewcode-block" id="ReinforceNetwork.select_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.select_action">[docs]</a>    <span class="k">def</span> <span class="nf">select_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">action</span><span class="o">.</span><span class="n">item</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ReinforceNetwork.select_greedy_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.select_greedy_action">[docs]</a>    <span class="k">def</span> <span class="nf">select_greedy_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="ReinforceBaselineNetwork"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork">[docs]</a><span class="k">class</span> <span class="nc">ReinforceBaselineNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">action_space</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ReinforceBaselineNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_shared</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_policy</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">action_space</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_value_function</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ReinforceBaselineNetwork.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc_shared</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_value_function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_policy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="ReinforceBaselineNetwork.full_pass"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.full_pass">[docs]</a>    <span class="k">def</span> <span class="nf">full_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="n">logpa</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">entropy</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">entropy</span><span class="p">()</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">is_exploratory</span> <span class="o">=</span> <span class="n">action</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">action</span><span class="p">,</span> <span class="n">is_exploratory</span><span class="p">,</span> <span class="n">logpa</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="ReinforceBaselineNetwork.select_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.select_action">[docs]</a>    <span class="k">def</span> <span class="nf">select_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">action</span></div>
+
+<div class="viewcode-block" id="ReinforceBaselineNetwork.select_greedy_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.select_greedy_action">[docs]</a>    <span class="k">def</span> <span class="nf">select_greedy_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="ReinforceBaselineNetwork.evaluate_state"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.evaluate_state">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span></div></div>
+
+
+<div class="viewcode-block" id="ActorCriticNetwork"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork">[docs]</a><span class="k">class</span> <span class="nc">ActorCriticNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ActorCriticNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">critic</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">),</span>
+            <span class="c1"># nn.Softmax(),</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="ActorCriticNetwork.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">critic</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># dist = Categorical(probs)</span>
+        <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="ActorCriticNetwork.full_pass"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.full_pass">[docs]</a>    <span class="k">def</span> <span class="nf">full_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+        <span class="c1"># dist = torch.distributions.Categorical(probs=logits)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="c1"># print(action)</span>
+        <span class="n">logpa</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">entropy</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">entropy</span><span class="p">()</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">is_exploratory</span> <span class="o">=</span> <span class="n">action</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">action</span><span class="p">,</span> <span class="n">is_exploratory</span><span class="p">,</span> <span class="n">logpa</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="ActorCriticNetwork.select_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.select_action">[docs]</a>    <span class="k">def</span> <span class="nf">select_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">logits</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="c1"># dist = torch.distributions.Categorical(logits=logits)</span>
+        <span class="c1"># action = dist.sample()</span>
+        <span class="c1"># action = action.item() if len(action) == 1 else action.data.numpy()</span>
+        <span class="k">return</span> <span class="n">action</span></div>
+
+<div class="viewcode-block" id="ActorCriticNetwork.select_greedy_action"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.select_greedy_action">[docs]</a>    <span class="k">def</span> <span class="nf">select_greedy_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="ActorCriticNetwork.evaluate_state"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.evaluate_state">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span></div></div>
+
+
+<div class="viewcode-block" id="Actor"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Actor">[docs]</a><span class="k">class</span> <span class="nc">Actor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dim</span><span class="p">,</span> <span class="n">n_actions</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">n_actions</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Actor.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Actor.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># Critic module</span>
+<div class="viewcode-block" id="Critic"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Critic">[docs]</a><span class="k">class</span> <span class="nc">Critic</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Critic.forward"><a class="viewcode-back" href="../../../../../../../comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.html#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Critic.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ReinforceNetwork</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">ot</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ot</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+comet.controller.conversational\_agent package
+==============================================
+
+Submodules
+----------
+
+comet.controller.conversational\_agent.conversational\_agent module
+-------------------------------------------------------------------
+
+.. automodule:: comet.controller.conversational_agent.conversational_agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.controller.conversational\_agent.conversational\_single\_agent module
+---------------------------------------------------------------------------
+
+.. automodule:: comet.controller.conversational_agent.conversational_single_agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.controller.conversational_agent
+   :members:
+   :undoc-members:
+   :show-inheritance:

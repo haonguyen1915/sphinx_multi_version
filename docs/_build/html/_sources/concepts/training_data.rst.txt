@@ -1,0 +1,124 @@
+.. _training_data_format:
+
+Training Data Format
+====================
+
+This page provides an overview of the different types of training data that go into a comet platform
+and how this training data is structured.
+
+.. _nlu_training_data:
+
+NLU training data
+-----------------
+
+NLU training data stores structured information about user messages.
+
+The goal of NLU (Natural Language Understanding) is to extract structured information from user messages.
+This usually includes the user's intent and any entities their message contains. You can add extra
+information such as regular expressions and lookup tables to your training data to help the model
+identify intents and entities correctly.
+
+NLU data's training format we construct based on `Denver core <https://nlp.pages.gitlab.ftech.ai/research/denver_core/index.html>`_
+Below is it's format as ``.csv`` file
+
+.. code-block:: csv
+
+    text,intent,tag
+    hi,greet,O
+    hello,greet,O
+    bye,bye,O
+    bye bye,bye,O O
+    are you bot?,ask_is_bot,O O O
+    are u bot?,ask_is_bot,O O O
+    are u bot,ask_is_bot,O O O
+    thanks,thanks,O
+    thank,thanks,O
+    thank you,thanks,O
+    thank you so much,thanks,O
+    what is the weather in day 1/1,request#weather,O O O O O O B-inform#date
+
+.. _supervised_policy_training_data:
+
+Supervised policy training data
+-------------------------------
+
+The data training format for policy we use as ``record format`` which is a ``object``. We can show as:
+
+.. code-block:: json
+
+    [{
+    "state": "the state from which action was taken",
+    "new_state": "the resulting state after action was taken",
+    "action": [
+        "the action taken from state"
+    ],
+    "reward": "the reward received after taking action from state",
+    "usr_transcripts": "",
+    "system_transcripts": "Hello , How may I help you?",
+    "success": "",
+    "task_success": "",
+    "cumulative_reward": -1,
+    "role": "system",
+    "custom": {}
+    }]
+
+Above is an object's format. We can feed the ``raw conversation`` or ``record format``. Based on
+what you feed to, the system will convert ``training data`` to ``record format``  to train the policy.
+
+There are two way to prepare data training: ``manual`` or using ``user simulator``
+
+Manual preparing
+""""""""""""""""
+
+To manual preparing data format for policy training. We have to label the conversation following
+format as a ``.json`` file:
+
+.. code-block:: json
+
+    [
+    {
+        "dialogue_idx": 0,
+        "turns": [
+            {
+                "turn_idx": -1,
+                "usr_semantics": [
+                    {
+                        "slots": {"slot2": "value1"},
+                        "act": "inform"
+                    }
+                ],
+                "usr_transcript": "",
+                "system_transcript": "",
+                "system_semantics": [],
+                "db_result": {}
+            },
+            {}
+        ],
+    },
+    {}
+    ]
+
+Generate by interact between agent and user simulator
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+To use this way, we need to have a ``User simulator`` and Agent's ``Handcraft policy``.
+
+For more make sense in the way to generate data by simulation. We should play around with ``BabeShop``
+domain that we are implemented.
+
+See this section to know how to run ``BabeShop``'s domain and then run commandline bellow to run simulation
+
+.. code-block:: json
+    cais run --config config/configure_train.yaml
+
+In folder ``assets/BabeShop/v0.2.0/records`` you will something like this.
+
+
+.. code-block::
+
+    assets
+    └── BabeShop
+        └── v0.2.0
+            └── records
+                ├── train_supervised_dialogues.json
+                └── train_supervised_dialogues.pkl

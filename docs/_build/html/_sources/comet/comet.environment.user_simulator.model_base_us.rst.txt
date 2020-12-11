@@ -1,0 +1,10 @@
+comet.environment.user\_simulator.model\_base\_us package
+=========================================================
+
+Module contents
+---------------
+
+.. automodule:: comet.environment.user_simulator.model_base_us
+   :members:
+   :undoc-members:
+   :show-inheritance:

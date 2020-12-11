@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.lib.helpers &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.lib.helpers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.lib.helpers</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fuzzywuzzy</span> <span class="kn">import</span> <span class="n">fuzz</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">pydash</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">from</span> <span class="nn">texttable</span> <span class="kn">import</span> <span class="n">Texttable</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">RATIO</span> <span class="o">=</span> <span class="s1">&#39;fuzzy&#39;</span>
+<span class="n">PARTIAL_RATIO</span> <span class="o">=</span> <span class="s1">&#39;fuzzy partial&#39;</span>
+<span class="n">SEQUENCE_MATCHER</span> <span class="o">=</span> <span class="s1">&#39;sequence matcher&#39;</span>
+<span class="n">PROCESS_CHOICES</span> <span class="o">=</span> <span class="s1">&#39;process choice&#39;</span>
+<span class="n">PATTERNS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;[àáảãạăắằẵặẳâầấậẫẩ]&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[đ]&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[èéẻẽẹêềếểễệ]&quot;</span><span class="p">:</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[ìíỉĩị]&quot;</span><span class="p">:</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[òóỏõọôồốổỗộơờớởỡợ]&quot;</span><span class="p">:</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[ùúủũụưừứửữự]&quot;</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[ỳýỷỹỵ]&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">MODULE_MAPPER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;NLG&#39;</span><span class="p">:</span> <span class="s1">&#39;nlg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NLU&#39;</span><span class="p">:</span> <span class="s1">&#39;nlu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SynonymMapper&#39;</span><span class="p">:</span> <span class="s1">&#39;synonym_mapper&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SF&#39;</span><span class="p">:</span> <span class="s1">&#39;state_featurizer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;WP&#39;</span><span class="p">:</span> <span class="s1">&#39;warm_up_policy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DS&#39;</span><span class="p">:</span> <span class="s1">&#39;DState&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;WUS&#39;</span><span class="p">:</span> <span class="s1">&#39;warm_up_simulator&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="remove_tone_notation"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.remove_tone_notation">[docs]</a><span class="k">def</span> <span class="nf">remove_tone_notation</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove Vietnamese tone notation</span>
+<span class="sd">    :param string: input string to be converted</span>
+<span class="sd">    return: converted string which is removed ton notation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">regex</span><span class="p">,</span> <span class="n">replace</span> <span class="ow">in</span> <span class="n">PATTERNS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+
+<div class="viewcode-block" id="load_class"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.load_class">[docs]</a><span class="k">def</span> <span class="nf">load_class</span><span class="p">(</span><span class="n">package_path</span><span class="p">,</span> <span class="n">class_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dynamically load the specified class.</span>
+
+<span class="sd">    :param package_path: Path to the package to load</span>
+<span class="sd">    :param class_name: Name of the class within the package</span>
+<span class="sd">    :return: the class object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">package_path</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="n">class_name</span><span class="p">])</span>
+    <span class="n">klass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">class_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">klass</span></div>
+
+
+<div class="viewcode-block" id="item_exist_in_list"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.item_exist_in_list">[docs]</a><span class="k">def</span> <span class="nf">item_exist_in_list</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Text</span><span class="p">,</span> <span class="n">list_compare</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Text</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if a string available in a list. Compare with normalize</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        item:</span>
+<span class="sd">        list_compare:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_normed</span> <span class="o">=</span> <span class="n">remove_tone_notation</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">other_item</span> <span class="ow">in</span> <span class="n">list_compare</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item_normed</span> <span class="o">==</span> <span class="n">remove_tone_notation</span><span class="p">(</span><span class="n">other_item</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="load_module"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.load_module">[docs]</a><span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="n">package_path</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dynamically load the specified class.</span>
+
+<span class="sd">    :param package_path: Path to the package to load</span>
+<span class="sd">    :param class_name: Name of the class within the package</span>
+<span class="sd">    :param args: arguments to pass when creating the object</span>
+<span class="sd">    :return: the instantiated class object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">package_path</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="n">class_name</span><span class="p">])</span>
+    <span class="n">klass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">class_name</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">klass</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot init </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> with args: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reformat_dict"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.reformat_dict">[docs]</a><span class="k">def</span> <span class="nf">reformat_dict</span><span class="p">(</span><span class="n">dict_</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">p_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">dict_</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="n">sort_keys</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p_dict</span></div>
+
+
+<div class="viewcode-block" id="get_cfd"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.get_cfd">[docs]</a><span class="k">def</span> <span class="nf">get_cfd</span><span class="p">(</span><span class="n">backward</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get current file directory</span>
+<span class="sd">    :param backward:</span>
+<span class="sd">    :type backward:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">abspath</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">backward</span><span class="p">):</span>
+        <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">abspath</span><span class="p">)</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">abspath</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">abspath</span></div>
+
+
+<span class="n">PRJ_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">SYSTEM_DIR</span> <span class="o">=</span> <span class="n">get_cfd</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="adjust_file_path"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.adjust_file_path">[docs]</a><span class="k">def</span> <span class="nf">adjust_file_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Text</span><span class="p">):</span>
+    <span class="n">final_path</span> <span class="o">=</span> <span class="n">path</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">final_path</span> <span class="o">=</span> <span class="n">path</span>
+    <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PRJ_DIR</span><span class="p">,</span> <span class="n">path</span><span class="p">)):</span>
+        <span class="n">final_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PRJ_DIR</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SYSTEM_DIR</span><span class="p">,</span> <span class="n">path</span><span class="p">)):</span>
+        <span class="n">final_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SYSTEM_DIR</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">final_path</span></div>
+
+
+<div class="viewcode-block" id="get_abs_path"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.get_abs_path">[docs]</a><span class="k">def</span> <span class="nf">get_abs_path</span><span class="p">(</span><span class="n">root_path</span><span class="p">:</span> <span class="n">Text</span><span class="p">,</span> <span class="n">content_path</span><span class="p">:</span> <span class="n">Text</span><span class="p">):</span>
+    <span class="n">abs_path</span> <span class="o">=</span> <span class="n">content_path</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">content_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+        <span class="n">abs_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">content_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">abs_path</span></div>
+
+
+<div class="viewcode-block" id="print_title"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.print_title">[docs]</a><span class="k">def</span> <span class="nf">print_title</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">Text</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="n">trace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Print title</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text:</span>
+<span class="sd">        scale:</span>
+<span class="sd">        color:</span>
+<span class="sd">        show: print to consolve</span>
+<span class="sd">        trace: write file</span>
+
+<span class="sd">    Returns: samples</span>
+<span class="sd">        ==========================</span>
+<span class="sd">        |         hello          |</span>
+<span class="sd">        ==========================</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># logger = LogTracker()</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="n">scale</span><span class="p">)</span>
+    <span class="n">string1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">)</span>
+    <span class="n">string2</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">string2</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">string2</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span>
+    <span class="n">string3</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">)</span>
+
+    <span class="n">box_text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">string1</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">string2</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">string3</span>
+
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">string1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">string2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">pr</span><span class="p">(</span><span class="n">string3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">box_text</span><span class="p">,</span> <span class="n">has_prefix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">box_text</span></div>
+
+
+<div class="viewcode-block" id="prints"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.prints">[docs]</a><span class="k">def</span> <span class="nf">prints</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Print list of data</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># for d in data:</span>
+    <span class="c1">#     print(str(d))</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="print_boxed"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.print_boxed">[docs]</a><span class="k">def</span> <span class="nf">print_boxed</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">box_width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">box_text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">box_text</span> <span class="o">+=</span> <span class="s1">&#39;╒</span><span class="si">{}</span><span class="s1">╕</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;═&#39;</span> <span class="o">*</span> <span class="n">box_width</span><span class="p">)</span>
+    <span class="n">box_text</span> <span class="o">+=</span> <span class="s1">&#39;│ </span><span class="si">{}</span><span class="s1"> │</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="n">box_text</span> <span class="o">+=</span> <span class="s1">&#39;╘</span><span class="si">{}</span><span class="s1">╛</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;═&#39;</span> <span class="o">*</span> <span class="n">box_width</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">box_text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">box_text</span><span class="p">,</span> <span class="n">has_prefix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">box_text</span></div>
+
+
+<div class="viewcode-block" id="print_table"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.print_table">[docs]</a><span class="k">def</span> <span class="nf">print_table</span><span class="p">(</span><span class="n">headers</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Text</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">],</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Print table of data</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        headers: [epoch, acc, loss]</span>
+<span class="sd">        data:</span>
+<span class="sd">            [[1, 2, 3], [1, 2, 3], [1, 2, 3]]</span>
+<span class="sd">        show:</span>
+<span class="sd">        trace:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">tee</span> <span class="o">=</span> <span class="n">Texttable</span><span class="p">()</span>
+    <span class="n">tee</span><span class="o">.</span><span class="n">add_rows</span><span class="p">([</span><span class="n">headers</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">tee</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+    <span class="n">table_str</span> <span class="o">=</span> <span class="n">tee</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">show</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">table_str</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">table_str</span><span class="p">,</span> <span class="n">has_prefix</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">table_str</span></div>
+
+
+<span class="c1"># def print_table(table: List[List[Any]]):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     Print table</span>
+<span class="c1">#</span>
+<span class="c1">#     Args:</span>
+<span class="c1">#         table:</span>
+<span class="c1">#</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     print(</span>
+<span class="c1">#         tabulate(</span>
+<span class="c1">#             table,</span>
+<span class="c1">#             headers=&#39;firstrow&#39;,</span>
+<span class="c1">#             tablefmt=&#39;fancy_grid&#39;,</span>
+<span class="c1">#             floatfmt=&#39;.4f&#39;</span>
+<span class="c1">#         )</span>
+<span class="c1">#     )</span>
+
+
+<div class="viewcode-block" id="flatten_lists"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.flatten_lists">[docs]</a><span class="k">def</span> <span class="nf">flatten_lists</span><span class="p">(</span><span class="n">listOfLists</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flatent</span>
+<span class="sd">    :param listOfLists:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">check_has_list</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span> <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="n">listOfLists</span>
+    <span class="k">while</span> <span class="n">check_has_list</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">concat</span><span class="p">,</span> <span class="n">output</span><span class="p">))</span>
+
+    <span class="c1"># return list(itertools.chain(*listOfLists))</span>
+    <span class="c1"># return list(np.array(listOfLists).flat)</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+
+<div class="viewcode-block" id="make_list"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.make_list">[docs]</a><span class="k">def</span> <span class="nf">make_list</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">List</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="get_class_name"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.get_class_name">[docs]</a><span class="k">def</span> <span class="nf">get_class_name</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the class name of an object</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obj:</span>
+<span class="sd">        lower:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">class_name</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+        <span class="n">class_name</span> <span class="o">=</span> <span class="n">class_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">class_name</span></div>
+
+
+<div class="viewcode-block" id="set_attr"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.set_attr">[docs]</a><span class="k">def</span> <span class="nf">set_attr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr_dict</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set attribute of an object from a dict</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obj:</span>
+<span class="sd">        attr_dict:</span>
+<span class="sd">        keys:</span>
+<span class="sd">        force: force set attribute</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">attr_dict</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">,</span> <span class="n">keys</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">attr_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;class&#39;</span> <span class="ow">in</span> <span class="n">val</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">module_object</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                    <span class="n">val</span><span class="p">[</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                    <span class="n">val</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                    <span class="n">val</span><span class="p">[</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">MODULE_MAPPER</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">attr</span><span class="p">),</span> <span class="n">module_object</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">MODULE_MAPPER</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">attr</span><span class="p">),</span> <span class="n">val</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">attr_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span></div>
+
+
+<div class="viewcode-block" id="seed_everything"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.seed_everything">[docs]</a><span class="k">def</span> <span class="nf">seed_everything</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHONHASHSEED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="write_to_file"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.write_to_file">[docs]</a><span class="k">def</span> <span class="nf">write_to_file</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Text</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="n">Text</span><span class="p">,</span> <span class="n">is_append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write a message into a file path</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        message:</span>
+<span class="sd">        file_path:</span>
+<span class="sd">        is_append:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">w_mode</span> <span class="o">=</span> <span class="s1">&#39;a+&#39;</span> <span class="k">if</span> <span class="n">is_append</span> <span class="k">else</span> <span class="s1">&#39;w&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">w_mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sort_text_by_delimiter"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.sort_text_by_delimiter">[docs]</a><span class="k">def</span> <span class="nf">sort_text_by_delimiter</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">delimiter</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="similar"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.similar">[docs]</a><span class="k">def</span> <span class="nf">similar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">SEQUENCE_MATCHER</span><span class="p">,</span> <span class="n">acronym</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">remove_tone_notation</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">Text</span><span class="p">):</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">remove_tone_notation</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="n">RATIO</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">Dict</span><span class="p">):</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">=</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">ratio</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
+                    <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">best_score</span> <span class="o">=</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">ratio</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="n">PARTIAL_RATIO</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">Dict</span><span class="p">):</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">=</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">partial_ratio</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
+                    <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">best_score</span> <span class="o">=</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">partial_ratio</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="n">SEQUENCE_MATCHER</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">Dict</span><span class="p">):</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="n">flatten_lists</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">=</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">SequenceMatcher</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="o">.</span><span class="n">ratio</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+                <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
+                    <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">best_score</span> <span class="o">=</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">SequenceMatcher</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">ratio</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not support method: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+
+        <span class="c1"># return fuzz.</span>
+    <span class="k">return</span> <span class="n">best_score</span></div>
+
+
+<div class="viewcode-block" id="MyOrderedDict"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict">[docs]</a><span class="k">class</span> <span class="nc">MyOrderedDict</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyOrderedDict</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_update_ts</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<div class="viewcode-block" id="MyOrderedDict.update"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ts</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last_update_ts</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MyOrderedDict.get_last_item"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict.get_last_item">[docs]</a>    <span class="k">def</span> <span class="nf">get_last_item</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+        <span class="n">out_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">out_dict</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out_dict</span></div>
+
+<div class="viewcode-block" id="MyOrderedDict.get_item_by_key"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict.get_item_by_key">[docs]</a>    <span class="k">def</span> <span class="nf">get_item_by_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the item by key</span>
+<span class="sd">        Args:</span>
+<span class="sd">            key:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="MyOrderedDict.remove_item_by_key"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict.remove_item_by_key">[docs]</a>    <span class="k">def</span> <span class="nf">remove_item_by_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="MyOrderedDict.get_last_key_item"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict.get_last_key_item">[docs]</a>    <span class="k">def</span> <span class="nf">get_last_key_item</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get key of last item</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">key</span></div>
+
+<div class="viewcode-block" id="MyOrderedDict.get_last_value_item"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.MyOrderedDict.get_last_value_item">[docs]</a>    <span class="k">def</span> <span class="nf">get_last_value_item</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get key of last item</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">value</span></div></div>
+
+
+<div class="viewcode-block" id="get_last_item_by_ts"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.get_last_item_by_ts">[docs]</a><span class="k">def</span> <span class="nf">get_last_item_by_ts</span><span class="p">(</span><span class="n">list_of_dict</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MyOrderedDict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get latest item from list of dictionary by time step</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_dict:</span>
+
+<span class="sd">    Returns: last item</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">current_ts</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">list_of_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">last_update_ts</span> <span class="o">&gt;</span> <span class="n">current_ts</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get_last_item</span><span class="p">()</span>
+            <span class="n">current_ts</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">last_update_ts</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="ArgParser"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.ArgParser">[docs]</a><span class="k">class</span> <span class="nc">ArgParser</span><span class="p">(</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use sage sample:</span>
+<span class="sd">        &gt;&gt;&gt; def run(_args):</span>
+<span class="sd">        &gt;&gt;&gt;    pass</span>
+
+<span class="sd">        &gt;&gt;&gt; parser = ArgParser()</span>
+<span class="sd">        &gt;&gt;&gt; parser.add_str(</span>
+<span class="sd">            &gt;&gt;&gt; &quot;--config&quot;,</span>
+<span class="sd">            &gt;&gt;&gt; help=&quot;The configuration file path&quot;,</span>
+<span class="sd">            &gt;&gt;&gt; default=f&quot;default&quot;</span>
+<span class="sd">        )</span>
+
+<span class="sd">        &gt;&gt;&gt; parser.add_count(&quot;--debug&quot;, &quot;-d&quot;, help=&quot;debug mode&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; parser.add_count(&quot;--test&quot;, &quot;-t&quot;, help=&quot;debug mode&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; args = parser.parse_args()</span>
+
+<span class="sd">        &gt;&gt;&gt; run(args)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ArgParser</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ArgParser.add_int"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.ArgParser.add_int">[docs]</a>    <span class="k">def</span> <span class="nf">add_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">help</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Text</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">choices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a int arguments</span>
+<span class="sd">        :param args:</span>
+<span class="sd">        :param default:</span>
+<span class="sd">        :param help:</span>
+<span class="sd">        :param choices:</span>
+<span class="sd">        :param required:</span>
+<span class="sd">        :param kwargs:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span>
+        <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default</span>
+        <span class="k">if</span> <span class="n">choices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;choices&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choices</span>
+        <span class="k">if</span> <span class="n">required</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">required</span>
+
+        <span class="k">if</span> <span class="n">help</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">help</span> <span class="o">+=</span> <span class="s2">&quot; (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;help&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">help</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ArgParser.add_str"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.ArgParser.add_str">[docs]</a>    <span class="k">def</span> <span class="nf">add_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                <span class="n">default</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">choices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a string argument</span>
+<span class="sd">        python main.py --str &quot;some string&quot;</span>
+<span class="sd">        :param args:</span>
+<span class="sd">        :param default:</span>
+<span class="sd">        :param help:</span>
+<span class="sd">        :param required:</span>
+<span class="sd">        :param choices:</span>
+<span class="sd">        :param kwargs:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span>
+        <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default</span>
+        <span class="k">if</span> <span class="n">choices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;choices&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choices</span>
+        <span class="k">if</span> <span class="n">help</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">help</span> <span class="o">+=</span> <span class="s2">&quot; (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;help&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">help</span>
+        <span class="k">if</span> <span class="n">required</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">required</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ArgParser.add_count"><a class="viewcode-back" href="../../../comet/comet.lib.html#comet.lib.helpers.ArgParser.add_count">[docs]</a>    <span class="k">def</span> <span class="nf">add_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">help</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add argument with count action</span>
+<span class="sd">        :param args:</span>
+<span class="sd">        :param help:</span>
+<span class="sd">        :param kwargs:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;action&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;count&quot;</span>
+        <span class="k">if</span> <span class="n">help</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">help</span> <span class="o">+=</span> <span class="s2">&quot; (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;help&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">help</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

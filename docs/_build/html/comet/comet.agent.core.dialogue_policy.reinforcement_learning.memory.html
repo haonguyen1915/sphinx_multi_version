@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy.reinforcement_learning.memory package &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="comet.agent.core.dialogue_policy.reinforcement_learning.net package" href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html" />
+    <link rel="prev" title="comet.agent.core.dialogue_policy.reinforcement_learning.eval package" href="comet.agent.core.dialogue_policy.reinforcement_learning.eval.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="comet.html">comet package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="comet.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="comet.abstract_module.html">comet.abstract_module package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="comet.agent.html">comet.agent package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="comet.agent.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.html#module-comet.agent">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.call_backs.html">comet.call_backs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.channel.html">comet.channel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.cli.html">comet.cli package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.controller.html">comet.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.domain.html">comet.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.environment.html">comet.environment package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.lib.html">comet.lib package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.utilities.html">comet.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#comet-run-module">comet.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.run_cli">comet.run_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.server">comet.server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="comet.html">comet package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.html">comet.agent package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.html">comet.agent.core package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.dialogue_policy.html">comet.agent.core.dialogue_policy package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.dialogue_policy.reinforcement_learning.html">comet.agent.core.dialogue_policy.reinforcement_learning package</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy.reinforcement_learning.memory package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/comet/comet.agent.core.dialogue_policy.reinforcement_learning.memory.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="comet-agent-core-dialogue-policy-reinforcement-learning-memory-package">
+<h1>comet.agent.core.dialogue_policy.reinforcement_learning.memory package<a class="headerlink" href="#comet-agent-core-dialogue-policy-reinforcement-learning-memory-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory">
+<span id="comet-agent-core-dialogue-policy-reinforcement-learning-memory-memory-module"></span><h2>comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.</code><code class="sig-name descname">Memory</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.add">
+<em class="property">abstract </em><code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.add" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.add_experience">
+<em class="property">abstract </em><code class="sig-name descname">add_experience</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.add_experience"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.add_experience" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation for update() to add experience to memory,
+expanding the memory size if necessary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.add_status">
+<code class="sig-name descname">add_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">done</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.add_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.add_status" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.convert_data_type">
+<code class="sig-name descname">convert_data_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em>, <em class="sig-param"><span class="n">data_type</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.convert_data_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.convert_data_type" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch</strong> – </p></li>
+<li><p><strong>data_type</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the memory arrays, size and head pointer</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.sample">
+<em class="property">abstract </em><code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">clear</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">type_data</span><span class="o">=</span><span class="default_value">'np'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns: a batch of batch_size samples. Batch is stored as a dict.
+Keys are the names of the different elements of an experience. Values are an array of the
+corresponding sampled elements</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.visualize_sample">
+<code class="sig-name descname">visualize_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.visualize_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.visualize_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.visualize_top_k_sample">
+<code class="sig-name descname">visualize_top_k_sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/memory.html#Memory.visualize_top_k_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory.visualize_top_k_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualize the sample dialogue
+:param k: top k data to visualize, if k = -1 -&gt; show all data in buffer</p>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay">
+<span id="comet-agent-core-dialogue-policy-reinforcement-learning-memory-on-policy-replay-module"></span><h2>comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.</code><code class="sig-name descname">OnPolicyReplay</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory" title="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory</span></code></a></p>
+<p>Stores agent experiences and returns them in a batch for agent training.</p>
+<dl class="simple">
+<dt>An experience consists of</dt><dd><ul class="simple">
+<li><p>state: representation of a state</p></li>
+<li><p>action: action taken</p></li>
+<li><p>reward: scalar value</p></li>
+<li><p>next state: representation of next state (should be same as state)</p></li>
+<li><p>done: 0 / 1 representing if the current state is the last in an episode</p></li>
+</ul>
+</dd>
+</dl>
+<p>The memory does not have a fixed size. Instead the memory stores data from N episodes,
+where N is determined by the user. After N episodes, all of the examples are
+returned to the agent to learn from.</p>
+<p>When the examples are returned to the agent, the memory is cleared to prevent the agent
+from learning from off policy experiences. This memory is intended for on policy algorithms.</p>
+<dl class="simple">
+<dt>Differences vs. Replay memory:</dt><dd><ul class="simple">
+<li><p>Experiences are nested into episodes. In Replay experiences are flat, and episode is not tracked</p></li>
+<li><p>The entire memory constitues a batch. In Replay batches are sampled from memory.</p></li>
+<li><p>The memory is cleared automatically when a batch is given to the agent.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface method to update memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.add_experience">
+<code class="sig-name descname">add_experience</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay.add_experience"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.add_experience" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface helper method for update() to add experience to memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.get_most_recent_experience">
+<code class="sig-name descname">get_most_recent_experience</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay.get_most_recent_experience"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.get_most_recent_experience" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the most recent experience</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the memory. Also used to initialize memory vars</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_data</span><span class="o">=</span><span class="default_value">'np'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay.sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the examples from memory in a single batch. Batch is stored as a dict.
+Keys are the names of the different elements of an experience. Values are nested lists of
+the corresponding sampled elements. Elements are nested into episodes
+e.g.
+batch = {</p>
+<blockquote>
+<div><p>‘states’     : [[s_epi1], [s_epi2], …],
+‘actions’    : [[a_epi1], [a_epi2], …],
+‘rewards’    : [[r_epi1], [r_epi2], …],
+‘next_states’: [[ns_epi1], [ns_epi2], …],
+‘dones’      : [[d_epi1], [d_epi2], …]}</p>
+</div></blockquote>
+<p>Returns: batch</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.visualize_sample">
+<code class="sig-name descname">visualize_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/on_policy_replay.html#OnPolicyReplay.visualize_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.on_policy_replay.OnPolicyReplay.visualize_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>visualize sample by episode indices or turn indices.
+Only turn or episode provided
+Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay">
+<span id="comet-agent-core-dialogue-policy-reinforcement-learning-memory-prioritized-replay-module"></span><h2>comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.</code><code class="sig-name descname">PrioritizedReplay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">buffer_size</span></em>, <em class="sig-param"><span class="n">batch_size</span></em>, <em class="sig-param"><span class="n">data_keys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#PrioritizedReplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay" title="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay</span></code></a></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em>, <em class="sig-param"><span class="n">error</span><span class="o">=</span><span class="default_value">100000</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#PrioritizedReplay.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation for update() to add experience to memory, expanding the memory size
+if necessary.
+All experiences are added with a high priority to increase the likelihood that they are
+sampled at least once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+<li><p><strong>error</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.get_priority">
+<code class="sig-name descname">get_priority</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">error</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#PrioritizedReplay.get_priority"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.get_priority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in the error of one or more examples and returns the proportional priority</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#PrioritizedReplay.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the memory arrays, size and head pointer</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.sample_indices">
+<code class="sig-name descname">sample_indices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_size</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#PrioritizedReplay.sample_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.sample_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Samples batch_size indices from memory in proportional to their priority.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – </p></li>
+<li><p><strong>shuffle</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.update_priorities">
+<code class="sig-name descname">update_priorities</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">errors</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#PrioritizedReplay.update_priorities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.PrioritizedReplay.update_priorities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the priorities from the most recent batch
+Assumes the relevant batch indices are stored in self.batch_indices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>errors</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.</code><code class="sig-name descname">SumTree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">capacity</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#SumTree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Helper class for PrioritizedReplay</p>
+<p>This implementation is, with minor adaptations, Jaromír Janisch’s. The license is reproduced below.
+For more information see his excellent blog series “Let’s make a DQN” <a class="reference external" href="https://jaromiru.com/2016/09/27/lets-make-a-dqn-theory/">https://jaromiru.com/2016/09/27/lets-make-a-dqn-theory/</a></p>
+<p>MIT License</p>
+<p>Copyright (c) 2018 Jaromír Janisch</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#SumTree.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.add" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – priority</p></li>
+<li><p><strong>index</strong> – data index</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#SumTree.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.print_tree">
+<code class="sig-name descname">print_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#SumTree.print_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.print_tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.total">
+<code class="sig-name descname">total</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#SumTree.total"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.total" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idx</span></em>, <em class="sig-param"><span class="n">p</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/prioritized_replay.html#SumTree.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.update" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> – tree index</p></li>
+<li><p><strong>p</strong> – priority</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.write">
+<code class="sig-name descname">write</code><em class="property"> = 0</em><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.prioritized_replay.SumTree.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay">
+<span id="comet-agent-core-dialogue-policy-reinforcement-learning-memory-replay-module"></span><h2>comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.</code><code class="sig-name descname">Replay</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory" title="comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.agent.core.dialogue_policy.reinforcement_learning.memory.memory.Memory</span></code></a></p>
+<p>Stores agent experiences and samples from them for agent training</p>
+<dl class="simple">
+<dt>An experience consists of</dt><dd><ul class="simple">
+<li><p>state: representation of a state</p></li>
+<li><p>action: action taken</p></li>
+<li><p>reward: scalar value</p></li>
+<li><p>next state: representation of next state (should be same as state)</p></li>
+<li><p>done: 0 / 1 representing if the current state is the last in an episode</p></li>
+</ul>
+</dd>
+</dl>
+<p>The memory has a size of N. When capacity is reached, the oldest experience
+is deleted to make space for the lastest experience.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This is implemented as a circular buffer so that inserting experiences are O(1)</p></li>
+<li><p>Each element of an experience is stored as a separate array of size N * element dim</p></li>
+</ul>
+</div></blockquote>
+<p>When a batch of experiences is requested, K experiences are sampled according to a random uniform distribution.</p>
+<p>If ‘use_cer’, sampling will add the latest experience.</p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.add" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.add_experience">
+<code class="sig-name descname">add_experience</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">reward</span></em>, <em class="sig-param"><span class="n">next_state</span></em>, <em class="sig-param"><span class="n">done</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay.add_experience"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.add_experience" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation for update() to add experience to memory,
+expanding the memory size if necessary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – </p></li>
+<li><p><strong>action</strong> – </p></li>
+<li><p><strong>reward</strong> – </p></li>
+<li><p><strong>next_state</strong> – </p></li>
+<li><p><strong>done</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.batch_get">
+<em class="property">static </em><code class="sig-name descname">batch_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span></em>, <em class="sig-param"><span class="n">indices</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay.batch_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.batch_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multi-idxs from an array depending if it’s a python list or np.array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – </p></li>
+<li><p><strong>indices</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">clear</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">type_data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay.sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns: a batch of batch_size samples. Batch is stored as a dict.
+Keys are the names of the different elements of an experience. Values are an array of the
+corresponding sampled elements
+e.g.
+batch = {</p>
+<blockquote>
+<div><p>‘states’     : states,
+‘actions’    : actions,
+‘rewards’    : rewards,
+‘next_states’: next_states,
+‘dones’      : dones}</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clear</strong> – Clear data once sampled</p></li>
+<li><p><strong>shuffle</strong> – Shuffle all data</p></li>
+<li><p><strong>type_data</strong> – should be [np, tensor]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.sample_indices">
+<code class="sig-name descname">sample_indices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_size</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay.sample_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.sample_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Batch indices a sampled random uniformly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_size</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.visualize_sample">
+<code class="sig-name descname">visualize_sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">episode_indices</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/memory/replay.html#Replay.visualize_sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.memory.replay.Replay.visualize_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>visualize sample by episode indices or turn indices.
+Only turn or episode provided
+raw_turn is a tuple of:</p>
+<blockquote>
+<div><p>raw_turn[0]: raw_state
+raw_turn[1]: raw_action
+raw_turn[2]: reward
+raw_turn[3]: raw_next_state
+raw_turn[4]: done</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>episode_indices</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.memory">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.memory" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comet.agent.core.dialogue_policy.reinforcement_learning.net.html" class="btn btn-neutral float-right" title="comet.agent.core.dialogue_policy.reinforcement_learning.net package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="comet.agent.core.dialogue_policy.reinforcement_learning.eval.html" class="btn btn-neutral float-left" title="comet.agent.core.dialogue_policy.reinforcement_learning.eval package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

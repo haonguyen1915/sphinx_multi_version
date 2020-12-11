@@ -1,0 +1,22 @@
+comet.agent.core.dialogue\_manager package
+==========================================
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_manager.dialogue\_manager module
+-----------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_manager.dialogue_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,22 @@
+comet.lib.storage package
+=========================
+
+Submodules
+----------
+
+comet.lib.storage.redis module
+------------------------------
+
+.. automodule:: comet.lib.storage.redis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.lib.storage
+   :members:
+   :undoc-members:
+   :show-inheritance:
