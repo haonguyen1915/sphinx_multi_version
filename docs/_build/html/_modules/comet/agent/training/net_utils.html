@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.training.net_utils &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.training.net_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.training.net_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pydash</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">get_class_name</span>
+
+<span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="NoOpLRScheduler"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.NoOpLRScheduler">[docs]</a><span class="k">class</span> <span class="nc">NoOpLRScheduler</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Symbolic LRScheduler class for API consistency&#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optim</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optim</span> <span class="o">=</span> <span class="n">optim</span>
+
+<div class="viewcode-block" id="NoOpLRScheduler.step"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.NoOpLRScheduler.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="NoOpLRScheduler.get_lr"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.NoOpLRScheduler.get_lr">[docs]</a>    <span class="k">def</span> <span class="nf">get_lr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">optim</span><span class="p">,</span> <span class="s1">&#39;defaults&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">defaults</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># TODO retrieve lr more generally</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="build_fc_model"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.build_fc_model">[docs]</a><span class="k">def</span> <span class="nf">build_fc_model</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Build a full-connected model by interleaving nn.Linear and activation_fn&#39;&#39;&#39;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;dims need to at least contain input, output&#39;</span>
+    <span class="c1"># shift dims and make pairs of (in, out) dims per layer</span>
+    <span class="n">dim_pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">in_d</span><span class="p">,</span> <span class="n">out_d</span> <span class="ow">in</span> <span class="n">dim_pairs</span><span class="p">:</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_d</span><span class="p">,</span> <span class="n">out_d</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">activation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_activation_fn</span><span class="p">(</span><span class="n">activation</span><span class="p">))</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="get_activation_fn"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.get_activation_fn">[docs]</a><span class="k">def</span> <span class="nf">get_activation_fn</span><span class="p">(</span><span class="n">activation</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Helper to generate activation function layers for net&#39;&#39;&#39;</span>
+    <span class="n">ActivationClass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span> <span class="n">get_nn_name</span><span class="p">(</span><span class="n">activation</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ActivationClass</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="split_mini_batch"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.split_mini_batch">[docs]</a><span class="k">def</span> <span class="nf">split_mini_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">mb_size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Split a batch into mini batches of mb_size or smaller, without replacement</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        batch:</span>
+<span class="sd">        mb_size:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;rewards&#39;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">mb_size</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Minibatch size </span><span class="si">{</span><span class="n">mb_size</span><span class="si">}</span><span class="s1"> must be &lt; batch size </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">idxs</span><span class="p">)</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">mb_size</span><span class="p">)</span>
+    <span class="n">nested_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">idxs</span><span class="p">,</span> <span class="n">chunks</span><span class="p">)</span>
+    <span class="n">mini_batches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">minibatch_idxs</span> <span class="ow">in</span> <span class="n">nested_idxs</span><span class="p">:</span>
+        <span class="n">minibatch</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="n">minibatch_idxs</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">batch</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="n">mini_batches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">minibatch</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mini_batches</span></div>
+
+
+<div class="viewcode-block" id="get_nn_name"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.get_nn_name">[docs]</a><span class="k">def</span> <span class="nf">get_nn_name</span><span class="p">(</span><span class="n">uncased_name</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Helper to get the proper name in PyTorch nn given a case-insensitive name&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">nn_name</span> <span class="ow">in</span> <span class="n">nn</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">uncased_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">nn_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">nn_name</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name </span><span class="si">{</span><span class="n">uncased_name</span><span class="si">}</span><span class="s1"> not found in </span><span class="si">{</span><span class="n">nn</span><span class="o">.</span><span class="vm">__dict__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_optim"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.get_optim">[docs]</a><span class="k">def</span> <span class="nf">get_optim</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">optim_spec</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Helper to parse optim param and construct optim for net&#39;&#39;&#39;</span>
+    <span class="n">OptimClass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="p">,</span> <span class="n">optim_spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+    <span class="n">optim_spec</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">optim_spec</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="n">optim</span> <span class="o">=</span> <span class="n">OptimClass</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="o">**</span><span class="n">optim_spec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">optim</span></div>
+
+
+<div class="viewcode-block" id="get_lr_scheduler"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.get_lr_scheduler">[docs]</a><span class="k">def</span> <span class="nf">get_lr_scheduler</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="n">lr_scheduler_spec</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Helper to parse lr_scheduler param and construct Pytorch optim.lr_scheduler&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">ps</span><span class="o">.</span><span class="n">is_empty</span><span class="p">(</span><span class="n">lr_scheduler_spec</span><span class="p">):</span>
+        <span class="n">lr_scheduler</span> <span class="o">=</span> <span class="n">NoOpLRScheduler</span><span class="p">(</span><span class="n">optim</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">lr_scheduler_spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LambdaLR&#39;</span><span class="p">:</span>
+        <span class="n">LRSchedulerClass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="p">,</span> <span class="s1">&#39;LambdaLR&#39;</span><span class="p">)</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lr_scheduler_spec</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">])</span>
+        <span class="n">lr_scheduler</span> <span class="o">=</span> <span class="n">LRSchedulerClass</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="n">lr_lambda</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">/</span> <span class="n">frame</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">LRSchedulerClass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="p">,</span> <span class="n">lr_scheduler_spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+        <span class="n">lr_scheduler_spec</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">lr_scheduler_spec</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="n">lr_scheduler</span> <span class="o">=</span> <span class="n">LRSchedulerClass</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="o">**</span><span class="n">lr_scheduler_spec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lr_scheduler</span></div>
+
+
+<div class="viewcode-block" id="get_loss_fn"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.get_loss_fn">[docs]</a><span class="k">def</span> <span class="nf">get_loss_fn</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">loss_spec</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Helper to parse loss param and construct loss_fn for net&#39;&#39;&#39;</span>
+    <span class="n">LossClass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span> <span class="n">get_nn_name</span><span class="p">(</span><span class="n">loss_spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+    <span class="n">loss_spec</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">loss_spec</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">LossClass</span><span class="p">(</span><span class="o">**</span><span class="n">loss_spec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">loss_fn</span></div>
+
+
+<div class="viewcode-block" id="init_params"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.init_params">[docs]</a><span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">init_fn</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Initialize module&#39;s weights using init_fn, and biases to 0.0&#39;&#39;&#39;</span>
+    <span class="n">bias_init</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">classname</span> <span class="o">=</span> <span class="n">get_class_name</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;Net&#39;</span> <span class="ow">in</span> <span class="n">classname</span><span class="p">:</span>  <span class="c1"># skip if it&#39;s a net, not pytorch layer</span>
+        <span class="k">pass</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">classname</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;BatchNorm&#39;</span><span class="p">,</span> <span class="s1">&#39;Conv&#39;</span><span class="p">,</span> <span class="s1">&#39;Linear&#39;</span><span class="p">)):</span>
+        <span class="n">init_fn</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">bias_init</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s1">&#39;GRU&#39;</span> <span class="ow">in</span> <span class="n">classname</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s1">&#39;weight&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">init_fn</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="s1">&#39;bias&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">bias_init</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="init_layers"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.init_layers">[docs]</a><span class="k">def</span> <span class="nf">init_layers</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">init_fn_name</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Primary method to initialize the weights of the layers of a network&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">init_fn_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="c1"># get nonlinearity</span>
+    <span class="n">nonlinearity</span> <span class="o">=</span> <span class="n">get_nn_name</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">hid_layers_activation</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">nonlinearity</span> <span class="o">==</span> <span class="s1">&#39;leakyrelu&#39;</span><span class="p">:</span>
+        <span class="n">nonlinearity</span> <span class="o">=</span> <span class="s1">&#39;leaky_relu&#39;</span>  <span class="c1"># guard name</span>
+
+    <span class="c1"># get init_fn and add arguments depending on nonlinearity</span>
+    <span class="n">init_fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="p">,</span> <span class="n">init_fn_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;kaiming&#39;</span> <span class="ow">in</span> <span class="n">init_fn_name</span><span class="p">:</span>  <span class="c1"># has &#39;nonlinearity&#39; as arg</span>
+        <span class="k">assert</span> <span class="n">nonlinearity</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;leaky_relu&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;Kaiming initialization not supported for </span><span class="si">{</span><span class="n">nonlinearity</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">init_fn</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">init_fn</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="n">nonlinearity</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s1">&#39;orthogonal&#39;</span> <span class="ow">in</span> <span class="n">init_fn_name</span> <span class="ow">or</span> <span class="s1">&#39;xavier&#39;</span> <span class="ow">in</span> <span class="n">init_fn_name</span><span class="p">:</span>  <span class="c1"># has &#39;gain&#39; as arg</span>
+        <span class="n">gain</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">calculate_gain</span><span class="p">(</span><span class="n">nonlinearity</span><span class="p">)</span>
+        <span class="n">init_fn</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">init_fn</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="n">gain</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># finally, apply init_params to each layer in its modules</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">init_params</span><span class="p">,</span> <span class="n">init_fn</span><span class="o">=</span><span class="n">init_fn</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">_device</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save model weights from a path into a net module</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        net:</span>
+<span class="sd">        model_path:</span>
+<span class="sd">        device:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../../../comet/comet.agent.training.html#comet.agent.training.net_utils.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save model weights to path</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        net:</span>
+<span class="sd">        model_path:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">model_path</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+comet.agent package
+===================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.agent.core
+   comet.agent.nlu
+   comet.agent.synonym_mapper
+   comet.agent.training
+
+Module contents
+---------------
+
+.. automodule:: comet.agent
+   :members:
+   :undoc-members:
+   :show-inheritance:

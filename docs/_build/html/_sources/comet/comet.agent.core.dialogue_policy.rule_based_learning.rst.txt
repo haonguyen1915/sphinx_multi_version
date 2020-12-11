@@ -1,0 +1,22 @@
+comet.agent.core.dialogue\_policy.rule\_based\_learning package
+===============================================================
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_policy.rule\_based\_learning.dummy\_policy module
+----------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.rule_based_learning.dummy_policy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_policy.rule_based_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:

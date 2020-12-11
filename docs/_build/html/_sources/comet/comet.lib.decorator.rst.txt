@@ -1,0 +1,22 @@
+comet.lib.decorator package
+===========================
+
+Submodules
+----------
+
+comet.lib.decorator.io\_perfomance module
+-----------------------------------------
+
+.. automodule:: comet.lib.decorator.io_perfomance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.lib.decorator
+   :members:
+   :undoc-members:
+   :show-inheritance:

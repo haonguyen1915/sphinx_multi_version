@@ -1,0 +1,22 @@
+comet.agent.core.dialogue\_policy.reinforcement\_learning.eval package
+======================================================================
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.eval.policy\_evaluation module
+----------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.eval.policy_evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.eval
+   :members:
+   :undoc-members:
+   :show-inheritance:

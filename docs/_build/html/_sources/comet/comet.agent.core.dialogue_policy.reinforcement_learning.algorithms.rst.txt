@@ -1,0 +1,62 @@
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms package
+============================================================================
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms.actor\_critic module
+-----------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.actor_critic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms.base module
+--------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms.base\_dqn module
+-------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.base_dqn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms.baseline\_reinforce module
+-----------------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.baseline_reinforce
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms.vanilla\_dqn module
+----------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.vanilla_dqn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.reinforcement\_learning.algorithms.vanilla\_reinforce module
+----------------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms.vanilla_reinforce
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning.algorithms
+   :members:
+   :undoc-members:
+   :show-inheritance:

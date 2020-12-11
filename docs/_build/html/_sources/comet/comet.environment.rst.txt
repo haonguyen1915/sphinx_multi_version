@@ -1,0 +1,30 @@
+comet.environment package
+=========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.environment.user_simulator
+
+Submodules
+----------
+
+comet.environment.reward\_function module
+-----------------------------------------
+
+.. automodule:: comet.environment.reward_function
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.environment
+   :members:
+   :undoc-members:
+   :show-inheritance:

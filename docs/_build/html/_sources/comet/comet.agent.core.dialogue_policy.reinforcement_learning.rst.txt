@@ -1,0 +1,22 @@
+comet.agent.core.dialogue\_policy.reinforcement\_learning package
+=================================================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.agent.core.dialogue_policy.reinforcement_learning.algorithms
+   comet.agent.core.dialogue_policy.reinforcement_learning.eval
+   comet.agent.core.dialogue_policy.reinforcement_learning.memory
+   comet.agent.core.dialogue_policy.reinforcement_learning.net
+   comet.agent.core.dialogue_policy.reinforcement_learning.utils
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_policy.reinforcement_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:

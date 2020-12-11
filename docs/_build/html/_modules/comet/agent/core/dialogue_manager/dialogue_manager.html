@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_manager.dialogue_manager &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_manager.dialogue_manager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.agent.core.dialogue_manager.dialogue_manager</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The DialogueManager consists of a dialogue state tracker and a policy.</span>
+<span class="sd">It handles the decision-making part of the Conversational Agent.</span>
+<span class="sd">Given new input (a list of DialogueActs), it will ensure that the state is</span>
+<span class="sd">updated properly and will output a list of DialogueActs in response, after</span>
+<span class="sd">querying its policy.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">reformat_dict</span>
+<span class="kn">from</span> <span class="nn">comet.utilities</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">comet.domain.ontology</span> <span class="kn">import</span> <span class="n">Ontology</span>
+<span class="kn">from</span> <span class="nn">comet.domain.database.database</span> <span class="kn">import</span> <span class="n">Database</span>
+<span class="kn">from</span> <span class="nn">comet.domain.domain</span> <span class="kn">import</span> <span class="n">Domain</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialog_state_tracker.dialogue_state_tracker</span> <span class="kn">import</span> <span class="n">DialogueStateTracker</span>
+<span class="kn">from</span> <span class="nn">comet.abstract_module.conversational_module</span> <span class="kn">import</span> <span class="n">ConversationalModule</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.dialogue</span> <span class="kn">import</span> <span class="n">Dialogue</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.action</span> <span class="kn">import</span> <span class="n">DialogueAct</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">load_module</span><span class="p">,</span> <span class="n">make_dirs</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.constants</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.onpolicy_memory</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">decorator</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.constants</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DF_SYS_ACT</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DialogueManager"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager">[docs]</a><span class="k">class</span> <span class="nc">DialogueManager</span><span class="p">(</span><span class="n">ConversationalModule</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parses the arguments in the dictionary and initializes the appropriate</span>
+<span class="sd">        models for dialogue State Tracking and dialogue Policy.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args (Dict): the configuration file parsed into a dictionary use for DM.</span>
+<span class="sd">                configuration: all config load from yaml file (required)</span>
+<span class="sd">                ontology: The ontology of domain. (required)</span>
+<span class="sd">                database: The database neo4j or json of domain. (required)</span>
+<span class="sd">                domain: The domain. (required)</span>
+<span class="sd">                agent_id: agent identification. (Optional)</span>
+<span class="sd">                agent_role: the agent role, maybe usr or system. (Optional)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">DialogueManager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Get the required parameters from args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;configuration&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;ontology&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">policies</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">p_module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;POLICY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;policy_path&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">policy_module</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                <span class="n">p_module</span><span class="p">[</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                <span class="n">p_module</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                <span class="n">p_module</span><span class="p">[</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">policy_module</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;DialogueManager: policies is empty!&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Init defaults parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">policy_threshold</span> <span class="o">=</span> <span class="mf">0.85</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">DEFAULT_BASE_MODELS_PATH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MAX_DB_RESULTS</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span> <span class="o">=</span> <span class="s2">&quot;system&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_tracker</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Get optional params from args</span>
+        <span class="k">if</span> <span class="s2">&quot;models_path&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">][</span><span class="s1">&#39;models_path&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">WORKING_DIR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">models_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;policy_threshold&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policy_threshold</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;policy_threshold&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Retrieve train, test option of dst and polices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_POLICY</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TEST_POLICY</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">policy</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_POLICY</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">policy</span><span class="o">.</span><span class="n">testing</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">TEST_POLICY</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_DST</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TEST_DST</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">training</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_DST</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_POLICY</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">testing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TEST_POLICY</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">TEST_DST</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_training_over</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tracing_logger</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DialogueManager.initialize"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the relevant structures and variables of the dialogue</span>
+<span class="sd">        Manager.</span>
+
+<span class="sd">        :return: Nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">args_policy</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="n">policy</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="o">**</span><span class="n">args_policy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_training_over</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="DialogueManager.receive_input"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.receive_input">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">receive_input</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">:</span> <span class="n">DialogueStateTracker</span><span class="p">,</span>
+            <span class="n">user_acts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;DialogueAct&quot;</span><span class="p">],</span>
+            <span class="n">usr_utterance</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">cv_result</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Receive input and update the dialogue state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker: Dialogue State Tracker</span>
+<span class="sd">            user_acts (List[DialogueAct]): The input dialogue act</span>
+<span class="sd">            usr_utterance: raw user utterance</span>
+<span class="sd">            cv_result: cv output</span>
+
+<span class="sd">        Returns: None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Update the dialogue state</span>
+        <span class="n">user_acts</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">user_acts</span> <span class="k">else</span> <span class="n">user_acts</span>
+
+        <span class="c1"># Reset dialogue state</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+        <span class="c1"># Update internal state with ontology</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="n">update_ontology</span><span class="p">(</span><span class="n">user_acts</span><span class="p">)</span>
+
+        <span class="c1"># Update internal state with result from CV</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="n">update_cv</span><span class="p">(</span><span class="n">cv_result</span><span class="p">)</span>
+
+        <span class="c1"># Update user dialogue acts</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">user_acts</span><span class="p">,</span> <span class="n">usr_utterance</span><span class="o">=</span><span class="n">usr_utterance</span><span class="p">)</span>
+
+        <span class="c1"># Lookup the in database with the state after updated</span>
+        <span class="n">db_result</span><span class="p">,</span> <span class="n">values_frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_lookup</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of db_results: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">db_result</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">db</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">State for lookup: </span><span class="se">\n</span><span class="s2">&quot;</span>
+                   <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">tracker</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span><span class="o">.</span><span class="n">belief_state</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
+                   <span class="sa">f</span><span class="s2">&quot;db_results: </span><span class="si">{</span><span class="n">reformat_dict</span><span class="p">(</span><span class="n">db_result</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                   <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Len db_results: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">db_result</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Update dialogue state with database</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="n">update_state_db</span><span class="p">(</span>
+            <span class="n">db_result</span><span class="o">=</span><span class="n">db_result</span><span class="p">,</span>
+            <span class="n">sys_requestable_semantic</span><span class="o">=</span><span class="n">values_frequency</span><span class="p">)</span>
+
+        <span class="c1"># Update the dialogue state tracker. All state will be track in self.states</span>
+        <span class="c1"># tracker.update_turn_index()</span>
+
+        <span class="n">_logger</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STATE: </span><span class="se">\n</span><span class="s2">&quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">tracker</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueManager.generate_output"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.generate_output">[docs]</a>    <span class="nd">@decorator</span><span class="o">.</span><span class="n">performance</span>
+    <span class="k">def</span> <span class="nf">generate_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">force_terminate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> \
+            <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;DialogueAct&quot;</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;DialogueAct&quot;</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Consult the current policy to generate a response.</span>
+
+<span class="sd">        Returns: List of DialogueAct representing the system&#39;s output.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">force_terminate</span><span class="p">:</span>
+            <span class="c1"># d_state = tracker.get_state()</span>
+
+            <span class="n">sys_acts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_best_action</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+            <span class="c1"># raw_system_acts = deepcopy(sys_acts)</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">system_act_set</span><span class="p">:</span>
+                    <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;intent: &lt;</span><span class="si">{</span><span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span><span class="si">}</span><span class="s2">&gt; is not defined in domain&#39;s system_act_set&quot;</span><span class="p">,</span>
+                        <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_role</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">: policy can not predict any action, &quot;</span>
+                              <span class="sa">f</span><span class="s2">&quot;use cant_help action by default&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+                <span class="n">sys_acts</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueAct</span><span class="p">(</span><span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">CANT_HELP</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sys_acts</span> <span class="o">=</span> <span class="p">[</span><span class="n">DialogueAct</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">,</span> <span class="p">[])]</span>
+            <span class="c1"># raw_system_acts = sys_acts</span>
+        <span class="n">raw_system_acts</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sys_acts</span><span class="p">)</span>
+
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">update_state_sys_acts</span><span class="p">(</span><span class="n">sys_acts</span><span class="p">,</span> <span class="n">raw_system_acts</span><span class="p">)</span>
+
+        <span class="c1"># check if policy is exploration or not</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;cur_is_exploration&#39;</span><span class="p">):</span>
+            <span class="n">is_exploration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cur_is_exploration</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">is_exploration</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">sys_acts</span><span class="p">,</span> <span class="n">raw_system_acts</span><span class="p">,</span> <span class="n">is_exploration</span></div>
+
+    <span class="c1"># def predict_best_action(self, d_state: DialogueState):</span>
+<div class="viewcode-block" id="DialogueManager.predict_best_action"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.predict_best_action">[docs]</a>    <span class="k">def</span> <span class="nf">predict_best_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">:</span> <span class="n">DialogueStateTracker</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predict the best action according to priority and confidence threshold from all polices</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker: Current dialogue state</span>
+
+<span class="sd">        Returns: best action</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># A tuple of (acts, confidence, priority)</span>
+        <span class="n">best_sys_acts</span> <span class="o">=</span> <span class="p">([],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">best_policy_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="n">sys_acts</span><span class="p">,</span> <span class="n">confidence</span> <span class="o">=</span> <span class="n">policy</span><span class="o">.</span><span class="n">next_action</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+            <span class="c1"># try:</span>
+            <span class="c1">#     sys_acts, confidence = policy.next_action(tracker)</span>
+            <span class="c1"># except Exception as err:</span>
+            <span class="c1">#     _logger.error(f&quot;Can&#39;t predict next action from {policy.__class__.__name__}, &quot;</span>
+            <span class="c1">#                   f&quot;error: {err}. We ignore output from this policy&quot;)</span>
+            <span class="c1">#     sys_acts, confidence = [], 0.0</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> \
+                    <span class="p">(</span><span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_threshold</span> <span class="o">&lt;</span> <span class="n">confidence</span><span class="p">)</span> <span class="ow">or</span> \
+                    <span class="p">(</span><span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_threshold</span> <span class="ow">and</span> <span class="n">confidence</span> <span class="o">&gt;</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">policy_threshold</span> <span class="ow">and</span> <span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">policy</span><span class="o">.</span><span class="n">priority</span><span class="p">)</span> <span class="ow">or</span> \
+                    <span class="p">(</span><span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">confidence</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_threshold</span><span class="p">):</span>
+                <span class="n">best_sys_acts</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys_acts</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">policy</span><span class="o">.</span><span class="n">priority</span><span class="p">)</span>
+                <span class="n">best_policy_name</span> <span class="o">=</span> <span class="n">policy</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="c1"># best_action = str(best_sys_acts[0][0]) if best_sys_acts[0] else []</span>
+        <span class="n">best_action</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">act</span><span class="p">)</span> <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best action from </span><span class="si">{</span><span class="n">best_policy_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">best_action</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">best_sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="DialogueManager.db_lookup"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.db_lookup">[docs]</a>    <span class="k">def</span> <span class="nf">db_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform an Neo4j or json query given the current dialogue state (i.e. given</span>
+<span class="sd">        which slots have values).</span>
+
+<span class="sd">        Returns(tuple): a tuple of dictionary containing the current database results</span>
+<span class="sd">        and slot entropies</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d_state</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="c1"># Query the database</span>
+        <span class="n">db_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">db_lookup</span><span class="p">(</span><span class="n">d_state</span><span class="o">.</span><span class="n">belief_state</span><span class="p">)</span>
+        <span class="n">values_frequency</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="o">.</span><span class="n">system_requestable</span> <span class="k">if</span>
+                            <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]}</span>
+        <span class="k">if</span> <span class="n">db_result</span><span class="p">:</span>
+            <span class="c1"># Calculate for each slot, have how many value in it.</span>
+            <span class="k">for</span> <span class="n">p_id</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">db_result</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">values_frequency</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="n">values_frequency</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">values_frequency</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values_frequency</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+            <span class="k">return</span> <span class="n">db_result</span><span class="p">,</span> <span class="n">values_frequency</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{},</span> <span class="n">values_frequency</span></div>
+
+<div class="viewcode-block" id="DialogueManager.restart"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.restart">[docs]</a>    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restart the relevant structures or variables, e.g. at the beginning of</span>
+<span class="sd">        a new dialogue.</span>
+
+<span class="sd">        :return: Nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># tracker.initialize(args)</span>
+
+        <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="n">policy</span><span class="o">.</span><span class="n">restart</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialogue_counter</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="DialogueManager.update_goal"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.update_goal">[docs]</a>    <span class="k">def</span> <span class="nf">update_goal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update this agent&#39;s goal. This is mainly used to propagate the update</span>
+<span class="sd">        down to the dialogue State Tracker.</span>
+
+<span class="sd">        :param goal: a Goal</span>
+<span class="sd">        :return: nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+    <span class="c1"># def get_states(self, tracker):</span>
+    <span class="c1">#     return tracker.dialogue_states</span>
+
+<div class="viewcode-block" id="DialogueManager.get_state"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.get_state">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="n">tracker</span><span class="p">:</span> <span class="n">DialogueStateTracker</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the current dialogue state</span>
+
+<span class="sd">        :return: the dialogue state</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">tracker</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DialogueManager.at_terminal_state"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.at_terminal_state">[docs]</a>    <span class="k">def</span> <span class="nf">at_terminal_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">:</span> <span class="n">DialogueStateTracker</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assess whether the agent is at a terminal state.</span>
+
+<span class="sd">        :return: True or False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">tracker</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DialogueManager.update_replay_memory"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.update_replay_memory">[docs]</a>    <span class="k">def</span> <span class="nf">update_replay_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_action</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            action:</span>
+<span class="sd">            reward:</span>
+<span class="sd">            next_action:</span>
+<span class="sd">            done:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">eval_dialogues</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eval_dialogues&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">policy</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_action</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+                <span class="n">policy</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add_status</span><span class="p">(</span><span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">policy</span><span class="o">.</span><span class="n">memory</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">policy</span><span class="o">.</span><span class="n">batch_size</span> <span class="ow">and</span> <span class="n">policy</span><span class="o">.</span><span class="n">online_training</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">is_training_over</span> <span class="o">=</span> <span class="n">policy</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">eval_dialogues</span><span class="o">=</span><span class="n">eval_dialogues</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueManager.train"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Dialogue&quot;</span><span class="p">],</span>
+              <span class="n">eval_dialogues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Dialogue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">memory</span><span class="p">:</span> <span class="n">Memory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train the policy and dialogue state tracker, if applicable.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dialogues: dialogue experience</span>
+<span class="sd">            eval_dialogues: evaluation data</span>
+<span class="sd">            memory: Use for online training</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># TODO Here we will training policy and dialogue state tracker</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_POLICY</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">policy</span> <span class="ow">and</span> <span class="n">policy</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;dialogues&quot;</span><span class="p">:</span> <span class="n">dialogues</span><span class="p">,</span>
+                        <span class="s2">&quot;eval_dialogues&quot;</span><span class="p">:</span> <span class="n">eval_dialogues</span>
+                    <span class="p">}</span>
+                    <span class="n">policy</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueManager.test"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialogues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Dialogue&quot;</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test the policy and dialogue state tracker, if applicable.</span>
+
+<span class="sd">        :param dialogues: dialogue experience</span>
+<span class="sd">        :return: nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dialogues</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot evaluation because eval dialogues is empty&quot;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">TEST_POLICY</span> <span class="ow">and</span> <span class="n">dialogues</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">policy</span> <span class="ow">and</span> <span class="n">policy</span><span class="o">.</span><span class="n">testing</span><span class="p">:</span>
+                    <span class="n">policy</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">dialogues</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueManager.is_training"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.is_training">[docs]</a>    <span class="k">def</span> <span class="nf">is_training</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assess whether there are any trainable components in this dialogue</span>
+<span class="sd">        Manager.</span>
+
+<span class="sd">        :return: True or False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_DST</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRAIN_POLICY</span></div>
+
+<div class="viewcode-block" id="DialogueManager.load"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load models for the dialogue State Tracker and Policy.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path: base path for all model</span>
+
+<span class="sd">        Returns: nothing</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
+
+        <span class="c1"># if tracker:</span>
+        <span class="c1">#     tracker.load(os.path.join(path, &quot;DST&quot;, tracker.__class__.__name__))</span>
+        <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">policy</span><span class="o">.</span><span class="n">training</span> <span class="ow">or</span> <span class="n">policy</span><span class="o">.</span><span class="n">resume</span><span class="p">:</span>
+                <span class="n">policy_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;policies&quot;</span><span class="p">,</span> <span class="n">policy</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+                <span class="n">policy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">policy_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DialogueManager.save"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the models.</span>
+
+<span class="sd">        :return: nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">version_model</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span> <span class="s2">&quot;v0.2.0&quot;</span><span class="p">)</span>
+        <span class="n">base_models_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models_path</span><span class="p">,</span> <span class="n">version_model</span><span class="p">)</span>
+        <span class="n">make_dirs</span><span class="p">(</span><span class="n">base_models_dir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">policy</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+                    <span class="n">policy_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_models_dir</span><span class="p">,</span> <span class="s2">&quot;policies&quot;</span><span class="p">,</span>
+                                               <span class="n">policy</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+                    <span class="n">make_dirs</span><span class="p">(</span><span class="n">policy_path</span><span class="p">)</span>
+                    <span class="n">policy</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">policy_path</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_check_args_sanity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check the sanity of args for init dialogue manager.</span>
+<span class="sd">        Need provided ontology, database and domain</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args: a dictionary containing all params</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;configuration&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">: Please provide configuration!&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;POLICY&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;configuration&#39;</span><span class="p">][</span><span class="s1">&#39;AGENT&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">: Please provide POLICY configuration!&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;ontology&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">: Please provide ontology!&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;database&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">: Please provide database!&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;domain&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">: Please provide domain!&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DialogueManager.update_from_config"><a class="viewcode-back" href="../../../../../comet/comet.agent.core.dialogue_manager.html#comet.agent.core.dialogue_manager.dialogue_manager.DialogueManager.update_from_config">[docs]</a>    <span class="k">def</span> <span class="nf">update_from_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get all attribute instance from args config</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs: key word arguments for this function including:</span>
+<span class="sd">                configuration:</span>
+<span class="sd">                ontology: The ontology instance</span>
+<span class="sd">                database: The database instance</span>
+<span class="sd">                domain: The domain instance</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;configuration&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ontology</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;ontology&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="p">,</span> <span class="n">Ontology</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ontology</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not a type of ontology&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="p">,</span> <span class="n">Database</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not a type of database&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">Domain</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not a type of domain&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Policy settings</span>
+        <span class="n">policy_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;AGENT&#39;</span><span class="p">][</span><span class="s1">&#39;POLICY&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">policies</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">p_module</span> <span class="ow">in</span> <span class="n">policy_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;policy_path&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">policy_module</span> <span class="o">=</span> <span class="n">load_module</span><span class="p">(</span>
+                <span class="n">p_module</span><span class="p">[</span><span class="s1">&#39;package&#39;</span><span class="p">],</span>
+                <span class="n">p_module</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+                <span class="n">p_module</span><span class="p">[</span><span class="s1">&#39;arguments&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">policy_module</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;DialogueManager: policies is empty!&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

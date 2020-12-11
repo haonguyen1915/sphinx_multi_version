@@ -1,0 +1,1347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.lib package &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="comet.lib.decorator package" href="comet.lib.decorator.html" />
+    <link rel="prev" title="comet.environment.user_simulator.model_base_us package" href="comet.environment.user_simulator.model_base_us.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="comet.html">comet package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="comet.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="comet.abstract_module.html">comet.abstract_module package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.html">comet.agent package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.call_backs.html">comet.call_backs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.channel.html">comet.channel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.cli.html">comet.cli package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.controller.html">comet.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.domain.html">comet.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.environment.html">comet.environment package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">comet.lib package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.decorator">comet.lib.decorator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.file_util">comet.lib.file_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.helpers">comet.lib.helpers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.log_tracker">comet.lib.log_tracker module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.logger">comet.lib.logger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.math_util">comet.lib.math_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib.meta_class">comet.lib.meta_class module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-comet.lib">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.utilities.html">comet.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#comet-run-module">comet.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.run_cli">comet.run_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.server">comet.server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="comet.html">comet package</a> &raquo;</li>
+        
+      <li>comet.lib package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/comet/comet.lib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="comet-lib-package">
+<h1>comet.lib package<a class="headerlink" href="#comet-lib-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comet.lib.decorator.html">comet.lib.decorator package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comet.lib.decorator.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.lib.decorator.html#module-comet.lib.decorator.io_perfomance">comet.lib.decorator.io_perfomance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.lib.decorator.html#module-comet.lib.decorator">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comet.lib.storage.html">comet.lib.storage package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comet.lib.storage.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.lib.storage.html#module-comet.lib.storage.redis">comet.lib.storage.redis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.lib.storage.html#module-comet.lib.storage">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.lib.decorator">
+<span id="comet-lib-decorator-module"></span><h2>comet.lib.decorator module<a class="headerlink" href="#module-comet.lib.decorator" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.lib.file_util">
+<span id="comet-lib-file-util-module"></span><h2>comet.lib.file_util module<a class="headerlink" href="#module-comet.lib.file_util" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="comet.lib.file_util.create_directory">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">create_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">directory_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#create_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.create_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a directory and its super paths.</p>
+<p>Succeeds even if the path already exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.create_directory_for_file">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">create_directory_for_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#create_directory_for_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.create_directory_for_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates any missing parent directories of this file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.dump_obj_as_json_to_file">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">dump_obj_as_json_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#dump_obj_as_json_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.dump_obj_as_json_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump an object as a json string to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.is_valid_file_path">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">is_valid_file_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#is_valid_file_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.is_valid_file_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a path is a right path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The path need to check</p>
+</dd>
+</dl>
+<p>Returns:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.load_context">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">load_context</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#load_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.load_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.load_json">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">load_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#load_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.load_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load content from json file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>Text</em>) – json path</p>
+</dd>
+</dl>
+<p>Returns: a dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.load_yaml">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">load_yaml</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#load_yaml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.load_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the content in yaml file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>Text</em>) – A File path</p>
+</dd>
+</dl>
+<p>Returns: Dict from yaml file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.make_dirs">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">make_dirs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#make_dirs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.make_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The path to create folder</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.save_context">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">save_context</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#save_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.save_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.write_json_beutifier">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">write_json_beutifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">dict_info</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#write_json_beutifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.write_json_beutifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the content from dictionary into file with a beautiful format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>Text</em>) – The file path</p></li>
+<li><p><strong>dict_info</strong> (<em>Dict</em>) – Dict will be dump</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.file_util.write_text_file">
+<code class="sig-prename descclassname">comet.lib.file_util.</code><code class="sig-name descname">write_text_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">content</span></em>, <em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">encoding</span><span class="o">=</span><span class="default_value">'utf-8'</span></em>, <em class="sig-param"><span class="n">append</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/file_util.html#write_text_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.file_util.write_text_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes text to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The content to write.</p></li>
+<li><p><strong>file_path</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>]) – The path to which the content should be written.</p></li>
+<li><p><strong>encoding</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The encoding which should be used.</p></li>
+<li><p><strong>append</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to append to the file or to truncate the file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.lib.helpers">
+<span id="comet-lib-helpers-module"></span><h2>comet.lib.helpers module<a class="headerlink" href="#module-comet.lib.helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.lib.helpers.ArgParser">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">ArgParser</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#ArgParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.ArgParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></p>
+<dl>
+<dt>Use sage sample:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">_args</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">ArgParser</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">add_str</span><span class="p">(</span>
+<span class="go">    &gt;&gt;&gt; &quot;--config&quot;,</span>
+<span class="go">    &gt;&gt;&gt; help=&quot;The configuration file path&quot;,</span>
+<span class="go">    &gt;&gt;&gt; default=f&quot;default&quot;</span>
+<span class="go">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">add_count</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;debug mode&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">add_count</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">,</span> <span class="s2">&quot;-t&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;debug mode&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">run</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="comet.lib.helpers.ArgParser.add_count">
+<code class="sig-name descname">add_count</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">help</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#ArgParser.add_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.ArgParser.add_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add argument with count action
+:param args:
+:type help: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]
+:param help:
+:param kwargs:
+:rtype: <code class="docutils literal notranslate"><span class="pre">None</span></code>
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.ArgParser.add_int">
+<code class="sig-name descname">add_int</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">help</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">choices</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">required</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#ArgParser.add_int"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.ArgParser.add_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a int arguments
+:param args:
+:param default:
+:type help: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]
+:param help:
+:type choices: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>]
+:param choices:
+:param required:
+:param kwargs:
+:rtype: <code class="docutils literal notranslate"><span class="pre">None</span></code>
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.ArgParser.add_str">
+<code class="sig-name descname">add_str</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">help</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">required</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">choices</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#ArgParser.add_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.ArgParser.add_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a string argument
+python main.py –str “some string”
+:param args:
+:type default: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]
+:param default:
+:type help: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]
+:param help:
+:param required:
+:type choices: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>]
+:param choices:
+:param kwargs:
+:rtype: <code class="docutils literal notranslate"><span class="pre">None</span></code>
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.lib.helpers.MyOrderedDict">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">MyOrderedDict</code><a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></p>
+<dl class="py method">
+<dt id="comet.lib.helpers.MyOrderedDict.get_item_by_key">
+<code class="sig-name descname">get_item_by_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict.get_item_by_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict.get_item_by_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the item by key
+:param key:</p>
+<p>Returns:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.MyOrderedDict.get_last_item">
+<code class="sig-name descname">get_last_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict.get_last_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict.get_last_item" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.MyOrderedDict.get_last_key_item">
+<code class="sig-name descname">get_last_key_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict.get_last_key_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict.get_last_key_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get key of last item</p>
+<p>Returns:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.MyOrderedDict.get_last_value_item">
+<code class="sig-name descname">get_last_value_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict.get_last_value_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict.get_last_value_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get key of last item</p>
+<p>Returns:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.MyOrderedDict.remove_item_by_key">
+<code class="sig-name descname">remove_item_by_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict.remove_item_by_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict.remove_item_by_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.helpers.MyOrderedDict.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">E</em>, <span class="optional">]</span><em class="sig-param">**F</em><span class="sig-paren">)</span> &#x2192; None.  Update D from dict/iterable E and F.<a class="reference internal" href="../_modules/comet/lib/helpers.html#MyOrderedDict.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.MyOrderedDict.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
+If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
+In either case, this is followed by: for k in F:  D[k] = F[k]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.adjust_file_path">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">adjust_file_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#adjust_file_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.adjust_file_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.flatten_lists">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">flatten_lists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">listOfLists</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#flatten_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.flatten_lists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatent
+:param listOfLists:
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.get_abs_path">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">get_abs_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_path</span></em>, <em class="sig-param"><span class="n">content_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#get_abs_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.get_abs_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.get_cfd">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">get_cfd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">backward</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#get_cfd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.get_cfd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get current file directory
+:param backward:
+:type backward:
+:return:
+:rtype:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.get_class_name">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">get_class_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">lower</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#get_class_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.get_class_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the class name of an object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> – </p></li>
+<li><p><strong>lower</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.get_last_item_by_ts">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">get_last_item_by_ts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_of_dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#get_last_item_by_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.get_last_item_by_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get latest item from list of dictionary by time step</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>list_of_dict</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#comet.lib.helpers.MyOrderedDict" title="comet.lib.helpers.MyOrderedDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MyOrderedDict</span></code></a>]) – </p>
+</dd>
+</dl>
+<p>Returns: last item</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.item_exist_in_list">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">item_exist_in_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">list_compare</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#item_exist_in_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.item_exist_in_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a string available in a list. Compare with normalize</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>list_compare</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.load_class">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">load_class</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_path</span></em>, <em class="sig-param"><span class="n">class_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#load_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.load_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamically load the specified class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>package_path</strong> – Path to the package to load</p></li>
+<li><p><strong>class_name</strong> – Name of the class within the package</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the class object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.load_module">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">load_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_path</span></em>, <em class="sig-param"><span class="n">class_name</span></em>, <em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#load_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.load_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamically load the specified class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>package_path</strong> – Path to the package to load</p></li>
+<li><p><strong>class_name</strong> – Name of the class within the package</p></li>
+<li><p><strong>args</strong> – arguments to pass when creating the object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the instantiated class object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.make_list">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">make_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#make_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.make_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.print_boxed">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">print_boxed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">trace</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#print_boxed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.print_boxed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.print_table">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">print_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">headers</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">trace</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#print_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.print_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print table of data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>headers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – [epoch, acc, loss]</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>]) – [[1, 2, 3], [1, 2, 3], [1, 2, 3]]</p></li>
+<li><p><strong>show</strong> – </p></li>
+<li><p><strong>trace</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.print_title">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">print_title</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'green'</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">trace</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#print_title"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.print_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print title</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – </p></li>
+<li><p><strong>color</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>show</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – print to consolve</p></li>
+<li><p><strong>trace</strong> – write file</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Returns: samples</dt><dd><div class="line-block">
+<div class="line">hello          |</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.prints">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">prints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#prints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.prints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print list of data
+:type data: <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]
+:param data:</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.reformat_dict">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">reformat_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dict_</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">sort_keys</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#reformat_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.reformat_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.remove_tone_notation">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">remove_tone_notation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#remove_tone_notation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.remove_tone_notation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove Vietnamese tone notation
+:param string: input string to be converted
+return: converted string which is removed ton notation</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.seed_everything">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">seed_everything</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#seed_everything"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.seed_everything" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.set_attr">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">set_attr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">attr_dict</span></em>, <em class="sig-param"><span class="n">keys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#set_attr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.set_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute of an object from a dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> – </p></li>
+<li><p><strong>attr_dict</strong> – </p></li>
+<li><p><strong>keys</strong> – </p></li>
+<li><p><strong>force</strong> – force set attribute</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.similar">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">similar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'sequence matcher'</span></em>, <em class="sig-param"><span class="n">acronym</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#similar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.similar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.sort_text_by_delimiter">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">sort_text_by_delimiter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str</span></em>, <em class="sig-param"><span class="n">delimiter</span><span class="o">=</span><span class="default_value">' '</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#sort_text_by_delimiter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.sort_text_by_delimiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.helpers.write_to_file">
+<code class="sig-prename descclassname">comet.lib.helpers.</code><code class="sig-name descname">write_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em>, <em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">is_append</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/helpers.html#write_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.helpers.write_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a message into a file path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>file_path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>is_append</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.lib.log_tracker">
+<span id="comet-lib-log-tracker-module"></span><h2>comet.lib.log_tracker module<a class="headerlink" href="#module-comet.lib.log_tracker" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.lib.log_tracker.LogTracker">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.log_tracker.</code><code class="sig-name descname">LogTracker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">reset</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">isPrintLog</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">showOneLevel</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.disable_print_log">
+<code class="sig-name descname">disable_print_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.disable_print_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.disable_print_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.disable_write_log">
+<code class="sig-name descname">disable_write_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.disable_write_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.disable_write_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.enable_print_log">
+<code class="sig-name descname">enable_print_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.enable_print_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.enable_print_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.enable_write_log">
+<code class="sig-name descname">enable_write_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.enable_write_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.enable_write_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.holdPrintLog">
+<code class="sig-name descname">holdPrintLog</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isPrintLog</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.holdPrintLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.holdPrintLog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.holdWriteLog">
+<code class="sig-name descname">holdWriteLog</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isWriteLog</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.holdWriteLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.holdWriteLog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span></em>, <em class="sig-param"><span class="n">msg</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">has_prefix</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace message
+:param level:
+:param msg:
+:param show:
+:param has_prefix:</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.releasePrintLog">
+<code class="sig-name descname">releasePrintLog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.releasePrintLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.releasePrintLog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.releaseWriteLog">
+<code class="sig-name descname">releaseWriteLog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.releaseWriteLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.releaseWriteLog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.lib.log_tracker.LogTracker.set_show_one_level">
+<code class="sig-name descname">set_show_one_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#LogTracker.set_show_one_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.LogTracker.set_show_one_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.log_tracker.get_name_ony_fr_path">
+<code class="sig-prename descclassname">comet.lib.log_tracker.</code><code class="sig-name descname">get_name_ony_fr_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em>, <em class="sig-param"><span class="n">_all_exts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/log_tracker.html#get_name_ony_fr_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.log_tracker.get_name_ony_fr_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get name onlu from path.
+Ex: /root/name/name.txt –&gt; name</p>
+<blockquote>
+<div><p>/root/name/name/    –&gt; name
+name.txt            –&gt; name
+name                –&gt; name</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> – file path</p></li>
+<li><p><strong>_all_exts</strong> – extenstion that u want to remove</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.lib.logger">
+<span id="comet-lib-logger-module"></span><h2>comet.lib.logger module<a class="headerlink" href="#module-comet.lib.logger" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.lib.logger.COLOR">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">COLOR</code><a class="reference internal" href="../_modules/comet/lib/logger.html#COLOR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.COLOR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.BLACK">
+<code class="sig-name descname">BLACK</code><em class="property"> = 'black'</em><a class="headerlink" href="#comet.lib.logger.COLOR.BLACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.BLUE">
+<code class="sig-name descname">BLUE</code><em class="property"> = 'blue'</em><a class="headerlink" href="#comet.lib.logger.COLOR.BLUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.CYAN">
+<code class="sig-name descname">CYAN</code><em class="property"> = 'cyan'</em><a class="headerlink" href="#comet.lib.logger.COLOR.CYAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.DARK_GRAY">
+<code class="sig-name descname">DARK_GRAY</code><em class="property"> = 'darkgrey'</em><a class="headerlink" href="#comet.lib.logger.COLOR.DARK_GRAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.FAIL">
+<code class="sig-name descname">FAIL</code><em class="property"> = 'fail'</em><a class="headerlink" href="#comet.lib.logger.COLOR.FAIL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.GREEN">
+<code class="sig-name descname">GREEN</code><em class="property"> = 'green'</em><a class="headerlink" href="#comet.lib.logger.COLOR.GREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.LIGHT_GRAY">
+<code class="sig-name descname">LIGHT_GRAY</code><em class="property"> = 'lightgrey'</em><a class="headerlink" href="#comet.lib.logger.COLOR.LIGHT_GRAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.LIGHT_GREEN">
+<code class="sig-name descname">LIGHT_GREEN</code><em class="property"> = 'lightgreen'</em><a class="headerlink" href="#comet.lib.logger.COLOR.LIGHT_GREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.ORANGE">
+<code class="sig-name descname">ORANGE</code><em class="property"> = 'orange'</em><a class="headerlink" href="#comet.lib.logger.COLOR.ORANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.PINK">
+<code class="sig-name descname">PINK</code><em class="property"> = 'pink'</em><a class="headerlink" href="#comet.lib.logger.COLOR.PINK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.PURPLE">
+<code class="sig-name descname">PURPLE</code><em class="property"> = 'purple'</em><a class="headerlink" href="#comet.lib.logger.COLOR.PURPLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.RED">
+<code class="sig-name descname">RED</code><em class="property"> = 'red'</em><a class="headerlink" href="#comet.lib.logger.COLOR.RED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.COLOR.YELLOW">
+<code class="sig-name descname">YELLOW</code><em class="property"> = 'yellow'</em><a class="headerlink" href="#comet.lib.logger.COLOR.YELLOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.lib.logger.LEVEL">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">LEVEL</code><a class="reference internal" href="../_modules/comet/lib/logger.html#LEVEL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.ACT">
+<code class="sig-name descname">ACT</code><em class="property"> = 14</em><a class="headerlink" href="#comet.lib.logger.LEVEL.ACT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.CRITICAL">
+<code class="sig-name descname">CRITICAL</code><em class="property"> = 50</em><a class="headerlink" href="#comet.lib.logger.LEVEL.CRITICAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.DB">
+<code class="sig-name descname">DB</code><em class="property"> = 13</em><a class="headerlink" href="#comet.lib.logger.LEVEL.DB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.DEBUG">
+<code class="sig-name descname">DEBUG</code><em class="property"> = 21</em><a class="headerlink" href="#comet.lib.logger.LEVEL.DEBUG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.DM">
+<code class="sig-name descname">DM</code><em class="property"> = 7</em><a class="headerlink" href="#comet.lib.logger.LEVEL.DM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.DST">
+<code class="sig-name descname">DST</code><em class="property"> = 8</em><a class="headerlink" href="#comet.lib.logger.LEVEL.DST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.ERROR">
+<code class="sig-name descname">ERROR</code><em class="property"> = 40</em><a class="headerlink" href="#comet.lib.logger.LEVEL.ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.FATAL">
+<code class="sig-name descname">FATAL</code><em class="property"> = 50</em><a class="headerlink" href="#comet.lib.logger.LEVEL.FATAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.INFO">
+<code class="sig-name descname">INFO</code><em class="property"> = 20</em><a class="headerlink" href="#comet.lib.logger.LEVEL.INFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.NL">
+<code class="sig-name descname">NL</code><em class="property"> = 34</em><a class="headerlink" href="#comet.lib.logger.LEVEL.NL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.NLG">
+<code class="sig-name descname">NLG</code><em class="property"> = 41</em><a class="headerlink" href="#comet.lib.logger.LEVEL.NLG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.NLU">
+<code class="sig-name descname">NLU</code><em class="property"> = 38</em><a class="headerlink" href="#comet.lib.logger.LEVEL.NLU" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.NOTSET">
+<code class="sig-name descname">NOTSET</code><em class="property"> = 0</em><a class="headerlink" href="#comet.lib.logger.LEVEL.NOTSET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.POLICY">
+<code class="sig-name descname">POLICY</code><em class="property"> = 39</em><a class="headerlink" href="#comet.lib.logger.LEVEL.POLICY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.STATE">
+<code class="sig-name descname">STATE</code><em class="property"> = 36</em><a class="headerlink" href="#comet.lib.logger.LEVEL.STATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.LEVEL.WARNING">
+<code class="sig-name descname">WARNING</code><em class="property"> = 30</em><a class="headerlink" href="#comet.lib.logger.LEVEL.WARNING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.lib.logger.PrintColor">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">PrintColor</code><a class="reference internal" href="../_modules/comet/lib/logger.html#PrintColor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.PrintColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="comet.lib.logger.PrintColor.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">on_color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">attrs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/logger.html#PrintColor.print"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.PrintColor.print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – The message will be print out</p></li>
+<li><p><strong>color</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – color accepted:</p></li>
+<li><p><strong>on_color</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – background color</p></li>
+<li><p><strong>attrs</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>]) – a dictionary containing:
+bold:
+disable:
+underline:
+reverse:
+strikethrough:
+invisible
+reset:</p></li>
+<li><p><strong>show</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – show this message into terminal: default True</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.lib.logger.STYLE">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">STYLE</code><a class="reference internal" href="../_modules/comet/lib/logger.html#STYLE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.STYLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.BOLD">
+<code class="sig-name descname">BOLD</code><em class="property"> = 'bold'</em><a class="headerlink" href="#comet.lib.logger.STYLE.BOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.DISABLE">
+<code class="sig-name descname">DISABLE</code><em class="property"> = 'disable'</em><a class="headerlink" href="#comet.lib.logger.STYLE.DISABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.INVISIBLE">
+<code class="sig-name descname">INVISIBLE</code><em class="property"> = 'invisible'</em><a class="headerlink" href="#comet.lib.logger.STYLE.INVISIBLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.RESET">
+<code class="sig-name descname">RESET</code><em class="property"> = 'reset'</em><a class="headerlink" href="#comet.lib.logger.STYLE.RESET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.REVERSE">
+<code class="sig-name descname">REVERSE</code><em class="property"> = 'reverse'</em><a class="headerlink" href="#comet.lib.logger.STYLE.REVERSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.STRIKE_THROUGH">
+<code class="sig-name descname">STRIKE_THROUGH</code><em class="property"> = 'strikethrough'</em><a class="headerlink" href="#comet.lib.logger.STYLE.STRIKE_THROUGH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="comet.lib.logger.STYLE.UNDERLINE">
+<code class="sig-name descname">UNDERLINE</code><em class="property"> = 'underline'</em><a class="headerlink" href="#comet.lib.logger.STYLE.UNDERLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.logger.configure_logger">
+<code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">configure_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/logger.html#configure_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.configure_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure  log</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.logger.currentframe">
+<code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">currentframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comet.lib.logger.currentframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.logger.findCallerPatch">
+<code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">findCallerPatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stack_info</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/logger.html#findCallerPatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.findCallerPatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the stack frame of the caller so that we can note the source
+file name, line number and function name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stack_info</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.logger.get_bool_env">
+<code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">get_bool_env</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/logger.html#get_bool_env"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.get_bool_env" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.logger.get_logger">
+<code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">get_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name_logger</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/logger.html#get_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.get_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a child logger specific to a module’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name_logger</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.logger.isEnabledFor">
+<code class="sig-prename descclassname">comet.lib.logger.</code><code class="sig-name descname">isEnabledFor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/logger.html#isEnabledFor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.logger.isEnabledFor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is this logger enabled for level ‘level’?</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.lib.math_util">
+<span id="comet-lib-math-util-module"></span><h2>comet.lib.math_util module<a class="headerlink" href="#module-comet.lib.math_util" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="comet.lib.math_util.calc_gaes">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">calc_gaes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewards</span></em>, <em class="sig-param"><span class="n">dones</span></em>, <em class="sig-param"><span class="n">v_preds</span></em>, <em class="sig-param"><span class="n">gamma</span></em>, <em class="sig-param"><span class="n">lam</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#calc_gaes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.calc_gaes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate GAE from Schulman et al. <a class="reference external" href="https://arxiv.org/pdf/1506.02438.pdf">https://arxiv.org/pdf/1506.02438.pdf</a>
+v_preds are values predicted for current states, with one last element as the final next_state
+delta is defined as r + gamma * V(s’) - V(s) in eqn 10
+GAE is defined in eqn 16
+This method computes in torch tensor to prevent unnecessary moves between devices (e.g. GPU tensor to CPU numpy)
+NOTE any standardization is done outside of this method</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.calc_nstep_returns">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">calc_nstep_returns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewards</span></em>, <em class="sig-param"><span class="n">dones</span></em>, <em class="sig-param"><span class="n">next_v_pred</span></em>, <em class="sig-param"><span class="n">gamma</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#calc_nstep_returns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.calc_nstep_returns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the n-step returns for advantage. Ref: <a class="reference external" href="http://www-anw.cs.umass.edu/~barto/courses/cs687/Chapter%207.pdf">http://www-anw.cs.umass.edu/~barto/courses/cs687/Chapter%207.pdf</a>
+Also see Algorithm S3 from A3C paper <a class="reference external" href="https://arxiv.org/pdf/1602.01783.pdf">https://arxiv.org/pdf/1602.01783.pdf</a> for the calculation used below
+R^(n)_t = r_{t} + gamma r_{t+1} + … + gamma^(n-1) r_{t+n-1} + gamma^(n) V(s_{t+n})</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.calc_q_value_logits">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">calc_q_value_logits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_value</span></em>, <em class="sig-param"><span class="n">raw_advantages</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#calc_q_value_logits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.calc_q_value_logits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.calc_returns">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">calc_returns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewards</span></em>, <em class="sig-param"><span class="n">dones</span></em>, <em class="sig-param"><span class="n">gamma</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#calc_returns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.calc_returns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the simple returns (full rollout) i.e. sum discounted rewards up till termination</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.linear_decay">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">linear_decay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start_val</span></em>, <em class="sig-param"><span class="n">end_val</span></em>, <em class="sig-param"><span class="n">start_step</span></em>, <em class="sig-param"><span class="n">end_step</span></em>, <em class="sig-param"><span class="n">step</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#linear_decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.linear_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple linear decay with annealing</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.no_decay">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">no_decay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start_val</span></em>, <em class="sig-param"><span class="n">end_val</span></em>, <em class="sig-param"><span class="n">start_step</span></em>, <em class="sig-param"><span class="n">end_step</span></em>, <em class="sig-param"><span class="n">step</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#no_decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.no_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>dummy method for API consistency</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.normalize">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">normalize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to normalize a rank-1 np array</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.periodic_decay">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">periodic_decay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start_val</span></em>, <em class="sig-param"><span class="n">end_val</span></em>, <em class="sig-param"><span class="n">start_step</span></em>, <em class="sig-param"><span class="n">end_step</span></em>, <em class="sig-param"><span class="n">step</span></em>, <em class="sig-param"><span class="n">frequency</span><span class="o">=</span><span class="default_value">60.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#periodic_decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.periodic_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linearly decaying sinusoid that decays in roughly 10 iterations until explore_anneal_epi
+Plot the equation below to see the pattern
+suppose sinusoidal decay, start_val = 1, end_val = 0.2, stop after 60 unscaled x steps
+then we get 0.2+0.5*(1-0.2)(1 + cos x)*(1-x/60)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.rate_decay">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">rate_decay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start_val</span></em>, <em class="sig-param"><span class="n">end_val</span></em>, <em class="sig-param"><span class="n">start_step</span></em>, <em class="sig-param"><span class="n">end_step</span></em>, <em class="sig-param"><span class="n">step</span></em>, <em class="sig-param"><span class="n">decay_rate</span><span class="o">=</span><span class="default_value">0.9</span></em>, <em class="sig-param"><span class="n">frequency</span><span class="o">=</span><span class="default_value">20.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#rate_decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.rate_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compounding rate decay that anneals in 20 decay iterations until end_step</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.standardize">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">standardize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#standardize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.standardize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to standardize a rank-1 np array</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.to_one_hot">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">to_one_hot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">max_val</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#to_one_hot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.to_one_hot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an int list of data into one-hot vectors</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.venv_pack">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">venv_pack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_tensor</span></em>, <em class="sig-param"><span class="n">num_envs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#venv_pack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.venv_pack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the reverse of venv_unpack to pack a batch tensor from (b*num_envs, <a href="#id1"><span class="problematic" id="id2">*</span></a>shape) to (b, num_envs, <a href="#id3"><span class="problematic" id="id4">*</span></a>shape)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="comet.lib.math_util.venv_unpack">
+<code class="sig-prename descclassname">comet.lib.math_util.</code><code class="sig-name descname">venv_unpack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_tensor</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/math_util.html#venv_unpack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.math_util.venv_unpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpack a sampled vec env batch tensor
+e.g. for a state with original shape (4, ), vec env should return vec state with shape (num_envs, 4) to store in memory
+When sampled with batch_size b, we should get shape (b, num_envs, 4). But we need to unpack the num_envs dimension to get (b * num_envs, 4) for passing to a network. This method does that.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.lib.meta_class">
+<span id="comet-lib-meta-class-module"></span><h2>comet.lib.meta_class module<a class="headerlink" href="#module-comet.lib.meta_class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.lib.meta_class.MetaClass">
+<em class="property">class </em><code class="sig-prename descclassname">comet.lib.meta_class.</code><code class="sig-name descname">MetaClass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">bases</span></em>, <em class="sig-param"><span class="n">dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/meta_class.html#MetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.meta_class.MetaClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
+<dl class="py method">
+<dt id="comet.lib.meta_class.MetaClass.get_attribute_names">
+<em class="property">static </em><code class="sig-name descname">get_attribute_names</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/lib/meta_class.html#MetaClass.get_attribute_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.lib.meta_class.MetaClass.get_attribute_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.lib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comet.lib" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comet.lib.decorator.html" class="btn btn-neutral float-right" title="comet.lib.decorator package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="comet.environment.user_simulator.model_base_us.html" class="btn btn-neutral float-left" title="comet.environment.user_simulator.model_base_us package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

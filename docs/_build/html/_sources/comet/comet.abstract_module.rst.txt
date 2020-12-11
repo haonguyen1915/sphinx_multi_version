@@ -1,0 +1,22 @@
+comet.abstract\_module package
+==============================
+
+Submodules
+----------
+
+comet.abstract\_module.conversational\_module module
+----------------------------------------------------
+
+.. automodule:: comet.abstract_module.conversational_module
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.abstract_module
+   :members:
+   :undoc-members:
+   :show-inheritance:

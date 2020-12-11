@@ -1,0 +1,55 @@
+comet package
+=============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.abstract_module
+   comet.agent
+   comet.call_backs
+   comet.channel
+   comet.cli
+   comet.controller
+   comet.domain
+   comet.environment
+   comet.lib
+   comet.utilities
+
+Submodules
+----------
+
+comet.run module
+----------------
+
+.. automodule:: comet.run
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.run\_cli module
+---------------------
+
+.. automodule:: comet.run_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.server module
+-------------------
+
+.. automodule:: comet.server
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet
+   :members:
+   :undoc-members:
+   :show-inheritance:

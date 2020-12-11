@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.environment.reward_function &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.environment.reward_function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.environment.reward_function</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span><span class="p">,</span> <span class="n">ABC</span>
+<span class="kn">from</span> <span class="nn">comet.lib</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">prints</span>
+<span class="kn">from</span> <span class="nn">comet.utilities.constants</span> <span class="kn">import</span> <span class="n">DF_SLOT_VALUE</span><span class="p">,</span> <span class="n">DF_USR_ACT</span><span class="p">,</span> <span class="n">DF_SYS_ACT</span>
+<span class="kn">from</span> <span class="nn">comet.agent.core.state</span> <span class="kn">import</span> <span class="n">DialogueState</span>
+<span class="kn">from</span> <span class="nn">applications.babe_sale_bot.utils.constants</span> <span class="kn">import</span> <span class="n">SYS_ACT</span><span class="p">,</span> <span class="n">USR_ACT</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">comet</span> <span class="kn">import</span> <span class="n">DialogueAct</span>
+<span class="kn">from</span> <span class="nn">comet.environment.user_simulator.goal</span> <span class="kn">import</span> <span class="n">Goal</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Reward.initialize"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.Reward.initialize">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize internal parameters</span>
+
+<span class="sd">        :param kwargs:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Reward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.Reward.calculate">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the reward to be assigned for taking action from state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state: the current state</span>
+<span class="sd">            action: the action taken from the current state</span>
+<span class="sd">            raw_action:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
+
+
+<div class="viewcode-block" id="BasicReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.BasicReward">[docs]</a><span class="k">class</span> <span class="nc">BasicReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set default values for turn penalty, success, and failure.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">goal</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;turn_penalty&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failure_penalty&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;super_failure_penalty&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">success_reward</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;success_reward&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<div class="viewcode-block" id="BasicReward.initialize"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.BasicReward.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize internal parameters</span>
+
+<span class="sd">        :param kwargs:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BasicReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.BasicReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the reward to be assigned for taking action from state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state: the current state</span>
+<span class="sd">            action: the action taken from the current state</span>
+<span class="sd">            raw_action:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># Calculate the reward in the end of dialogue</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">dialogue_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_terminated</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+            <span class="n">reward</span> <span class="o">+=</span> <span class="n">rew</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">rew</span>
+            <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+
+        <span class="c1"># check if this turn is success or not</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="n">task_success</span></div>
+
+<div class="viewcode-block" id="BasicReward.on_terminated"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.BasicReward.on_terminated">[docs]</a>    <span class="k">def</span> <span class="nf">on_terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Check that the item offered meets the user&#39;s constraints</span>
+        <span class="k">for</span> <span class="n">constr</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">system_made_offer</span><span class="p">:</span>
+                <span class="c1"># Single-agent case</span>
+                <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">item_in_focus</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">constr</span><span class="p">)</span> <span class="o">!=</span> <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">constr</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> \
+                        <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">constr</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="n">DF_SLOT_VALUE</span><span class="o">.</span><span class="n">I_DO_NOT_CARE</span><span class="p">:</span>
+                    <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span>
+                    <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+
+        <span class="c1"># Check that all requests have been addressed</span>
+        <span class="k">if</span> <span class="n">dialogue_success</span><span class="p">:</span>
+            <span class="n">not_met</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Check that the system has responded to all</span>
+            <span class="c1"># requests (actually) made by the user</span>
+            <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">actual_requests</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">goal</span><span class="o">.</span><span class="n">actual_requests</span><span class="p">[</span><span class="n">req</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">DF_SLOT_VALUE</span><span class="o">.</span><span class="n">UNK</span><span class="p">:</span>
+                    <span class="n">not_met</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">not_met</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span>
+                <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">success_reward</span>
+
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span></div>
+
+<div class="viewcode-block" id="BasicReward.on_task"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.BasicReward.on_task">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Liu &amp; Lane ASRU 2017 Definition of task success</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># We don&#39;t care for slots that are not in the goal constraints</span>
+        <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">:</span>
+            <span class="c1"># Fall back to the noisier signal, that is the slots filled.</span>
+            <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">belief_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">slot</span><span class="p">)</span> <span class="o">!=</span> \
+                    <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">slot</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> \
+                    <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">slot</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="n">DF_SLOT_VALUE</span><span class="o">.</span><span class="n">I_DO_NOT_CARE</span><span class="p">:</span>
+                <span class="n">task_success</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">break</span>
+
+            <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">requests</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">goal</span><span class="o">.</span><span class="n">requests</span><span class="p">[</span><span class="n">req</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="n">task_success</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+        <span class="k">return</span> <span class="n">task_success</span></div>
+
+<div class="viewcode-block" id="BasicReward.on_super_hack"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.BasicReward.on_super_hack">[docs]</a>    <span class="k">def</span> <span class="nf">on_super_hack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            action:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># self.failure_penalty = random.uniform(-5.0, -1.0)</span>
+        <span class="n">rew</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">usr_acts</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">usr_acts</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="k">if</span> <span class="n">usr_acts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">ASK_IS_BOT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">I_AM_BOT</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">THANK</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">THANK</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">return</span> <span class="n">rew</span></div></div>
+
+
+<div class="viewcode-block" id="SubGoalReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.SubGoalReward">[docs]</a><span class="k">class</span> <span class="nc">SubGoalReward</span><span class="p">(</span><span class="n">BasicReward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SubGoalReward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SubGoalReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.SubGoalReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the reward to be assigned for taking action from state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state: the current state</span>
+<span class="sd">            action: the action taken from the current state</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="c1"># Calculate the reward in the end of dialogue</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">dialogue_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_terminated</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+            <span class="n">reward</span> <span class="o">+=</span> <span class="n">rew</span>
+
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1">###########################################</span>
+        <span class="c1"># TODO RW: calculate reward for sub-goal</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_goal_reward</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+        <span class="c1">############################################</span>
+
+        <span class="c1"># check if this turn is success or not</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="n">task_success</span></div>
+
+<div class="viewcode-block" id="SubGoalReward.sub_goal_reward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.SubGoalReward.sub_goal_reward">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">sub_goal_reward</span><span class="p">(</span><span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DialogueAct</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">goal</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">reward</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">INFORM</span><span class="p">:</span>
+                <span class="c1"># check goal.request</span>
+                <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">slot</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">requests</span><span class="p">:</span>
+                        <span class="n">reward</span> <span class="o">+=</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="n">reward</span></div></div>
+
+
+<div class="viewcode-block" id="TestReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestReward">[docs]</a><span class="k">class</span> <span class="nc">TestReward</span><span class="p">(</span><span class="n">BasicReward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestReward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<div class="viewcode-block" id="TestReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># check if this turn is success or not</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+
+        <span class="c1"># Calculate the reward in the end of dialogue</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">dialogue_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_terminated</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+            <span class="c1"># reward += rew</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">rew</span>
+            <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="n">task_success</span></div></div>
+
+
+<div class="viewcode-block" id="TestDirectReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestDirectReward">[docs]</a><span class="k">class</span> <span class="nc">TestDirectReward</span><span class="p">(</span><span class="n">BasicReward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestDirectReward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">correct_penalize</span> <span class="o">=</span> <span class="mi">5</span>
+
+<div class="viewcode-block" id="TestDirectReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestDirectReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># check if this turn is success or not</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="n">task_success</span></div>
+
+<div class="viewcode-block" id="TestDirectReward.on_super_hack"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestDirectReward.on_super_hack">[docs]</a>    <span class="k">def</span> <span class="nf">on_super_hack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">                Args:</span>
+<span class="sd">                    state:</span>
+<span class="sd">                    action:</span>
+
+<span class="sd">                Returns:</span>
+
+<span class="sd">                &quot;&quot;&quot;</span>
+        <span class="c1"># self.failure_penalty = random.uniform(-5.0, -1.0)</span>
+        <span class="n">rew</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">usr_acts</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">usr_acts</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="k">if</span> <span class="n">usr_acts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">correct_penalize</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">correct_penalize</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">ASK_IS_BOT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">I_AM_BOT</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">correct_penalize</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">THANK</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">THANK</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">correct_penalize</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">correct_penalize</span>
+        <span class="k">return</span> <span class="n">rew</span></div></div>
+
+
+<div class="viewcode-block" id="TestDelayReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestDelayReward">[docs]</a><span class="k">class</span> <span class="nc">TestDelayReward</span><span class="p">(</span><span class="n">BasicReward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestDelayReward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">20.0</span>
+
+<div class="viewcode-block" id="TestDelayReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestDelayReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># Calculate the reward in the end of dialogue</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">dialogue_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_terminated</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+            <span class="n">reward</span> <span class="o">+=</span> <span class="n">rew</span>
+
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="TestDelayReward.on_terminated"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.TestDelayReward.on_terminated">[docs]</a>    <span class="k">def</span> <span class="nf">on_terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">20.0</span>
+
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="CustomReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.CustomReward">[docs]</a><span class="k">class</span> <span class="nc">CustomReward</span><span class="p">(</span><span class="n">BasicReward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set default values for turn penalty, success, and failure.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CustomReward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">goal</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;turn_penalty&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failure_penalty&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;super_failure_penalty&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">success_reward</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;success_reward&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;total_reward&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<div class="viewcode-block" id="CustomReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.CustomReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the reward to be assigned for taking action from state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state: the current state</span>
+<span class="sd">            action: the action taken from the current state</span>
+<span class="sd">            raw_action:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="n">action</span> <span class="o">=</span> <span class="n">raw_action</span> <span class="k">if</span> <span class="n">raw_action</span> <span class="k">else</span> <span class="n">action</span>
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># Calculate the reward in the end of dialogue</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">dialogue_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_terminated</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">rew</span>
+            <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+
+        <span class="c1"># check if this turn is success or not</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="n">task_success</span></div>
+
+<div class="viewcode-block" id="CustomReward.on_terminated"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.CustomReward.on_terminated">[docs]</a>    <span class="k">def</span> <span class="nf">on_terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            goal:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Check that the item offered meets the user&#39;s constraints</span>
+        <span class="k">for</span> <span class="n">constr</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">system_made_offer</span><span class="p">:</span>
+                <span class="c1"># Single-agent case</span>
+                <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">item_in_focus</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">constr</span><span class="p">)</span> <span class="o">!=</span> <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">constr</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> \
+                        <span class="n">goal</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">constr</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="n">DF_SLOT_VALUE</span><span class="o">.</span><span class="n">I_DO_NOT_CARE</span><span class="p">:</span>
+                    <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span>
+                    <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+
+        <span class="c1"># Check that all requests have been addressed</span>
+        <span class="k">if</span> <span class="n">dialogue_success</span><span class="p">:</span>
+            <span class="n">not_met</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Check that the system has responded to all</span>
+            <span class="c1"># requests (actually) made by the user</span>
+            <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">actual_requests</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">goal</span><span class="o">.</span><span class="n">actual_requests</span><span class="p">[</span><span class="n">req</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">DF_SLOT_VALUE</span><span class="o">.</span><span class="n">UNK</span><span class="p">:</span>
+                    <span class="n">not_met</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">not_met</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span>
+                <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">success_reward</span>
+
+        <span class="c1"># If the system inform the attribute that the user is not requested -&gt; penalized it</span>
+        <span class="k">for</span> <span class="n">inf</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">actual_informs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">inf</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">goal</span><span class="o">.</span><span class="n">requests</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">failure_penalty</span>
+
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span></div>
+
+<div class="viewcode-block" id="CustomReward.on_super_hack"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.CustomReward.on_super_hack">[docs]</a>    <span class="k">def</span> <span class="nf">on_super_hack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state:</span>
+<span class="sd">            action:</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rew</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">usr_acts</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">usr_acts</span>
+        <span class="n">sys_acts</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="k">if</span> <span class="n">usr_acts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">GREET</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">ASK_IS_BOT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">I_AM_BOT</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">THANK</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">THANK</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">elif</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">USR_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">SYS_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+
+        <span class="c1"># If user requested but system not inform or ask_conform or tag_question</span>
+        <span class="c1"># =&gt; Penalize it</span>
+        <span class="k">if</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="ow">in</span> <span class="p">[</span><span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">REQUEST</span><span class="p">,</span> <span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">ASK_CONFIRM</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">INFORM</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">NOT_SURE</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">ASK_CONFIRM</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">CONFIRM_ANSWER</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="k">if</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">INFORM</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">ASK_CONFIRM</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">REQUEST</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">DENY</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">NOT_SURE</span><span class="p">,</span>
+                <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">OFFER</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span>
+        <span class="c1"># If user not say good bye but system say good bye -&gt; penalize more</span>
+        <span class="k">if</span> <span class="n">usr_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">!=</span> <span class="n">DF_USR_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys_acts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intent</span> <span class="o">==</span> <span class="n">DF_SYS_ACT</span><span class="o">.</span><span class="n">BYE</span><span class="p">:</span>
+                <span class="n">rew</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_failure_penalty</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="k">return</span> <span class="n">rew</span></div></div>
+
+
+<div class="viewcode-block" id="CustomDelayReward"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.CustomDelayReward">[docs]</a><span class="k">class</span> <span class="nc">CustomDelayReward</span><span class="p">(</span><span class="n">CustomReward</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CustomDelayReward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># self.turn_penalty = args.get(&#39;turn_penalty&#39;, 0)</span>
+        <span class="c1"># self.failure_penalty = args.get(&#39;failure_penalty&#39;, -2)</span>
+        <span class="c1"># self.action_failure_penalty = args.get(&#39;super_failure_penalty&#39;, -2)</span>
+        <span class="c1"># self.success_reward = args.get(&#39;success_reward&#39;, 30)</span>
+        <span class="c1"># self.total_reward = args.get(&#39;total_reward&#39;, 30)</span>
+        <span class="c1"># self.cumulative_reward = 0.0</span>
+
+<div class="viewcode-block" id="CustomDelayReward.calculate"><a class="viewcode-back" href="../../../comet/comet.environment.html#comet.environment.reward_function.CustomDelayReward.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">DialogueState</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">raw_action</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn_penalty</span>
+        <span class="n">dialogue_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> called without a goal.&#39;</span><span class="p">,</span>
+                          <span class="n">level</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">LEVEL</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">raw_action</span> <span class="k">if</span> <span class="n">raw_action</span> <span class="k">else</span> <span class="n">action</span>
+
+        <span class="c1"># Calculate reward in each turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_super_hack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># Calculate the reward in the end of dialogue</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+            <span class="n">rew</span><span class="p">,</span> <span class="n">dialogue_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_terminated</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">+=</span> <span class="n">rew</span>
+            <span class="n">reward</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cumulative_reward</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># check if this turn is success or not</span>
+        <span class="n">task_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_task</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span><span class="p">,</span> <span class="n">dialogue_success</span><span class="p">,</span> <span class="n">task_success</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+comet.agent.core.dialogue\_featurizers package
+==============================================
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_featurizers.state\_featurizer module
+---------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_featurizers.state_featurizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_featurizers
+   :members:
+   :undoc-members:
+   :show-inheritance:

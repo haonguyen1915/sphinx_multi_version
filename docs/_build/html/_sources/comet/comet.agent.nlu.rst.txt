@@ -1,0 +1,54 @@
+comet.agent.nlu package
+=======================
+
+Submodules
+----------
+
+comet.agent.nlu.denver\_base module
+-----------------------------------
+
+.. automodule:: comet.agent.nlu.denver_base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.nlu.denver\_flair module
+------------------------------------
+
+.. automodule:: comet.agent.nlu.denver_flair
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.nlu.denver\_onenet module
+-------------------------------------
+
+.. automodule:: comet.agent.nlu.denver_onenet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.nlu.dummy\_nlu module
+---------------------------------
+
+.. automodule:: comet.agent.nlu.dummy_nlu
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.nlu.nlu module
+--------------------------
+
+.. automodule:: comet.agent.nlu.nlu
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.nlu
+   :members:
+   :undoc-members:
+   :show-inheritance:

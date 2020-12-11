@@ -1,0 +1,38 @@
+comet.agent.core.dialogue\_policy.supervised\_learning package
+==============================================================
+
+Submodules
+----------
+
+comet.agent.core.dialogue\_policy.supervised\_learning.lstm\_classifier\_policy module
+--------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.supervised_learning.lstm_classifier_policy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.supervised\_learning.svm\_classifier\_policy module
+-------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.supervised_learning.svm_classifier_policy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.dialogue\_policy.supervised\_learning.vanilla\_classifier\_policy module
+-----------------------------------------------------------------------------------------
+
+.. automodule:: comet.agent.core.dialogue_policy.supervised_learning.vanilla_classifier_policy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.dialogue_policy.supervised_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:

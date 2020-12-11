@@ -1,0 +1,63 @@
+comet.cli package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.cli.domain
+   comet.cli.template_generator_nlg
+
+Submodules
+----------
+
+comet.cli.data module
+---------------------
+
+.. automodule:: comet.cli.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.init\_project module
+------------------------------
+
+.. automodule:: comet.cli.init_project
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.model module
+----------------------
+
+.. automodule:: comet.cli.model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.package module
+------------------------
+
+.. automodule:: comet.cli.package
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.cli.parser module
+-----------------------
+
+.. automodule:: comet.cli.parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

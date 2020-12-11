@@ -1,0 +1,22 @@
+comet.cli.domain package
+========================
+
+Submodules
+----------
+
+comet.cli.domain.domain\_utils module
+-------------------------------------
+
+.. automodule:: comet.cli.domain.domain_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.cli.domain
+   :members:
+   :undoc-members:
+   :show-inheritance:

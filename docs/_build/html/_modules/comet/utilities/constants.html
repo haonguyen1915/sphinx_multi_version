@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.utilities.constants &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>comet.utilities.constants</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for comet.utilities.constants</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">environs</span> <span class="kn">import</span> <span class="n">Env</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+
+
+<div class="viewcode-block" id="get_cfd"><a class="viewcode-back" href="../../../comet/comet.utilities.html#comet.utilities.constants.get_cfd">[docs]</a><span class="k">def</span> <span class="nf">get_cfd</span><span class="p">(</span><span class="n">backward</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get current file directory</span>
+<span class="sd">    :param backward:</span>
+<span class="sd">    :type backward:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">abspath</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">backward</span><span class="p">):</span>
+        <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">abspath</span><span class="p">)</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">abspath</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">abspath</span></div>
+
+
+<span class="n">WORKING_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">SOURCE_DIR</span> <span class="o">=</span> <span class="n">get_cfd</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">Env</span><span class="p">()</span>
+<span class="n">env</span><span class="o">.</span><span class="n">read_env</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">WORKING_DIR</span><span class="si">}</span><span class="s2">/.env&quot;</span><span class="p">)</span>  <span class="c1"># read .env file, if it exists</span>
+
+<span class="n">DEFAULT_SENDER_ID</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+<span class="n">DEFAULT_BASE_MODELS_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WORKING_DIR</span><span class="p">,</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
+<span class="n">DEFAULT_BASE_EVAL_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WORKING_DIR</span><span class="p">,</span> <span class="s2">&quot;evaluation&quot;</span><span class="p">)</span>
+<span class="n">DEFAULT_LOGS_DIR</span> <span class="o">=</span> <span class="s2">&quot;logs&quot;</span>
+<span class="n">JSON_DB</span> <span class="o">=</span> <span class="s2">&quot;json&quot;</span>
+<span class="n">SQL_DB</span> <span class="o">=</span> <span class="s2">&quot;sql&quot;</span>
+<span class="n">NEO4J_DB</span> <span class="o">=</span> <span class="s2">&quot;neo4j&quot;</span>
+<span class="n">SEED</span> <span class="o">=</span> <span class="mi">777</span>
+<span class="n">SYSTEM</span> <span class="o">=</span> <span class="s2">&quot;system&quot;</span>
+<span class="n">USER</span> <span class="o">=</span> <span class="s2">&quot;usr&quot;</span>
+<span class="n">NLG_AUTO</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+<span class="n">NLG_MANUAL</span> <span class="o">=</span> <span class="s1">&#39;manual&#39;</span>
+<span class="c1"># Debug args for each components</span>
+<span class="n">DEBUG_ARGS</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="s2">&quot;DEBUG_ARGS&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">INTENT_MESSAGE_PREFIX</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+<span class="n">OBJECT_TYPE</span> <span class="o">=</span> <span class="s2">&quot;object_type&quot;</span>
+<span class="n">OBJECT_ID</span> <span class="o">=</span> <span class="s2">&quot;object_id&quot;</span>
+<span class="n">OBJECT_IDS</span> <span class="o">=</span> <span class="s2">&quot;object_ids&quot;</span>
+<span class="n">NOT_CARE</span> <span class="o">=</span> <span class="s2">&quot;not_care&quot;</span>
+
+<span class="c1"># For training</span>
+<span class="n">LOSS</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span>
+<span class="n">ACCURACY</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span>
+
+
+<div class="viewcode-block" id="DF_USR_ACT"><a class="viewcode-back" href="../../../comet/comet.utilities.html#comet.utilities.constants.DF_USR_ACT">[docs]</a><span class="k">class</span> <span class="nc">DF_USR_ACT</span><span class="p">:</span>
+    <span class="n">BYE</span> <span class="o">=</span> <span class="s2">&quot;bye&quot;</span>
+    <span class="n">THANK</span> <span class="o">=</span> <span class="s2">&quot;thanks&quot;</span>
+    <span class="n">GREET</span> <span class="o">=</span> <span class="s2">&quot;greet&quot;</span>
+    <span class="n">INFORM</span> <span class="o">=</span> <span class="s2">&quot;inform&quot;</span>
+    <span class="n">FALLBACK</span> <span class="o">=</span> <span class="s2">&quot;fallback&quot;</span>
+    <span class="n">REQUEST</span> <span class="o">=</span> <span class="s2">&quot;request&quot;</span>
+    <span class="n">AGREE</span> <span class="o">=</span> <span class="s2">&quot;agree&quot;</span>
+    <span class="n">DENY</span> <span class="o">=</span> <span class="s2">&quot;deny&quot;</span>
+    <span class="n">ASK_CONFIRM</span> <span class="o">=</span> <span class="s2">&quot;ask_confirm&quot;</span>  <span class="c1"># cái này màu xanh phải ko ạ?</span>
+    <span class="n">HANDOVER</span> <span class="o">=</span> <span class="s1">&#39;handover&#39;</span></div>
+
+
+<div class="viewcode-block" id="DF_SYS_ACT"><a class="viewcode-back" href="../../../comet/comet.utilities.html#comet.utilities.constants.DF_SYS_ACT">[docs]</a><span class="k">class</span> <span class="nc">DF_SYS_ACT</span><span class="p">:</span>
+    <span class="n">GREET</span> <span class="o">=</span> <span class="s2">&quot;greet&quot;</span>
+    <span class="n">THANK</span> <span class="o">=</span> <span class="s2">&quot;thanks&quot;</span>
+    <span class="n">BYE</span> <span class="o">=</span> <span class="s2">&quot;bye&quot;</span>
+    <span class="n">INFORM</span> <span class="o">=</span> <span class="s2">&quot;inform&quot;</span>
+    <span class="n">REQUEST</span> <span class="o">=</span> <span class="s2">&quot;request&quot;</span>
+    <span class="n">OFFER</span> <span class="o">=</span> <span class="s2">&quot;offer&quot;</span>
+    <span class="n">CANT_HELP</span> <span class="o">=</span> <span class="s2">&quot;cant_help&quot;</span>
+    <span class="n">TAG_QUESTION</span> <span class="o">=</span> <span class="s2">&quot;tag_question&quot;</span>
+    <span class="n">TAG_QUESTION_BY_ID</span> <span class="o">=</span> <span class="s2">&quot;tag_question_by_id&quot;</span>
+    <span class="n">ASK_CONFIRM</span> <span class="o">=</span> <span class="s2">&quot;ask_confirm&quot;</span>  <span class="c1"># hiện shop đang có những màu sau ... bạn chọn 1 màu nhé?</span>
+    <span class="n">ASK_CONFIRM_BY_ID</span> <span class="o">=</span> <span class="s2">&quot;ask_confirm_by_id&quot;</span>  <span class="c1"># Show card and asked for confirm</span>
+    <span class="n">NOT_SURE</span> <span class="o">=</span> <span class="s2">&quot;not_sure&quot;</span>  <span class="c1"># Mình ko rõ sp bạn đang hỏi ạ?</span>
+    <span class="n">DENY</span> <span class="o">=</span> <span class="s2">&quot;deny&quot;</span>
+    <span class="n">AGREE</span> <span class="o">=</span> <span class="s2">&quot;agree&quot;</span>
+    <span class="n">CONFIRM_ANSWER</span> <span class="o">=</span> <span class="s2">&quot;confirm_answer&quot;</span>  <span class="c1"># yes/no</span>
+    <span class="n">NO_INFO</span> <span class="o">=</span> <span class="s2">&quot;no_info&quot;</span></div>
+
+
+<div class="viewcode-block" id="DF_SLOT_VALUE"><a class="viewcode-back" href="../../../comet/comet.utilities.html#comet.utilities.constants.DF_SLOT_VALUE">[docs]</a><span class="k">class</span> <span class="nc">DF_SLOT_VALUE</span><span class="p">:</span>
+    <span class="n">UNK</span> <span class="o">=</span> <span class="s2">&quot;UNK&quot;</span>
+    <span class="n">LINK</span> <span class="o">=</span> <span class="s2">&quot;link&quot;</span>
+    <span class="n">NOT_MATCHED</span> <span class="o">=</span> <span class="s1">&#39;not_matched&#39;</span>
+    <span class="n">I_DO_NOT_CARE</span> <span class="o">=</span> <span class="s2">&quot;dont care&quot;</span>
+    <span class="n">NO_VALUE_MATCH</span> <span class="o">=</span> <span class="s2">&quot;No value Matched&quot;</span>
+    <span class="n">PRODUCT_NAME</span> <span class="o">=</span> <span class="s2">&quot;object_type&quot;</span></div>
+
+
+<div class="viewcode-block" id="DF_NAME_WEIGHT"><a class="viewcode-back" href="../../../comet/comet.utilities.html#comet.utilities.constants.DF_NAME_WEIGHT">[docs]</a><span class="k">class</span> <span class="nc">DF_NAME_WEIGHT</span><span class="p">:</span>
+    <span class="n">POLICY_FC</span> <span class="o">=</span> <span class="s2">&quot;vanilla_policy_model.ckpt&quot;</span>
+    <span class="n">POLICY_LSTM</span> <span class="o">=</span> <span class="s2">&quot;lstm_policy_model.ckpt&quot;</span>
+    <span class="n">POLICY_SVM</span> <span class="o">=</span> <span class="s2">&quot;svm_policy_model&quot;</span>
+    <span class="n">DENVER_TUNED_IC_LM</span> <span class="o">=</span> <span class="s2">&quot;vifine_tuned_ic&quot;</span>
+    <span class="n">DENVER_TUNED_ENC_LM</span> <span class="o">=</span> <span class="s2">&quot;vifine_tuned_enc_ic&quot;</span>
+    <span class="n">DENVER_FLAIR_IC_MODEL</span> <span class="o">=</span> <span class="s2">&quot;vi_class.pkl&quot;</span>
+    <span class="n">DENVER_FLAIR_NER_MODEL</span> <span class="o">=</span> <span class="s2">&quot;vi_ner&quot;</span>
+    <span class="n">DENVER_ONENET_MODEL</span> <span class="o">=</span> <span class="s2">&quot;denver-onenet.tar.gz&quot;</span>
+    <span class="n">AGENT_NLG_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;agent_auto_system_template_nlg.json&quot;</span>
+    <span class="n">USR_NLG_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;usr_auto_system_template_nlg.json&quot;</span>
+    <span class="n">SYNONYM_MAPPER</span> <span class="o">=</span> <span class="s2">&quot;synonym_mapper.json&quot;</span></div>
+
+
+<div class="viewcode-block" id="NLG_UTTER"><a class="viewcode-back" href="../../../comet/comet.utilities.html#comet.utilities.constants.NLG_UTTER">[docs]</a><span class="k">class</span> <span class="nc">NLG_UTTER</span><span class="p">:</span>
+    <span class="n">DONT_CARE</span> <span class="o">=</span> <span class="s2">&quot;Sao Cung Duoc&quot;</span>
+    <span class="n">NOT_RIGHT</span> <span class="o">=</span> <span class="s2">&quot;Khong dung&quot;</span>
+    <span class="n">AGREE</span> <span class="o">=</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="n">DENY</span> <span class="o">=</span> <span class="s2">&quot;Khong&quot;</span>
+    <span class="n">DETAILED_BUTTON_TEXT</span> <span class="o">=</span> <span class="s2">&quot;Xem chi tiết&quot;</span>
+    <span class="n">ORDER_BUTTON_TEXT</span> <span class="o">=</span> <span class="s2">&quot;Đặt hàng&quot;</span>
+    <span class="n">CONFIRM_BUTTON_TEXT</span> <span class="o">=</span> <span class="s2">&quot;Cái này&quot;</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

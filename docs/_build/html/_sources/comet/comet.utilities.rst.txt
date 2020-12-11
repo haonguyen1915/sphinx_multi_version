@@ -1,0 +1,54 @@
+comet.utilities package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.utilities.parser
+
+Submodules
+----------
+
+comet.utilities.constants module
+--------------------------------
+
+.. automodule:: comet.utilities.constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.utilities.dialogue\_recoder module
+----------------------------------------
+
+.. automodule:: comet.utilities.dialogue_recoder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.utilities.onpolicy\_memory module
+---------------------------------------
+
+.. automodule:: comet.utilities.onpolicy_memory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.utilities.utility module
+------------------------------
+
+.. automodule:: comet.utilities.utility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:

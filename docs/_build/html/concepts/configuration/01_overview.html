@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LOCK STORE" href="02_lock_store.html" />
+    <link rel="prev" title="Configuration" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domain.html#database">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general">GENERAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dialogue">DIALOGUE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agent">AGENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_lock_store.html">LOCK STORE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_policies.html">POLICIES</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Configuration</a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/concepts/configuration/01_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="overview">
+<span id="configuration"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>The configuration file defines the all the components of pipeline such as: polices, nature language
+understanding (NLU), Natural language generator(NLG), Dialogue State Tracker(DST), State Featurezier (SF), User Simulator (US),…
+that the system will use to run pipeline.
+Here is an example of configuration run with comet.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">GENERAL</span><span class="p">:</span>
+  <span class="nt">interaction_mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">simulation</span>
+  <span class="nt">models_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./models/BabeShop</span>
+
+  <span class="nt">experience_logs</span><span class="p">:</span>
+    <span class="nt">save</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="nt">load</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">assets/BabeShop/v0.2.0/records/exp_dialogues.pkl</span>
+    <span class="nt">test_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+    <span class="nt">eval_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">assets/BabeShop/v0.2.0/records/test_fake_dialogues.pkl</span>
+
+  <span class="nt">data</span><span class="p">:</span>
+    <span class="nt">ontology</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/babe_ontology.json</span>
+
+    <span class="nt">database</span><span class="p">:</span>
+      <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.babe_database</span>
+      <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">JSONDataBase</span>
+      <span class="nt">arguments</span><span class="p">:</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/babe_database.json</span>
+
+    <span class="nt">domain</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/babe_domain.json</span>
+
+<span class="nt">DIALOGUE</span><span class="p">:</span>
+  <span class="nt">num_dialogues</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200</span>
+
+  <span class="nt">initiative</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">system</span>
+  <span class="nt">show_act</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="nt">AGENT</span><span class="p">:</span>
+  <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">system</span>
+  <span class="nt">max_turns</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
+  <span class="nt">train_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200</span>
+  <span class="nt">save_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+
+  <span class="nt">DM</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.core.dialogue_manager.dialogue_manager</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DialogueManager</span>
+
+  <span class="nt">SynonymMapper</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.synonym_mapper</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SynonymMapper</span>
+    <span class="nt">arguments</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">models/babe_shop/nlg/auto_system_template_nlg.json</span>
+
+  <span class="nt">DS</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.core.state</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DialogueState</span>
+
+  <span class="nt">SF</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.core.dialogue_featurizers.state_featurizer</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">StateFeaturizer</span>
+  <span class="nt">DST</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.babe_dst</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BabeDialogueStateTracker</span>
+  <span class="nt">WP</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.babe_warm_up_policy</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BabeWarmUpPolicy</span>
+  <span class="nt">POLICY</span><span class="p">:</span>
+    <span class="nt">policy_0</span><span class="p">:</span>
+      <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.core.dialogue_policy.reinforcement_learning.dqn</span>
+      <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VanillaDQN</span>
+      <span class="nt">arguments</span><span class="p">:</span>
+        <span class="nt">WP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+        <span class="nt">WUS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+        <span class="nt">ontology</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+        <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+        <span class="nt">domain</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+        <span class="nt">train</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">algorithm</span><span class="p">:</span>
+          <span class="nt">training_epoch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">300</span>
+          <span class="nt">mini_batch_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+          <span class="nt">gamma</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
+        <span class="nt">net</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLPNet</span>
+          <span class="nt">hid_layers</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">100</span><span class="p p-Indicator">]</span>
+          <span class="nt">hid_layers_activation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">relu</span>
+          <span class="nt">clip_grad_val</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+          <span class="nt">lr_scheduler_spec</span><span class="p">:</span>
+            <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">StepLR</span>
+            <span class="nt">step_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000</span>
+            <span class="nt">gamma</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.999</span>
+          <span class="nt">optim_spec</span><span class="p">:</span>
+            <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Adam</span>
+            <span class="nt">lr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+          <span class="nt">loss_spec</span><span class="p">:</span>
+            <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MSELoss</span>
+          <span class="nt">gpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+
+        <span class="nt">policy_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">models/camrest_policy/sys/sys_reinforce</span>
+  <span class="nt">NLG</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.babe_template_nlg</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BabeTemplateNLG</span>
+
+  <span class="nt">NLU</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.nlu.dummy_nlu</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DummyNLU</span>
+<span class="nt">USER_SIMULATOR</span><span class="p">:</span>
+  <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.user_simulator.agenda_based_us</span>
+  <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FakeUS</span>
+  <span class="nt">arguments</span><span class="p">:</span>
+    <span class="nt">patience</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+    <span class="nt">NLG</span><span class="p">:</span>
+      <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.babe_template_nlg</span>
+      <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BabeTemplateNLG</span>
+      <span class="nt">arguments</span><span class="p">:</span>
+        <span class="nt">template_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">applications/babe_sale_bot/data/nlg_usr_template.json</span>
+        <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">usr</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="general">
+<h1>GENERAL<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">interaction_mode</span></code>:  Use to configure the way to interface with agent. Currently we have 2 option</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>: Interface with agent by usr message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simulation</span></code>: interface with agent by user simulator. To use this, US must be configured.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">models_path</span></code>:  The default base model directory. The agent will save and load all model weights in this directory if it’s not provided in argument of each component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">experience_logs</span></code>:  Handle internal experience logs. These are logs produced by the dialogue Recorder (under utilities) and contain information about what has happened during the dialogue(s). Agents use these logs as data for training.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">save(bool)</span></code>: if True, the agent will save the dialogue records into <code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load(bool)</span></code>: if true, the agent will load the dialogue recoreds from <code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path(Text)</span></code>: Where to save or load dialogues records.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_path(Text)</span></code>: Where to load the data for validate training. Use only for policy training</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_path(Text)</span></code>: A path file to load test data for evaluation model. Use only for policy evaluation</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: These are data arguments and are added to the arguments of each module of each agent. In this template example we provide the ontology, database, and domain that every module needs.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ontology</span></code>: The path to the ontology. Accepted <cite>.json</cite> or <cite>.yaml</cite> file. See <em>data/babe_domain.json</em> for json database example</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">database</span></code>: The module configure for the database .db file. json, sql, neo4j. See data/babe_domain.json for json database example</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">domain</span></code>: The domain file path. Excepted <cite>.yaml</cite> and <cite>.json</cite> format. See data/babe_domain.json for example.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="dialogue">
+<h1>DIALOGUE<a class="headerlink" href="#dialogue" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">num_dialogues</span></code>: How many dialogue to run for</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initiative</span></code>: Which role has the initiative (speaks first): <code class="docutils literal notranslate"><span class="pre">system</span></code> or <code class="docutils literal notranslate"><span class="pre">user</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="agent">
+<h1>AGENT<a class="headerlink" href="#agent" title="Permalink to this headline">¶</a></h1>
+<p>-<code class="docutils literal notranslate"><span class="pre">role</span></code>: The role of the agent: <code class="docutils literal notranslate"><span class="pre">system</span></code> or <code class="docutils literal notranslate"><span class="pre">user</span></code>.
+-<code class="docutils literal notranslate"><span class="pre">max_turns</span></code>: When the conversation reach max_turns, agent will terminated the conversation
+-<code class="docutils literal notranslate"><span class="pre">train_interval(int)</span></code>: This configure use only for online training mode. For example: <code class="docutils literal notranslate"><span class="pre">train_interval``=</span> <span class="pre">100</span> <span class="pre">means</span> <span class="pre">after</span> <span class="pre">100</span> <span class="pre">dialogues,</span> <span class="pre">agent</span> <span class="pre">will</span> <span class="pre">get</span> <span class="pre">the</span> <span class="pre">recorded</span> <span class="pre">dialogues</span> <span class="pre">to</span> <span class="pre">train</span> <span class="pre">for</span> <span class="pre">each</span> <span class="pre">component.</span>
+<span class="pre">-``save_interval(int)</span></code>: if <a href="#id1"><span class="problematic" id="id2">``</span></a>save_interval``=100 mean after each 100 dialogues, the model of each component will be saved. Only use for training mode.</p>
+<p>The component configuration (Ex: Dialogue manager, dialogue state tracker, nature language generator,
+policy …). Each component will configure following format</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure for dialogue managerment</span>
+<span class="nt">DM</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.core.dialogue_manager.dialogue_manager</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DialogueManager</span>
+
+<span class="c1"># Configure for synnonym mapper component. Optional</span>
+<span class="nt">SynonymMapper</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.synonym_mapper</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SynonymMapper</span>
+    <span class="nt">arguments</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">models/babe_shop/nlg/auto_system_template_nlg.json</span>
+
+<span class="c1"># Configure for dialoguge state component</span>
+<span class="nt">DS</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comet.agent.core.state</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DialogueState</span>
+<span class="c1"># Configure for dialogue state tracker</span>
+<span class="nt">DST</span><span class="p">:</span>
+    <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src.babe_dst</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BabeDialogueStateTracker</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02_lock_store.html" class="btn btn-neutral float-right" title="LOCK STORE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

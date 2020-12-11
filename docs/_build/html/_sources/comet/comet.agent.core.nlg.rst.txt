@@ -1,0 +1,46 @@
+comet.agent.core.nlg package
+============================
+
+Submodules
+----------
+
+comet.agent.core.nlg.dummy\_nlg module
+--------------------------------------
+
+.. automodule:: comet.agent.core.nlg.dummy_nlg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.nlg.nlg module
+-------------------------------
+
+.. automodule:: comet.agent.core.nlg.nlg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.nlg.slotfilling\_nlg module
+--------------------------------------------
+
+.. automodule:: comet.agent.core.nlg.slotfilling_nlg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.agent.core.nlg.template\_based\_nlg module
+------------------------------------------------
+
+.. automodule:: comet.agent.core.nlg.template_based_nlg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.agent.core.nlg
+   :members:
+   :undoc-members:
+   :show-inheritance:

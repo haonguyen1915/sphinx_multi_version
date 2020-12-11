@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.agent.core.dialogue_policy.reinforcement_learning.net package &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="comet.agent.core.dialogue_policy.reinforcement_learning.utils package" href="comet.agent.core.dialogue_policy.reinforcement_learning.utils.html" />
+    <link rel="prev" title="comet.agent.core.dialogue_policy.reinforcement_learning.memory package" href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="comet.html">comet package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="comet.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="comet.abstract_module.html">comet.abstract_module package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="comet.agent.html">comet.agent package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="comet.agent.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.agent.html#module-comet.agent">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.call_backs.html">comet.call_backs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.channel.html">comet.channel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.cli.html">comet.cli package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.controller.html">comet.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.domain.html">comet.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.environment.html">comet.environment package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.lib.html">comet.lib package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.utilities.html">comet.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#comet-run-module">comet.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.run_cli">comet.run_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.server">comet.server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="comet.html">comet package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.html">comet.agent package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.html">comet.agent.core package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.dialogue_policy.html">comet.agent.core.dialogue_policy package</a> &raquo;</li>
+        
+          <li><a href="comet.agent.core.dialogue_policy.reinforcement_learning.html">comet.agent.core.dialogue_policy.reinforcement_learning package</a> &raquo;</li>
+        
+      <li>comet.agent.core.dialogue_policy.reinforcement_learning.net package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/comet/comet.agent.core.dialogue_policy.reinforcement_learning.net.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="comet-agent-core-dialogue-policy-reinforcement-learning-net-package">
+<h1>comet.agent.core.dialogue_policy.reinforcement_learning.net package<a class="headerlink" href="#comet-agent-core-dialogue-policy-reinforcement-learning-net-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.net.layers">
+<span id="comet-agent-core-dialogue-policy-reinforcement-learning-net-layers-module"></span><h2>comet.agent.core.dialogue_policy.reinforcement_learning.net.layers module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.net.layers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.</code><code class="sig-name descname">NoisyLinear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_features</span></em>, <em class="sig-param"><span class="n">out_features</span></em>, <em class="sig-param"><span class="n">use_cuda</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">std_init</span><span class="o">=</span><span class="default_value">0.4</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/layers.html#NoisyLinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/layers.html#NoisyLinear.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear.reset_noise">
+<code class="sig-name descname">reset_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/layers.html#NoisyLinear.reset_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear.reset_noise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear.reset_parameters">
+<code class="sig-name descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/layers.html#NoisyLinear.reset_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.layers.NoisyLinear.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.net.net">
+<span id="comet-agent-core-dialogue-policy-reinforcement-learning-net-net-module"></span><h2>comet.agent.core.dialogue_policy.reinforcement_learning.net.net module<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.net.net" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Actor">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">Actor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_dim</span></em>, <em class="sig-param"><span class="n">n_actions</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#Actor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Actor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Actor.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#Actor.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Actor.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">ActorCriticNetwork</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_inputs</span></em>, <em class="sig-param"><span class="n">num_outputs</span></em>, <em class="sig-param"><span class="n">hidden_size</span><span class="o">=</span><span class="default_value">128</span></em>, <em class="sig-param"><span class="n">std</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ActorCriticNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.evaluate_state">
+<code class="sig-name descname">evaluate_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ActorCriticNetwork.evaluate_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.evaluate_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ActorCriticNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.full_pass">
+<code class="sig-name descname">full_pass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ActorCriticNetwork.full_pass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.full_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.select_action">
+<code class="sig-name descname">select_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ActorCriticNetwork.select_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.select_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.select_greedy_action">
+<code class="sig-name descname">select_greedy_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ActorCriticNetwork.select_greedy_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ActorCriticNetwork.select_greedy_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">CategoricalDQN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_inputs</span></em>, <em class="sig-param"><span class="n">num_actions</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CategoricalDQN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CategoricalDQN.act"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.act" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CategoricalDQN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.reset_noise">
+<code class="sig-name descname">reset_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CategoricalDQN.reset_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CategoricalDQN.reset_noise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">CnnDQN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inputs_shape</span></em>, <em class="sig-param"><span class="n">num_actions</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CnnDQN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN.features_size">
+<code class="sig-name descname">features_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CnnDQN.features_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN.features_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#CnnDQN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.CnnDQN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Critic">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">Critic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_dim</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#Critic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Critic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Critic.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#Critic.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.Critic.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQNNetwork">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">DQNNetwork</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_size</span></em>, <em class="sig-param"><span class="n">action_size</span></em>, <em class="sig-param"><span class="n">fc1_units</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">fc2_units</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">device</span><span class="o">=</span><span class="default_value">device(type='cpu')</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DQNNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQNNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQNNetwork.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DQNNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQNNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a network that maps state -&gt; action values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">DQN_LSTM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_size</span></em>, <em class="sig-param"><span class="n">action_size</span></em>, <em class="sig-param"><span class="n">hidden_size</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DQN_LSTM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">hx</span></em>, <em class="sig-param"><span class="n">cx</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DQN_LSTM.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM.parameter_update">
+<code class="sig-name descname">parameter_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DQN_LSTM.parameter_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DQN_LSTM.parameter_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DuelingDQN">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">DuelingDQN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_size</span></em>, <em class="sig-param"><span class="n">action_size</span></em>, <em class="sig-param"><span class="n">hidden_size</span><span class="o">=</span><span class="default_value">512</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DuelingDQN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DuelingDQN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DuelingDQN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#DuelingDQN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.DuelingDQN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">NoisyDQN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state_size</span></em>, <em class="sig-param"><span class="n">action_size</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#NoisyDQN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#NoisyDQN.act"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.act" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#NoisyDQN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.reset_noise">
+<code class="sig-name descname">reset_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#NoisyDQN.reset_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.NoisyDQN.reset_noise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">RainbowDQN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_inputs</span></em>, <em class="sig-param"><span class="n">num_actions</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#RainbowDQN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#RainbowDQN.act"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.act" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#RainbowDQN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.reset_noise">
+<code class="sig-name descname">reset_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#RainbowDQN.reset_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.RainbowDQN.reset_noise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">ReinforceBaselineNetwork</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_inputs</span></em>, <em class="sig-param"><span class="n">action_space</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceBaselineNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.evaluate_state">
+<code class="sig-name descname">evaluate_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceBaselineNetwork.evaluate_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.evaluate_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceBaselineNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.full_pass">
+<code class="sig-name descname">full_pass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceBaselineNetwork.full_pass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.full_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.select_action">
+<code class="sig-name descname">select_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceBaselineNetwork.select_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.select_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.select_greedy_action">
+<code class="sig-name descname">select_greedy_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceBaselineNetwork.select_greedy_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceBaselineNetwork.select_greedy_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork">
+<em class="property">class </em><code class="sig-prename descclassname">comet.agent.core.dialogue_policy.reinforcement_learning.net.net.</code><code class="sig-name descname">ReinforceNetwork</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_inputs</span></em>, <em class="sig-param"><span class="n">action_space</span></em>, <em class="sig-param"><span class="n">hidden_size</span><span class="o">=</span><span class="default_value">256</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.full_pass">
+<code class="sig-name descname">full_pass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceNetwork.full_pass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.full_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.select_action">
+<code class="sig-name descname">select_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceNetwork.select_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.select_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.select_greedy_action">
+<code class="sig-name descname">select_greedy_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/agent/core/dialogue_policy/reinforcement_learning/net/net.html#ReinforceNetwork.select_greedy_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.agent.core.dialogue_policy.reinforcement_learning.net.net.ReinforceNetwork.select_greedy_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.agent.core.dialogue_policy.reinforcement_learning.net">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comet.agent.core.dialogue_policy.reinforcement_learning.net" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comet.agent.core.dialogue_policy.reinforcement_learning.utils.html" class="btn btn-neutral float-right" title="comet.agent.core.dialogue_policy.reinforcement_learning.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="comet.agent.core.dialogue_policy.reinforcement_learning.memory.html" class="btn btn-neutral float-left" title="comet.agent.core.dialogue_policy.reinforcement_learning.memory package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

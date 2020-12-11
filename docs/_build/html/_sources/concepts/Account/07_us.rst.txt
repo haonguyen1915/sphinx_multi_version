@@ -1,0 +1,130 @@
+
+.. _user_simulator:
+
+User simulator
+--------------
+
+.. image:: ../_static/dialogue_flow_us.png
+
+User simulators are used to simulate an actual user so that an agent can be trained much faster than
+if real users were forced to sit down and give it multiple hours of training. User simulator research
+for chatbot domains is a hot research topic.
+
+The one covered in our platform is the very well known Agenda-Based User Simulator, This means
+that a user has a goal for that episode and it takes actions in accordance to this goal while keeping
+track of an internal state that allows it follow the dialogue to take informed actions.
+
+What is the Goal?
+"""""""""""""""""
+
+User goals are sampled from a corpus of real dialogue or hand-crafted (or both). Each goal is made up
+of inform slots and request slots just like an action but without the intent. There are a couple standard
+ways to grab the goals from a corpus
+
+- All of the slots (request and inform) from the initial user action in an episode make a single goal
+- All slots from all user actions in an episode are combined to make a single goal
+
+A few examples:
+
+.. code-block::
+
+    {'request_slots': {'date': 'UNK', 'theater': 'UNK'}, 'inform_slots': {'numberofpeople': '4', 'moviename': 'zootopia', 'starttime': 'matinee'}}
+    {'request_slots': {'theater': 'UNK'}, 'inform_slots': {'city': 'la', 'numberofpeople': '2', 'distanceconstraints': 'downtown', 'video_format': '3d', 'starttime': '7pm', 'date': 'tomorrow', 'moviename': 'creed'}}
+
+Agenda-Based User Simulator
+"""""""""""""""""""""""""""
+
+.. figure::  ../_static/us.png
+   :align:   center
+
+The Agenda-Based User Simulator was proposed by Schatzmann and is explained in detail in this `paper <https://www.semanticscholar.org/paper/Statistical-User-Simulation-with-a-Hidden-Agenda-Schatzmann-Thomson/fdde1f5ee1734e562298d6d4ca6893921276f0d2>`_.
+Conceptually, the simulator maintains an "agenda" of things to say, which is usually implemented as
+a stack. When the simulator receives input, it consults its policy (or its set of rules) to see what
+content to push into the agenda, as a response to the input. After some housekeeping (e.g. removing
+duplicates or content that is no longer valid), the simulator will pop one or more items off the
+agenda that will be used to formulate its response.
+
+The Agenda-Based User Simulator also has an error simulation module, that can simulate speech
+recognition / language understanding errors. Based on some probabilities, it will distort the output
+dialogue acts of the simulator - the intent, slot, or value (different probability for each).
+
+Now we will dive into each element of a User simulator
+
+User Goal
+"""""""""
+
+Sampled from a real corpus / hand-crafted list
+
+- Information access
+    -  Inflexible: the user has specific entries for search
+
+    .. code-block::
+
+        request_slot: rating, inform_slots: {moviename=“A”, …}
+
+- Task completion
+    - Inflexible: the user has specific rows for search
+
+    .. code-block::
+
+        request_ticket, inform_slots: {moviename=“A”, …}
+
+    - Flexible: some slot values are unknown or can be suggested
+
+    .. code-block::
+
+        request_ticket, request_slots: {time, theater},
+        inform_slots: {moviename=“A”, …}
+
+User Agenda Mode
+""""""""""""""""
+
+User agenda defines how a user interacts with the system in the dialogue level
+
+- Random order: random sample a slot for informing or request
+- Fixed order: define a list of ordering slots for informing or request
+
+Frame-Level Interaction
+"""""""""""""""""""""""
+
+DM receives frame-level information
+
+- No error model: perfect recognizer and LU
+- Error model: simulate the possible errors
+
+.. figure::  ../_static/frame_mode.png
+   :align:   center
+
+Natural Language Level Interaction
+""""""""""""""""""""""""""""""""""
+
+User simulator sends natural language
+
+- No recognition error
+- Errors from NLG or LU
+
+.. figure::  ../_static/nlg_level.png
+   :align:   center
+
+Error Model
+"""""""""""
+
+There are several for error model
+
+- Handcraft: Randomly generate errors by
+    - Replacing with an incorrect intent
+    - Deleting an informable slot
+    - Replacing with an incorrect slot (value is original)
+    - Replacing with an incorrect slot value
+
+- Model-based
+    - Simulate the errors based on the ASR or LU confusion
+
+Reward Function
+"""""""""""""""
+
+It's Success measurement. Check whether the returned results satisfy the
+predefined user goal.
+
+- Success: large positive reward
+- Fail: large negative reward

@@ -1,0 +1,79 @@
+comet.lib package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   comet.lib.decorator
+   comet.lib.storage
+
+Submodules
+----------
+
+comet.lib.decorator module
+--------------------------
+
+.. automodule:: comet.lib.decorator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.lib.file\_util module
+---------------------------
+
+.. automodule:: comet.lib.file_util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.lib.helpers module
+------------------------
+
+.. automodule:: comet.lib.helpers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.lib.log\_tracker module
+-----------------------------
+
+.. automodule:: comet.lib.log_tracker
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.lib.logger module
+-----------------------
+
+.. automodule:: comet.lib.logger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.lib.math\_util module
+---------------------------
+
+.. automodule:: comet.lib.math_util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+comet.lib.meta\_class module
+----------------------------
+
+.. automodule:: comet.lib.meta_class
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: comet.lib
+   :members:
+   :undoc-members:
+   :show-inheritance:

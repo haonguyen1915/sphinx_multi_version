@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Step 4: Custom the Dialogue State Tracker &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Step 5: Build a Warm-up Policy" href="05_define_a_hancraft_policy.html" />
+    <link rel="prev" title="Step 3: Custom the State Featurizer (Optional)" href="03_custom_the_state_featurizer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 4: Custom the Dialogue State Tracker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interface">Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../comet/comet.html">comet package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Step 4: Custom the Dialogue State Tracker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/step_by_step/04_custom_dialogue_state_tracker.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="step-4-custom-the-dialogue-state-tracker">
+<h1>Step 4: Custom the Dialogue State Tracker<a class="headerlink" href="#step-4-custom-the-dialogue-state-tracker" title="Permalink to this headline">¶</a></h1>
+<p>In the pipeline task-oriented dialog framework, the DST module encodes
+the dialog history into a pre-defined state representation, which can be
+either structured or unstructured. See <a class="reference internal" href="../concepts/components.html#dialogue-state-tracker"><span class="std std-ref">here</span></a> for the explain about DST.</p>
+<p>In each turn, it takes as input the dialog act of user utterances, and updates
+its internal state variable.</p>
+<p>This instance contains the interface definition of dialog state
+tracking module and some act-level DST module implementations.</p>
+<div class="section" id="interface">
+<h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<p>The interfaces of DST are defined in <code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueStateTracker</span></code>
+including:</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">update_state</span></code>: Takes as input the new utterances from user in each turn, and update the internal state variable of DST component</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">update_state_sysact</span></code>: Takes as input the action from system in each turn, and update the internal state.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">update_state_db</span></code>. This function will update the current database results and may be change some signal in dialogue state such as: <code class="docutils literal notranslate"><span class="pre">make_deny</span></code>, <code class="docutils literal notranslate"><span class="pre">make_confirm</span></code>, <code class="docutils literal notranslate"><span class="pre">make_offer</span></code>. So this method need to be implement because it depends on logic of each domain.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">initialize</span></code>. reset the internal state variable for a new dialog session.</p></li>
+</ul>
+<p>Sample implementation for <code class="docutils literal notranslate"><span class="pre">WeatherAsking</span></code> domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WeatherDialogueStateTracker</span><span class="p">(</span><span class="n">HardDialogueStateTracker</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WeatherDialogueStateTracker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update_state_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">sys_requestable_semantic</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DialogueState</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                This function will update the current database results. If the state belongs to a</span>
+<span class="sd">                &#39;user&#39; agent</span>
+
+<span class="sd">                Args:</span>
+<span class="sd">                    db_result (Dict): The products result got from database</span>
+<span class="sd">                    sys_requestable_semantic: (Dict): The slot that the system should request for semantic purpose</span>
+
+<span class="sd">                Returns:</span>
+
+<span class="sd">                &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">db_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;update_state_db: database results is provided&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">sys_requestable_semantic</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">sys_requestable_semantic</span><span class="p">)</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">db</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sys_requestable_semantic: </span><span class="si">{</span><span class="n">sys_requestable_semantic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">db_result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">make_offer</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DState</span><span class="o">.</span><span class="n">db_result</span> <span class="o">=</span> <span class="n">db_result</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">DState</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05_define_a_hancraft_policy.html" class="btn btn-neutral float-right" title="Step 5: Build a Warm-up Policy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03_custom_the_state_featurizer.html" class="btn btn-neutral float-left" title="Step 3: Custom the State Featurizer (Optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comet.environment.user_simulator.agenda_base_us package &mdash; Comet v1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/modify.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="comet.environment.user_simulator.model_base_us package" href="comet.environment.user_simulator.model_base_us.html" />
+    <link rel="prev" title="comet.environment.user_simulator package" href="comet.environment.user_simulator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/introduction.html">An introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#scope">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/motivation.html#task-oriented-dialog-systems">Task-oriented dialog systems</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/play_around.html">Play Around</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Step By Step Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/00_overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/01_define_the_hierarchy.html">Step 1: Define domain, ontology, database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/02_custom_the_dialogue_state.html">Step 2: Custom the Dialogue State (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/03_custom_the_state_featurizer.html">Step 3: Custom the State Featurizer (Optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/04_custom_dialogue_state_tracker.html">Step 4: Custom the Dialogue State Tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/05_define_a_hancraft_policy.html">Step 5: Build a Warm-up Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/06_build_natatural_language_template.html">Step 6: Build a Natural Language Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/07_build_user_simulator.html">Step 7: Build the User Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/08_connect_all_components_by_config.html">Step 8: Connect all components by Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/09_generate_training_data.html">Step 9: Prepare Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/10_deploy_and_train_models.html">Step 10: Train and deploy models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_by_step/Summarize.html">Summarize</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html">Domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#ontology">Ontology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/domain.html#database">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/trainning_data/index.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/components/index.html">Comet’s components!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Reinforcement_learning.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/chanel_connector.html">Channel Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/Architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="comet.html">comet package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="comet.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="comet.abstract_module.html">comet.abstract_module package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.agent.html">comet.agent package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.call_backs.html">comet.call_backs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.channel.html">comet.channel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.cli.html">comet.cli package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.controller.html">comet.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.domain.html">comet.domain package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="comet.environment.html">comet.environment package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="comet.environment.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.html#module-comet.environment.reward_function">comet.environment.reward_function module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comet.environment.html#module-comet.environment">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="comet.lib.html">comet.lib package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comet.utilities.html">comet.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#comet-run-module">comet.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.run_cli">comet.run_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet.server">comet.server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comet.html#module-comet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Comet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="comet.html">comet package</a> &raquo;</li>
+        
+          <li><a href="comet.environment.html">comet.environment package</a> &raquo;</li>
+        
+          <li><a href="comet.environment.user_simulator.html">comet.environment.user_simulator package</a> &raquo;</li>
+        
+      <li>comet.environment.user_simulator.agenda_base_us package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/comet/comet.environment.user_simulator.agenda_base_us.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="comet-environment-user-simulator-agenda-base-us-package">
+<h1>comet.environment.user_simulator.agenda_base_us package<a class="headerlink" href="#comet-environment-user-simulator-agenda-base-us-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-comet.environment.user_simulator.agenda_base_us.agenda">
+<span id="comet-environment-user-simulator-agenda-base-us-agenda-module"></span><h2>comet.environment.user_simulator.agenda_base_us.agenda module<a class="headerlink" href="#module-comet.environment.user_simulator.agenda_base_us.agenda" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.user_simulator.agenda_base_us.agenda.</code><code class="sig-name descname">Agenda</code><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all items from the agenda.</p>
+<p>Returns: None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.consistency_check">
+<code class="sig-name descname">consistency_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.consistency_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.consistency_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform some basic checks to ensure that items in the agenda are
+consistent - i.e. not duplicate, not
+contradicting with current goal, etc.</p>
+<p>Returns: None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.dummy_initialize">
+<code class="sig-name descname">dummy_initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">us_has_initiative</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.dummy_initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.dummy_initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the Agenda at the beginning of each dialogue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>goal</strong> – the new goal for the current dialogue</p></li>
+<li><p><strong>us_has_initiative</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – if the simulator has the initiative at the
+first turn</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span></em>, <em class="sig-param"><span class="n">us_has_initiative</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the Agenda at the beginning of each dialogue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>goal</strong> (<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>) – the new goal for the current dialogue</p></li>
+<li><p><strong>us_has_initiative</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – if the simulator has the initiative at the
+first turn</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.peek">
+<code class="sig-name descname">peek</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.peek"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.peek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Peek top item from the agenda.</p>
+<p>Returns: None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.pop">
+<code class="sig-name descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop top item from the agenda.</p>
+<p>Returns: top item</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.push">
+<code class="sig-name descname">push</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">act</span></em>, <em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.push"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes a dialogue act into the agenda.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>act</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>) – dialogue act to be appended</p></li>
+<li><p><strong>force</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – does not remove act if it already is in the agenda,
+potentially resulting in duplicates</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">act</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a specific dialogue act from the agenda</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>act</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>) – the dialogue act to be removed</p>
+</dd>
+</dl>
+<p>Returns: None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda.Agenda.size">
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda.html#Agenda.size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda.Agenda.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the size of the agenda</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the current size of the agenda</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.environment.user_simulator.agenda_base_us.agenda_based_us">
+<span id="comet-environment-user-simulator-agenda-base-us-agenda-based-us-module"></span><h2>comet.environment.user_simulator.agenda_base_us.agenda_based_us module<a class="headerlink" href="#module-comet.environment.user_simulator.agenda_base_us.agenda_based_us" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.user_simulator.agenda_base_us.agenda_based_us.</code><code class="sig-name descname">AgendaBasedUS</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.user_simulator.UserSimulator" title="comet.environment.user_simulator.user_simulator.UserSimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">comet.environment.user_simulator.user_simulator.UserSimulator</span></code></a></p>
+<p>Implementation of the Agenda Based usr Simulator.</p>
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.at_terminal_state">
+<code class="sig-name descname">at_terminal_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.at_terminal_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.at_terminal_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the Agenda-Based Simulated usr is at a terminal state</p>
+<p>Returns: True or False</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.handle_multi_system_acts">
+<code class="sig-name descname">handle_multi_system_acts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">system_acts</span></em>, <em class="sig-param"><span class="n">in_goal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.handle_multi_system_acts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.handle_multi_system_acts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle multi system dialogue acts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system_acts</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>]) – </p></li>
+<li><p><strong>in_goal</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.handle_single_system_act">
+<code class="sig-name descname">handle_single_system_act</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">system_act</span></em>, <em class="sig-param"><span class="n">in_goal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.handle_single_system_act"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.handle_single_system_act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update agenda with system’s response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system_act</strong> (<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>) – The dialogue act from system</p></li>
+<li><p><strong>in_goal</strong> (<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>) – the simulated user’s goal</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.init_parameters">
+<code class="sig-name descname">init_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.init_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the user simulator, e.g. before each dialogue episode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – nothing</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.receive_input">
+<code class="sig-name descname">receive_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sys_acts</span></em>, <em class="sig-param"><span class="n">in_goal</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.receive_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.receive_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives and processes the input (i.e. the system’s response) and
+updates the simulator’s internal state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sys_acts</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>]) – list of dialogue acts representing input from the system</p></li>
+<li><p><strong>in_goal</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="comet.environment.user_simulator.html#comet.environment.user_simulator.goal.Goal" title="comet.environment.user_simulator.goal.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Goal</span></code></a>]) – the simulated user’s goal</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: Nothing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.respond">
+<code class="sig-name descname">respond</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/agenda_based_us.html#AgendaBasedUS.respond"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.agenda_based_us.AgendaBasedUS.respond" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the response of the simulated user.</p>
+<p>Returns: List of DialogueActs as a response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="comet.agent.core.html#comet.agent.core.action.DialogueAct" title="comet.agent.core.action.DialogueAct"><code class="xref py py-class docutils literal notranslate"><span class="pre">DialogueAct</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.environment.user_simulator.agenda_base_us.error_model">
+<span id="comet-environment-user-simulator-agenda-base-us-error-model-module"></span><h2>comet.environment.user_simulator.agenda_base_us.error_model module<a class="headerlink" href="#module-comet.environment.user_simulator.agenda_base_us.error_model" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="comet.environment.user_simulator.agenda_base_us.error_model.ErrorModel">
+<em class="property">class </em><code class="sig-prename descclassname">comet.environment.user_simulator.agenda_base_us.error_model.</code><code class="sig-name descname">ErrorModel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ontology</span></em>, <em class="sig-param"><span class="n">database</span></em>, <em class="sig-param"><span class="n">slot_confuse_prob</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">value_confuse_prob</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/error_model.html#ErrorModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.error_model.ErrorModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="comet.environment.user_simulator.agenda_base_us.error_model.ErrorModel.semantic_noise">
+<code class="sig-name descname">semantic_noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">act</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/comet/environment/user_simulator/agenda_base_us/error_model.html#ErrorModel.semantic_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#comet.environment.user_simulator.agenda_base_us.error_model.ErrorModel.semantic_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates semantic noise. It receives an act and introduces errors
+given the Error Model’s probabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>act</strong> – the act to be confused</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the confused act</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-comet.environment.user_simulator.agenda_base_us">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comet.environment.user_simulator.agenda_base_us" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comet.environment.user_simulator.model_base_us.html" class="btn btn-neutral float-right" title="comet.environment.user_simulator.model_base_us package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="comet.environment.user_simulator.html" class="btn btn-neutral float-left" title="comet.environment.user_simulator package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NLP Team, Ftech.AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
